@@ -2,11 +2,74 @@
 <html lang="fr">
   <head>
     <meta charset="utf-8">
-    <title>TITRE</title>
+      
+      <meta description="">
+    <style>
+    *{
+        box-sizing: border-box;
+    }
+        
+    *[hidden]{
+        display: none !important;
+    }
+    
+    .e{
+        display: table;
+    }  
+    
+    .e > *{
+        display: table-row;
+    }  
+    
+    .e > * > *{
+        display: table-cell;
+    }  
+    
+    .left{
+        float: left;
+    } 
+    .right{
+        float: right;
+    } 
+        
+        body h1 + hr{
+            color: green;
+        }
+    </style>
+      
+      <link href="url" rel="stylesheet">
+      
+      <script type="application/json" id="data">
+      console.log('bla');
+      </script>
+      
+      <script src="ya.js"></script>
+      <script src="yo.js" async=false></script>
+      <script src="yi.js" async=false></script>
+      <script>
+      document.addEventListener('DOMContentLoaded', function(){
+          'use strict';
+          var dataEl = document.getElementById('data')
+          
+          var data = JSON.parse(dataEl.textContent);
+          
+          dataEl.parentNode.removeChild(dataEl);
+      });
+      
+      </script>
+      
+    <title><?php echo $var ?></title>
   </head>
 
   <body>
     <h1>Le titre</h1>
-    <p>Un paragraphe.</p>
+      <hr>
+      <hr>
+      <hr>
+    <p>Un paragraphe. <a href="site">article de JavaScript</a></p>
+      
+    
+      
+      
   </body>
 </html>

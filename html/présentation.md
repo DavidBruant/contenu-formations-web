@@ -18,14 +18,15 @@
 # Sémantique
 
 * Liens via &lt;a href="https://www.youtube.com/watch?v=2zNSgSzhBfM ">cette vidéo est géniale !&lt;/a>
-* &lt;table> Seulement pour des données tabulaires
-    * Regarder [`display:flex`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex) ou [`display:table`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) en CSS pour aligner/centrer des éléments visuellement.
 
 * &lt;meta>
 
 * &lt;ul> &lt;ol> &lt;li>
 
 * "HTML5" &lt;article> &lt;menu> &lt;section> &lt;footer> &lt;header> &lt;main> &lt;template>
+
+* &lt;table> Seulement pour des données tabulaires
+    * Regarder [`display:flex`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex) ou [`display:table`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) en CSS pour aligner/centrer des éléments visuellement.
 
 
 # Comportements par défaut
@@ -96,6 +97,7 @@ Références
     * `E > F` "enfant"
 * Pseudo-classes
     * `x:nth-of-type(3)`
+    * `:target`
     
     
 
@@ -107,6 +109,8 @@ Références
 * margin
 
 (montrer devtools)
+
+* box-sizing: border-box
 
 # Positionnement
 
@@ -124,8 +128,6 @@ Références
     * relative
     * absolute
     * fixed
-
-
 
 
 # CSS
