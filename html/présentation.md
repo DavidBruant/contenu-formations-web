@@ -28,6 +28,12 @@
 * &lt;table> Seulement pour des données tabulaires
     * Regarder [`display:flex`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex) ou [`display:table`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) en CSS pour aligner/centrer des éléments visuellement.
 
+# Media
+
+* &lt;img>
+* &lt;audio>
+* &lt;video>
+    * &lt;source>
 
 # Comportements par défaut
 
@@ -98,6 +104,7 @@ Références
 * Pseudo-classes
     * `x:nth-of-type(3)`
     * `:target`
+    * :hover
     
     
 
@@ -129,6 +136,9 @@ Références
     * absolute
     * fixed
 
+# Text
+
+ @font-face 
 
 # CSS
 

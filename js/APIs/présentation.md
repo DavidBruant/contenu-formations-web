@@ -8,16 +8,30 @@ Récupérer des nouvelles données sans recharger entièrement la page (demande 
 * xhr.setRequestHeader(header, value) (avant d'envoyer)
 * xhr.getResponseHeader(header) (après la réponse)
 
+* Promise https://github.com/jakearchibald/es6-promise
+* sync document ready & xhr
+
+
+* DOMContentLoaded
+* getContent (xhr)
+* mise à jour
+
 
 # LocalStorage
 
-* localStorage.get(key)
-* localStorage.set(key, value)
-* localStorage.delete(key)
+* localStorage.getItem(key)
+    * localStorage[key]
+* localStorage.setItem(key, value)
+    * localStorage[key] = value;
+* localStorage.removeItem(key)
 * localStorage.length
-* localStorage.keys(i)
+* localStorage.key(i)
+* localStorage.clear;
 
-# Camera
+localStorage['setItem'] = '12';
+
+
+
 
 
 

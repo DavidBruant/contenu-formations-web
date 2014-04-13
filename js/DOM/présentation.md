@@ -18,32 +18,58 @@ API pour manipuler un document HTML ou XML (arbre)
 * n.parentNode
 * n.appendChild(n2)
 * n.removeChild(n2)
-    * n.parentNode.remove(n)
+    * n.parentNode.removeChild(n)
+    * DOM4: n.remove()
+    
+Node.prototype.remove = Node.prototype.remove || function(){
+    this.parentNode.removeChild(this);
+}
 
 # Document + HTMLDocument
 
 * document.createElement('div')
 * document.createDocumentFragment()
 
+* document.getElementById
+* document.getElementsByClassName
+* document.querySelector(selector)
+* document.querySelectorAll(selector)
+
+Array.from(document.querySelectorAll('section h1')).map(...)
+
 
 # Element + HTMLElement
 
 * e.getAttribute(key)
 * e.setAttribute(key, value)
+* e.removeAttribute(key)
 * e.textContent
-* e.id
 
+* e.id
 * e.getElementById
 * e.getElementsByClassName
 * e.querySelector(selector)
 * e.querySelectorAll(selector)
+    * document.body.querySelectorAll()
     * Pas un array ECMAScript pour des raisons historiques
 * e.innerHTML (getter/setter)
 * e.insertAdjacentHTML(html, position)
 * e.className (pour changer les styles)
+<div class="yo hyz"></div>
+    * .yo.hyz{}
+    * .yo .hyz{}
+    * .yo, .hyz{}
+* e.class
+
 * e.classList (pour changer les styles)
-    * e.add/remove/has
+    * e.classList.add/remove/has/toggle?
 * e.style.backgroundColor
+
+.yo{
+    background-color: red;
+
+}
+
 
 # EventTarget
 
@@ -60,19 +86,23 @@ API pour manipuler un document HTML ou XML (arbre)
 * keypress (keyup/keydown)
 * mouseover
 * submit (&lt;form>)
+* input
 
 * "event delegation"
 
+el.addEventListener('click', function(e){
+    // Event e
+})
+
 * e.target
+* e.preventDefault
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+})
+
+* e.stopPropagation
 * e.currentTarget
 * e.timestamp
 
 
-
-
-# HTMLDOM
-
-* e.style.backgroundColor
-
-
-
+# Layout tree

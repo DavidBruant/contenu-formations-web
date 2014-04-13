@@ -1,3 +1,8 @@
+# Bases
+
+* S'execute dans le navigateur, côté client.
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/JavaScript_technologies_overview
+
 # Standards
 
 * ECMAScript 3 (1999)
@@ -5,13 +10,11 @@
 * Pas de ECMAScript 4 !
 * ECMAScript 5 (2009)
 * ECMAScript 6 (en cours)
+    * Array.from
 
-* Versions de JavaSCript (1.7, 1.7.5, 1.8, etc.) n'ont aucune importance
+* Versions de JavaScript (1.7, 1.7.5, 1.8, etc.) n'ont aucune importance
 
-# Bases
 
-* S'execute dans le navigateur, côté client.
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/JavaScript_technologies_overview
 
 # Variables
 
@@ -22,13 +25,17 @@ Déclarer avec `var`
 6 types : 
 
 * number (1, 23, 1.6, etc.) (un seul type de nombre, pas de distinction int/float/double)
+
+signe*mantisse*2^exp
+
 * string ('', 'yo', 'whatever'). '' ou "" indifféremment
 * boolean (true, false)
 * undefined
 * null (/!\ `typeof null === "object"`, comparer `maVariable === null`)
-* object
-    * function
-    * Array
+* object (`Object(x) === x`)
+    * objet normal
+    * function (typeof x === 'function')
+    * Array (Array.isArray(x))
     * Date
     * RegExp
 (ES6 : symbols)
@@ -44,7 +51,7 @@ undefined
 
 # Comparaison
 
-Toujours utiliser ===
+Toujours utiliser === et !==
 Comparaison par référence pour les objets, par valeur pour le reste.
 
 # Strings
@@ -64,6 +71,7 @@ Comparaison par référence pour les objets, par valeur pour le reste.
 * Math.PI.toFixed(3)
 * Math.PI.toString()
 * (35).toString()
+* 35..toString()
 
 * Math pour une collection de fonctions pour faire des maths.
 
@@ -73,11 +81,13 @@ Comparaison par référence pour les objets, par valeur pour le reste.
 
 # Objects
 
-"sac de propriété"
+"sac de propriété" + [[Prototype]]
 
 * clé (string) -> valeur (any)
 
-
+* if(o.a){}
+* o.a = 12
+* delete o.a;
 * Object.keys(o)
 * obj.hasOwnProperty('yo')
 * Object.getPrototypeOf(o)
@@ -91,6 +101,10 @@ http://davidbruant.github.io/ObjectViz/
 * a.map(f)
 * a.filter(f)
 * Array.isArray(x)
+
+* a.reduce(function(acc, curr){
+    return acc+curr;
+}, 0)
 
 # Fonctions
 
@@ -122,7 +136,7 @@ es5shim/es5sham
 
 # Parallélisme
 
-* WebWorkers
+* WebWorkers + Transferable
 
 
 

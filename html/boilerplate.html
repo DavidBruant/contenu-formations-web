@@ -4,6 +4,16 @@
     <meta charset="utf-8">
       
       <meta description="">
+      <meta name="referrer" content="never">
+      
+      <script data-polyfill>
+        Array.from = Array.from || function(){
+            
+        }
+      
+        document.querySelectorAll('.tweet:not([lang="fr"])')
+      </script>
+      
     <style>
     *{
         box-sizing: border-box;
@@ -13,6 +23,13 @@
         display: none !important;
     }
     
+        @font-face {
+          font-family: "Open Sans Light";
+          font-style: normal;
+          font-weight: normal;
+          src: url("//mozorg.cdn.mozilla.net/media/fonts/OpenSans-Light-webfont.eot?#iefix") format("embedded-opentype"), url("//mozorg.cdn.mozilla.net/media/fonts/OpenSans-Light-webfont.woff") format("woff"), url("//mozorg.cdn.mozilla.net/media/fonts/OpenSans-Light-webfont.ttf") format("truetype"), url("//mozorg.cdn.mozilla.net/media/fonts/OpenSans-Light-webfont.svg#OpenSansLight") format("svg");
+        }
+        
     .e{
         display: table;
     }  
@@ -54,7 +71,12 @@
           var data = JSON.parse(dataEl.textContent);
           
           dataEl.parentNode.removeChild(dataEl);
+          
+          var iframe = document.querySelector('iframe')
+          var iframeDoc = contentWindow.document;
+          
       });
+            
       
       </script>
       
@@ -69,7 +91,29 @@
     <p>Un paragraphe. <a href="site">article de JavaScript</a></p>
       
     
-      
+      <iframe src="https://facebook.com/"></iframe>
       
   </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

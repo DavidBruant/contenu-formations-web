@@ -1,5 +1,7 @@
+//<script src="http://s3.amazonaws.com/es6-promises/promise-0.1.1.js"></script>
+
 (function(global){
-    
+    'use strict';
     
     global.getContent = function(url){
         var xhr = new XMLHttpRequest();
@@ -20,4 +22,7 @@
         
     };
     
+    
 })(this)
+
+getContent('https://rawgithub.com/DavidBruant/contenu-formations-web/master/tweets.json');
