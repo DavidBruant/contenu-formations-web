@@ -16,6 +16,8 @@ Récupérer des nouvelles données sans recharger entièrement la page (demande 
 * getContent (xhr)
 * mise à jour
 
+JSONView http://jsonview.com/
+
 
 # LocalStorage
 

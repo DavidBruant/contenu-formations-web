@@ -79,14 +79,16 @@ https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Advanced_styling_f
     * attribut `async`
         * executé dès que possible, dès la réception du fichier
         * Si plusieurs scripts avec async, aucun ordre d'execution établi
-        * Pour conserver l'ordre, mettre async="false"
+        * Pour conserver l'ordre ajouter les scripts dynamiquement et mettre .async="false"
         
         
 Références
 * http://hsivonen.iki.fi/script-execution/
 * http://www.html5rocks.com/en/tutorials/speed/script-loading/
     
-    
+# Misc
+
+* favicon: &lt;link rel="shortcut icon" href="favicon.ico">
     
     
 # Selecteurs CSS    

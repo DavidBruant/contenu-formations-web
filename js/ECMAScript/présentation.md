@@ -97,7 +97,9 @@ http://davidbruant.github.io/ObjectViz/
 
 # Array
 
-* a.forEach(f)
+* arr.forEach(function(e, i, a){
+
+})
 * a.map(f)
 * a.filter(f)
 * Array.isArray(x)
@@ -105,6 +107,8 @@ http://davidbruant.github.io/ObjectViz/
 * a.reduce(function(acc, curr){
     return acc+curr;
 }, 0)
+
+arr = [...Set(arr)]
 
 # Fonctions
 

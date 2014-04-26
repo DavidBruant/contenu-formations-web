@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+      
+    <style>
+    *{
+        box-sizing: border-box;
+    }
+    </style>
+      
+
+      <script src="./mobile/jquery.js"></script>
+      
+      <script>
+          (function(){
+             'use strict';
+              var readyDef = jQuery.Deferred();
+              
+              var readyP = readyDef.promise()    
+              $(function(){ readyDef.resolve(); });
+
+              var tweetsP = $.get('../tweets.json', 'json');
+              
+              $.when(tweetsP, readyP).then(function(tweets){
+                  console.log('tweets', tweets);
+                  
+                  
+              })
+              .fail(function(err){
+                  console.error(err);
+              })
+              .done();
+      
+              
+              
+          })();
+          
+      </script>
+      
+    <title>yo</title>
+  </head>
+
+  <body>
+  </body>
+</html>
