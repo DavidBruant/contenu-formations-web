@@ -20,6 +20,7 @@
 * Liens via &lt;a href="https://www.youtube.com/watch?v=2zNSgSzhBfM ">cette vidéo est géniale !&lt;/a>
 
 * &lt;meta>
+    * Intégration réseaux sociaux
 
 * &lt;ul> &lt;ol> &lt;li>
 
@@ -54,6 +55,10 @@ Styler les éléments par défaut
 https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Styling_HTML_forms
 https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Advanced_styling_for_HTML_forms
     
+# Charger une autre page
+
+* &lt;iframe src="http://....">
+    
 # Attributs communs
 
 * `hidden`
@@ -85,6 +90,7 @@ https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Advanced_styling_f
 Références
 * http://hsivonen.iki.fi/script-execution/
 * http://www.html5rocks.com/en/tutorials/speed/script-loading/
+* https://www.igvita.com/2014/05/20/script-injected-async-scripts-considered-harmful/    
     
 # Misc
 
@@ -140,7 +146,7 @@ Références
 
 # Text
 
- @font-face 
+@font-face 
 
 # CSS
 
@@ -148,6 +154,7 @@ Normalize css http://necolas.github.io/normalize.css/
 Bootstrap http://getbootstrap.com/
 Pure http://purecss.io/
 
+Font d'icônes : http://fortawesome.github.io/Font-Awesome/
 
 
 
