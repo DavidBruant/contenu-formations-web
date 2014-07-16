@@ -9,7 +9,6 @@ API pour manipuler un document HTML ou XML (arbre)
         * Element + HTMLElement
         * Document + HTMLDocument
         * DocumentFragment
-        * TextNode
         * (Comment)
 
 # Node
@@ -30,8 +29,8 @@ Node.prototype.remove = Node.prototype.remove || function(){
 * document.createElement('div')
 * document.createDocumentFragment()
 
-* document.getElementById
-* document.getElementsByClassName
+* document.getElementById()
+* document.getElementsByClassName()
 * document.querySelector(selector)
 * document.querySelectorAll(selector)
 
@@ -59,8 +58,6 @@ Array.from(document.querySelectorAll('section h1')).map(...)
     * .yo.hyz{}
     * .yo .hyz{}
     * .yo, .hyz{}
-* e.class
-
 * e.classList (pour changer les styles)
     * e.classList.add/remove/has/toggle?
 * e.style.backgroundColor
@@ -76,6 +73,10 @@ Array.from(document.querySelectorAll('section h1')).map(...)
 * n.addEventListener(type, listener, capture=false)
 * n.removeEventListener(type, listener, capture=false)
     * Attention, comparaison par référence
+    * var listener = function(){...}.bind(this);
+    * n.addEventListener(type, listener)
+    * n.removeEventListener(type, listener)
+    
 * n.dispatchEvent(e)
 
 # Evènements
@@ -95,12 +96,12 @@ el.addEventListener('click', function(e){
 })
 
 * e.target
-* e.preventDefault
+* e.preventDefault()
 form.addEventListener('submit', function(e){
     e.preventDefault();
 })
 
-* e.stopPropagation
+* e.stopPropagation()
 * e.currentTarget
 * e.timestamp
 

@@ -15,10 +15,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/JavaScript_technologies_
 * Versions de JavaScript (1.7, 1.7.5, 1.8, etc.) n'ont aucune importance
 
 
-
 # Variables
 
 Déclarer avec `var`
+(vars.js)
 
 # Valeurs
 
@@ -85,6 +85,8 @@ Comparaison par référence pour les objets, par valeur pour le reste.
 
 * clé (string) -> valeur (any)
 
+(objets.js)
+
 * if(o.a){}
 * o.a = 12
 * delete o.a;
@@ -108,12 +110,13 @@ http://davidbruant.github.io/ObjectViz/
     return acc+curr;
 }, 0)
 
-arr = [...Set(arr)]
+arr = [...Set(arr)] // unique
 
 # Fonctions
 
 * f.call(thisVal, arg1, arg2, arg3)
 * f.apply(this.Val, [arg1, arg2, arg3])
+    * Math.max.apply(undefined, a);
 * f.bind(x)
 
 (scopes)

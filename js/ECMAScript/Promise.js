@@ -1,3 +1,63 @@
+// sync
+var f = readfile(file);
+var g = readfile(file2);
+var h = readfile(file3);
+
+combine(f, g, h);
+
+// Node.js
+var f, g, h;
+
+readfile(file, function(err, _f){
+    f = _f;
+    if(f && g && h)
+        combine(f, g, h);
+});
+readfile(file2, function(err, _g){
+    g = _g;
+    if(f && g && h)
+        combine(f, g, h);
+});
+readfile(file3, function(err, _h){
+    h = _h;
+    if(f && g && h)
+        combine(f, g, h);
+});
+
+// Node.js 2
+var f, g, h;
+
+readfile(file, function(err, f){
+    readfile(file2, function(err, g){
+        readfile(file3, function(err, h){
+            combine(f, g, h);
+        });
+    });
+});
+
+
+// Promise
+var fP = readfile(file);
+var gP = readfile(file2);
+var hP = readfile(file3);
+
+Promise.all(fP, gP, hP)
+    .then(function(results){
+        combine.apply(undefined, results);
+    })
+    .catch(errorHandler);
+
+fP.then(function(f){
+    
+  })
+  .catch(function(err){
+      //...
+  })
+
+
+
+
+
 function getContents(url){
     return new Promise(function(resolve, reject){
         var xhr = new XMLHttpRequest();

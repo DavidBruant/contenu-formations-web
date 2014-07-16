@@ -23,9 +23,19 @@ Car.prototype = {
 var c = new Car("blue");
 var c2 = new Car("black");
 
-var c3 = Object.create(Car.prototype)
+
+//var c3 = Object.create(Car.prototype)
 
 c.getColor();
+
+/*function SuperCar(){
+    Car.call(this);
+}
+
+SuperCar.prototype = Object.create(Car.prototype);
+SuperCar.prototype.yo = function(){};
+SuperCar.prototype.ya = function(){};
+*/
 
 // pattern 2
 "use strict"; // début de fichier
@@ -46,8 +56,7 @@ function Car(){
 var c = new Car(); // only exposes 'pubMethod1'
 
 
-// pattern 3
-
+// pattern 3 (ES6)
 var Car3 = (function(){
     var states = new WeakMap();
     
@@ -75,4 +84,7 @@ var Car3 = (function(){
     };
     
     return Car3;
-})()
+})();
+
+
+// no pattern 4 with symbols because of https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols

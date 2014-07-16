@@ -12,6 +12,8 @@ var o = {
 o.d = 5;
 o.a = false;
 
+console.log(o.e); // undefined
+
 o.c = undefined;
 
 console.log(o.hasOwnProperty('c'), 'c' in o) // true, true
