@@ -24,17 +24,20 @@
 
 * &lt;ul> &lt;ol> &lt;li>
 
-* "HTML5" &lt;article> &lt;menu> &lt;section> &lt;footer> &lt;header> &lt;main> &lt;template>
+* "HTML5" &lt;article> &lt;menu> &lt;section> &lt;footer> &lt;header> &lt;nav> &lt;main> &lt;template>
+    * https://github.com/aFarkas/html5shiv#manual-installation (pour que ces éléments soient stylés sur IE6-9)
 
 * &lt;table> Seulement pour des données tabulaires
     * Regarder [`display:flex`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex) ou [`display:table`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) en CSS pour aligner/centrer des éléments visuellement.
 
+* &lt;div> &lt;span>
+
 # Media
 
-* &lt;img>
-* &lt;audio>
-* &lt;video>
-    * &lt;source>
+* &lt;img src="http://example.org/azerty">
+* &lt;audio src="http://example.org/azerty">
+* &lt;video src="http://example.org/azerty">
+    * &lt;source src="http://example.org/yo.webm" type="video/webm">
 
 # Comportements par défaut
 
@@ -46,18 +49,19 @@
     * &lt;button type="submit">
     * Permet de valider le formulaire en tapant sur [Entrée]
 * &lt;input>
-    * type: text, radio, url, email (@ sur le clavier mobile), number, file, submit, search
+    * type: text, radio, url, email (@ sur le clavier mobile), number, file, search, date, datetime
     * placeholder="coucou"
     * &lt;label>Nom &lt;input>&lt;/label> pour le focus sur l'input quand clic sur label (attribut `for` + input[id] sinon)
 * &lt;textarea>, &lt;select>+&lt;option>,    
     
 Styler les éléments par défaut
-https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Styling_HTML_forms
-https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Advanced_styling_for_HTML_forms
+* https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Styling_HTML_forms
+* https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Advanced_styling_for_HTML_forms
     
 # Charger une autre page
 
 * &lt;iframe src="http://....">
+    * sandbox
     
 # Attributs communs
 
@@ -69,6 +73,7 @@ https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/Forms/Advanced_styling_f
 * Dans le &lt;head>
 * &lt;style>&lt;/style>
 * &lt;link rel="stylesheet" href="{{url}}">
+    * ajouter l'attribut `lazyload` quand on ne veut pas bloquer le permier rendu
     
 # Scripts    
     
@@ -99,20 +104,36 @@ Références
     
 # Selecteurs CSS    
 
-* Eléments
-    * `span`, `div`, `p`, `body`, `html`, `*`, etc.
-* Classes
-    * `.chosen`
-* id
+* Tous les éléments d'un certain type
+    * `span`, `div`, `p`, `body`, `*`, etc.
+* Tous les éléments avec la classe `azerty`
+    * `.azerty`
+* L'élément avec l'id `tabs`
     * `#tabs`
+* Les éléments avec un certain attribut
+    a[href]{
+        
+    }
+    input[type="email"]{
+            
+    }
+    a[class*="chosen"]
+    
+    a[href^="https://"]
 * Composition
     * `E, F` "et"
     * `E F` "descendant"
     * `E > F` "enfant"
 * Pseudo-classes
-    * `x:nth-of-type(3)`
-    * `:target`
-    * :hover
+    * n-ième élément (IE9)
+        * `x:nth-of-type(3)`
+        * `x:nth-of-type(2n+1)`
+    * Style pour quand (IE9)
+        *`:target`
+            * [stackoverflow](http://stackoverflow.com/questions/21951734/react-js-custom-events-for-communicating-with-parent-nodes#comment33261204_21951734)
+            * image gallery
+    * Style pour quand on passe la souris par-dessus
+        * `:hover`
     
     
 
@@ -136,6 +157,9 @@ Références
     * inline
     * inline-block
     * table
+        * table
+        * table-row
+        * table-cell
     * flex
     * none
     
@@ -148,6 +172,17 @@ Références
 
 @font-face 
 
+# Color
+
+#123456
+#1A3E56
+
+rgb(255, 33, 21);
+rgba(255, 33, 21, 0.1);
+
+hsl()
+
+
 # CSS
 
 Normalize css http://necolas.github.io/normalize.css/
@@ -157,4 +192,18 @@ Pure http://purecss.io/
 Font d'icônes : http://fortawesome.github.io/Font-Awesome/
 
 Thimble
+
+
+https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills
+
+# Data URIs
+
+http://dopiaza.org/tools/datauri/index.php
+
+# Vrac
+
+https://github.com/h5bp/html5-boilerplate
+http://worrydream.com/MagicInk/
+http://w3c-webmob.github.io/installable-webapps/
+https://github.com/Modernizr/Modernizr/wiki/HTML5-Cross-browser-Polyfills
 

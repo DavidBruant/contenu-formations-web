@@ -23,19 +23,8 @@ Car.prototype = {
 var c = new Car("blue");
 var c2 = new Car("black");
 
-
-//var c3 = Object.create(Car.prototype)
-
 c.getColor();
 
-/*function SuperCar(){
-    Car.call(this);
-}
-
-SuperCar.prototype = Object.create(Car.prototype);
-SuperCar.prototype.yo = function(){};
-SuperCar.prototype.ya = function(){};
-*/
 
 // pattern 2
 "use strict"; // début de fichier
@@ -87,4 +76,5 @@ var Car3 = (function(){
 })();
 
 
-// no pattern 4 with symbols because of https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols
+// pattern 4 with symbols 
+// Not super useful because of https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols

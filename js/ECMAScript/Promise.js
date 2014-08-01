@@ -1,11 +1,13 @@
-// sync
+// 1. sync
 var f = readfile(file);
 var g = readfile(file2);
 var h = readfile(file3);
 
 combine(f, g, h);
 
-// Node.js
+
+
+// 2. Node.js
 var f, g, h;
 
 readfile(file, function(err, _f){
@@ -24,7 +26,8 @@ readfile(file3, function(err, _h){
         combine(f, g, h);
 });
 
-// Node.js 2
+
+// 2.bis Node.js 2
 var f, g, h;
 
 readfile(file, function(err, f){
@@ -36,67 +39,63 @@ readfile(file, function(err, f){
 });
 
 
-// Promise
+
+// 3. Promise
 var fP = readfile(file);
 var gP = readfile(file2);
 var hP = readfile(file3);
 
+
+fP.then(function(f){
+        
+    
+        return f.length
+  }) // 'then' returns a promise for the length
+  .catch(function(err){
+      //...
+  }) // 'catch' returns a promise too
+  .done(function(){
+  
+  }) // 'done' doesn't return a promise
+
+
+
 Promise.all(fP, gP, hP)
     .then(function(results){
-        combine.apply(undefined, results);
+        var f = results[0];
+        var g = results[1];
+        var h = results[2];
+        combine(f, g, h));
     })
     .catch(errorHandler);
 
-fP.then(function(f){
-    
-  })
-  .catch(function(err){
-      //...
-  })
 
 
-
-
-
-function getContents(url){
-    return new Promise(function(resolve, reject){
-        var xhr = new XMLHttpRequest();
-        xhr.open('GET', url);
-        xhr.addEventListener('load', function(){
-            if(xhr.status < 400)
-                resolve(JSON.parse(xhr.responseText));
-            else
-                reject('Could not get content from '+url);
+define(function(){
+    'use strict';
+    return function getContents(url){
+        return new Promise(function(resolve, reject){
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', url);
+            xhr.addEventListener('load', function(){
+                if(xhr.status < 400)
+                    resolve(JSON.parse(xhr.responseText));
+                else
+                    reject('Could not get content from '+url);
+            });
+            xhr.send();
         });
-        xhr.send();
-    });
-}
+    }
+});
+
 
 // ...
 
 var tweetsP = getContents('http://...');
 document._readyP = new Promise(function(resolve, reject){
-    // ...
+    document.addEventListener('DOMContentLoaded', function(){ resolve(document) });
 });
 
 Promise.all([tweetsP, document._readyP]).then(function(results){
     var tweets = results[0];
 });
-
-
-/*
-someP.then(function(tweets){
-        var userId = tweets[0].userId;
-    
-        return getUser(userId);
-    })
-    .then(function(user){
-    
-    })
-    .catch(function(){
-        
-    });*/
-
-// refactor getContent pour retourner une promesse
-// créer une promesse (dans document._readyP) qui se résoud quand le document est prêt (DOMContentLoaded)
-// executer les traitements quand les deux promesses sont résolues (Promise.all)

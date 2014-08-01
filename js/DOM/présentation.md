@@ -29,8 +29,8 @@ Node.prototype.remove = Node.prototype.remove || function(){
 * document.createElement('div')
 * document.createDocumentFragment()
 
-* document.getElementById()
-* document.getElementsByClassName()
+* document.getElementById('yo')
+* document.getElementsByClassName('active')
 * document.querySelector(selector)
 * document.querySelectorAll(selector)
 
@@ -40,8 +40,10 @@ Array.from(document.querySelectorAll('section h1')).map(...)
 # Element + HTMLElement
 
 * e.getAttribute(key)
+    a.getAttribute('href')
 * e.setAttribute(key, value)
 * e.removeAttribute(key)
+
 * e.textContent
 
 * e.id
@@ -61,12 +63,15 @@ Array.from(document.querySelectorAll('section h1')).map(...)
 * e.classList (pour changer les styles)
     * e.classList.add/remove/has/toggle?
 * e.style.backgroundColor
+* maDiv.style.height = x+"%";
 
 .yo{
     background-color: red;
 
 }
 
+* vider un élément
+    * el.innerHTML = '';
 
 # EventTarget
 

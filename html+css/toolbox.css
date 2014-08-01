@@ -1,0 +1,49 @@
+/*
+    All the tips and tricks are an attempt to make somewhat maintainable (no <table>) responsive (no fixed layout with px) websites in IE8 (and maybe IE6-7)
+*/
+
+/*
+    Center an element inside its parent
+*/
+/* IE6+ */
+.elem{
+    margin: 0 auto;
+}
+
+/* modern browsers */
+.parent{
+    display: flex;
+    justify-content: center;
+}
+
+.child{
+  /* nothing special. Flex parent container takes care of the centering */
+}
+
+
+/*
+    columns
+*/
+/* IE6+ */
+.col1{
+    float: left;
+    width: /*...*/;
+}
+.col2{
+    float: left;
+    width: /*...*/;
+}
+.col3{
+    float: right;
+    width: /*...*/;
+}
+/* adapt width so it fits */
+.below{
+    clear: both;
+}
+
+
+
+
+
+

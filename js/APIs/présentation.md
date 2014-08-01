@@ -28,9 +28,34 @@ JSONView http://jsonview.com/
 * localStorage.removeItem(key)
 * localStorage.length
 * localStorage.key(i)
-* localStorage.clear;
+* localStorage.clear();
 
 localStorage['setItem'] = '12';
+
+localStorage.setItem('', JSON.stringify())
+
+# Timers
+
+var t = setTimeout(function(){
+    console.log('a')
+}, 100)
+clearTimeout(t);
+
+var t2 = setInterval(function(){
+    console.log('b')
+}, 100)
+clearInterval(t2);
+
+
+
+# History API
+
+
+https://developer.mozilla.org/en-US/docs/Web/Guide/API/DOM/Manipulating_the_browser_history
+
+history.pushState({producteur: "producteur"}, "", "trad?producteur="+producteur")
+
+new PopStateEvent('popstate') (history.pushState ne déclenche pas l'évènement)
 
 
 

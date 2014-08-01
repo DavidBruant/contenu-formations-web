@@ -14,11 +14,28 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/JavaScript_technologies_
 
 * Versions de JavaScript (1.7, 1.7.5, 1.8, etc.) n'ont aucune importance
 
+# Syntax
+
+* not: !x
+* et: a && b
+* ou: a || b
+
+* a = b
+* a = a+y
+    a += y
+* a = a+1
+    a++
+
 
 # Variables
 
 Déclarer avec `var`
-(vars.js)
+(montrer vars.js)
+
+Toujours utiliser le mode strict
+"use strict";
+https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode/Transitioning_to_strict_mode
+
 
 # Valeurs
 
@@ -85,13 +102,16 @@ Comparaison par référence pour les objets, par valeur pour le reste.
 
 * clé (string) -> valeur (any)
 
-(objets.js)
+(montrer objets.js)
+(montrer classes.js)
 
 * if(o.a){}
 * o.a = 12
 * delete o.a;
 * Object.keys(o)
 * obj.hasOwnProperty('yo')
+    * Object.prototype.hasOwnProperty.call(obj, 'yo');
+* 'yo' in obj 
 * Object.getPrototypeOf(o)
 
 
@@ -103,6 +123,8 @@ http://davidbruant.github.io/ObjectViz/
 
 })
 * a.map(f)
+var arr = [12, 65, 546];
+var arr2 = arr.map(function(e){ return e*e; });
 * a.filter(f)
 * Array.isArray(x)
 
@@ -110,7 +132,7 @@ http://davidbruant.github.io/ObjectViz/
     return acc+curr;
 }, 0)
 
-arr = [...Set(arr)] // unique
+arr = [...Set(arr)] // unique (ES6)
 
 # Fonctions
 
@@ -123,12 +145,13 @@ arr = [...Set(arr)] // unique
 
 # this
 
-MDN(this)
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
 
 
 # Polyfills
 
 es5shim/es5sham
+https://github.com/es-shims/es5-shim
 
 # Concurrence
 
@@ -150,7 +173,6 @@ es5shim/es5sham
 
 
 /*
-Strict mode
 console.log()
 getter/setter
 */

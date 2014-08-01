@@ -10,7 +10,7 @@
     * document.createElement
     
 * Evènements
-    * addEventListener
+    * [addEventListener](https://developer.mozilla.org/fr/docs/DOM/element.addEventListener)
     
 # jQuery
 
@@ -19,6 +19,7 @@
 * niveler les différences et incompatibilités entre navigateurs
 
 https://api.jquery.com/
+https://github.com/jquery/jquery-migrate/
 
 ## DOM
 
@@ -31,30 +32,30 @@ Puis manipuler
 Créer un élément:
     
     var li = $('<li></li>')
-        .addClass('miaou')
+        .addClass('miaou') // retourne le <li> pour l'appel suivant
         .text('chats')
         .attr('data-id', '3456')
         .appendTo( $('header menu') );
 
-$('div') VS $('<div>') VS $( document.createElement('div') )
+Créer un élément:
+    * $('<div></div>') 
+    * $( document.createElement('div') )
 
-.appendChild
+.appendChild (les 2 approches sont équivalentes)
 
     $('header menu').append(li);
-    
     $(li).appendTo('header menu');
     
 DOMContentLoaded/load
 
     $(function(){
-        // the document is ready
-
+        // jQuery guarantees the document is ready inside the function (so we can start selecting elements)
     });
     
 Attributs
 
-    $(sel).attr('data-id');
-    $(sel).attr('data-id', '2546');
+    getter: $(sel).attr('data-id'); 
+    setter: $(sel).attr('data-id', '2546');
 
 Style
 
@@ -96,7 +97,7 @@ Parent
 
     })
     $('header menu').off('click', listener)
-    $('header menu').one('click', listener) // auto-remove
+    $('header menu').one('click', listener) // pour écouter l'évènement une seule fois
 
 
 # Ajax
