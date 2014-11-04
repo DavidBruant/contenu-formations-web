@@ -31,6 +31,7 @@ Node.prototype.remove = Node.prototype.remove || function(){
 
 * document.getElementById('yo')
 * document.getElementsByClassName('active')
+
 * document.querySelector(selector)
 * document.querySelectorAll(selector)
 
@@ -43,17 +44,18 @@ Array.from(document.querySelectorAll('section h1')).map(...)
     a.getAttribute('href')
 * e.setAttribute(key, value)
 * e.removeAttribute(key)
+    * e.removeAttribute('hidden')
 
 * e.textContent
 
 * e.id
-* e.getElementById
-* e.getElementsByClassName
 * e.querySelector(selector)
 * e.querySelectorAll(selector)
     * document.body.querySelectorAll()
-    * Pas un array ECMAScript pour des raisons historiques
-* e.innerHTML (getter/setter)
+    * var foot = document.querySelector('footer');
+    foot.querySelector('.mentions-légales');
+    
+* /!\ e.innerHTML (getter/setter)
 * e.insertAdjacentHTML(html, position)
 * e.className (pour changer les styles)
 <div class="yo hyz"></div>
@@ -93,6 +95,7 @@ Array.from(document.querySelectorAll('section h1')).map(...)
 * mouseover
 * submit (&lt;form>)
 * input
+* scroll
 
 * "event delegation"
 

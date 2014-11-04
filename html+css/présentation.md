@@ -86,6 +86,7 @@ Styler les éléments par défaut
     * attribut `defer`
         * execution juste avant DOMContentLoaded
         * si plusieurs scripts avec defer, ordre d'execution préservé pour l'execution
+        * https://twitter.com/jaffathecake/status/527673683804835841
     * attribut `async`
         * executé dès que possible, dès la réception du fichier
         * Si plusieurs scripts avec async, aucun ordre d'execution établi
@@ -152,6 +153,13 @@ Références
 
 * document flow
 
+*{
+  position: absolute;
+  top: 0;
+  left:0;
+  
+}
+
 * display
     * block
     * inline
@@ -166,11 +174,13 @@ Références
 * position
     * relative
     * absolute
+        * et relative > absolute
     * fixed
 
 # Text
 
 @font-face 
+http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
 
 # Color
 
@@ -181,6 +191,7 @@ rgb(255, 33, 21);
 rgba(255, 33, 21, 0.1);
 
 hsl()
+http://fr.wikipedia.org/wiki/Teinte_Saturation_Luminosit%C3%A9#Mod.C3.A8les_colorim.C3.A9triques
 
 
 # CSS

@@ -43,7 +43,10 @@
 }
 
 
+/* 
+    Pour guarantir que des éléments tiennent sur la même ligne, utiliser display: table/table-row/table-cell
 
+*/
 
 
 

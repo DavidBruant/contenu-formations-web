@@ -119,6 +119,10 @@ http://davidbruant.github.io/ObjectViz/
 
 # Array
 
+var arr = [12, 65, 546];
+
+arr[0]
+
 * arr.forEach(function(e, i, a){
 
 })
@@ -167,8 +171,6 @@ https://github.com/es-shims/es5-shim
 # Parallélisme
 
 * WebWorkers + Transferable
-
-
 
 
 

@@ -4,15 +4,24 @@ var o = {
     a: 1,
     b: "yo",
     c: {
-        c1: 2,
+        patate: 2,
         c3: function(){}
     }
 };
 
 o.d = 5;
 o.a = false;
+// o["a"] <===> o.a;
+
+o[o.b] => o["yo"]
 
 console.log(o.e); // undefined
+
+o.c.patate;
+
+var bla = o.c;
+
+console.log(o, o.c, bla, bla.patate)
 
 o.c = undefined;
 
@@ -56,4 +65,16 @@ var conf2 = Object.create(DEFAULT_CONFIG);
 
 
 
+// arrays
 
+'use strict';
+
+var arr = [12, 65, 546, true, "la vie d'adèle", {}, [], function(){}];
+
+arr[0] = 12;
+arr[1] = 65;
+arr[2] = 546;
+
+console.log( arr[0], arr["0"] );
+
+ObjectViz(arr);
