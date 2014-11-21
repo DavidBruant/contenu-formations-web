@@ -15,7 +15,7 @@ API pour manipuler un document HTML ou XML (arbre)
 
 * n.children/childNodes
 * n.parentNode
-* n.appendChild(n2)
+* parent.appendChild(enfant)
 * n.removeChild(n2)
     * n.parentNode.removeChild(n)
     * DOM4: n.remove()
