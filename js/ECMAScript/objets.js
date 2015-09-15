@@ -5,7 +5,9 @@ var o = {
     b: "yo",
     c: {
         patate: 2,
-        c3: function(){}
+        c3: function(){
+            return 37
+        }
     }
 };
 
@@ -13,9 +15,12 @@ o.d = 5;
 o.a = false;
 // o["a"] <===> o.a;
 
-o[o.b] => o["yo"]
+// o[o.b] => o["yo"]
 
 console.log(o.e); // undefined
+
+(o.c.c3); // => function()
+(o.c.c3()) // => 37
 
 o.c.patate;
 

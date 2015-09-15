@@ -17,7 +17,7 @@ Car.prototype = {
     },
     changeWheel : function(position, newWheel){
         // ...
-    };  
+    }
 };
 
 var c = new Car("blue");

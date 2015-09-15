@@ -21,16 +21,14 @@ JSONView http://jsonview.com/
 
 # LocalStorage
 
-* localStorage.getItem(key)
-    * localStorage[key]
+string -> string
+
+* var value = localStorage.getItem(key)
 * localStorage.setItem(key, value)
-    * localStorage[key] = value;
 * localStorage.removeItem(key)
 * localStorage.length
 * localStorage.key(i)
 * localStorage.clear();
-
-localStorage['setItem'] = '12';
 
 localStorage.setItem('', JSON.stringify())
 

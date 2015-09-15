@@ -46,28 +46,27 @@ var gP = readfile(file2);
 var hP = readfile(file3);
 
 
+Promise.all([fP, gP, hP])
+    .then(function(results){
+        var f = results[0];
+        var g = results[1];
+        var h = results[2];
+        return combine(f, g, h);
+    })
+    .catch(errorHandler);
+
+/*
+
 fP.then(function(f){
-        
-    
         return f.length
   }) // 'then' returns a promise for the length
   .catch(function(err){
       //...
   }) // 'catch' returns a promise too
-  .done(function(){
   
-  }) // 'done' doesn't return a promise
 
 
-
-Promise.all(fP, gP, hP)
-    .then(function(results){
-        var f = results[0];
-        var g = results[1];
-        var h = results[2];
-        combine(f, g, h));
-    })
-    .catch(errorHandler);
+*/
 
 
 

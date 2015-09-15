@@ -9,6 +9,8 @@
 * HTML5
     * "[HTML Living standard](http://www.whatwg.org/specs/web-apps/current-work/multipage/index.html)" maintenu par le WHATWG depuis 2004
 
+* Backward compatibilité absolue (cercles concentriques)
+
 
 # Boilerplate
 
@@ -52,6 +54,7 @@
     * type: text, radio, url, email (@ sur le clavier mobile), number, file, search, date, datetime
     * placeholder="coucou"
     * &lt;label>Nom &lt;input>&lt;/label> pour le focus sur l'input quand clic sur label (attribut `for` + input[id] sinon)
+    * required
 * &lt;textarea>, &lt;select>+&lt;option>,    
     
 Styler les éléments par défaut
@@ -67,7 +70,9 @@ Styler les éléments par défaut
 
 * `hidden`
 * `lang` (surtout pour &lt;html>)
-    
+* `class`
+* `id`
+
 # Styles    
     
 * Dans le &lt;head>
@@ -129,6 +134,15 @@ Références
     * n-ième élément (IE9)
         * `x:nth-of-type(3)`
         * `x:nth-of-type(2n+1)`
+        
+        tr td{
+	        background-color: white;
+		}
+        tr:nth-of-type(2n+1) td{
+	        background-color: grey;
+		}
+        
+        
     * Style pour quand (IE9)
         *`:target`
             * [stackoverflow](http://stackoverflow.com/questions/21951734/react-js-custom-events-for-communicating-with-parent-nodes#comment33261204_21951734)

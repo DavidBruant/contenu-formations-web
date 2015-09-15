@@ -1,27 +1,19 @@
 'use strict';
 
-var button = document.querySelector('button');
+var titre = document.createElement('h1');
+titre.textContent = 'Hello!'; // ligne
+console.log(titre);
 
-console.log('coucou !');
+var corps = document.querySelector('body');
+corps.appendChild(titre);
 
-button.addEventListener('click', function(e){
-    console.log('click !', e);
-    
-    /*var title2 = document.createElement('h2');
-    title2.textContent = 'Bonjour !';
+var maDiv = document.createElement('div');
+maDiv.className = 'active';
 
-    document.body.appendChild(title2);*/
-    
-    /*var bordeaux3dImage = document.querySelector('img.bdx3d');
-                    // document.querySelectorAll('img.bdx3d');
-    
-    console.log(bordeaux3dImage);
-    
-    bordeaux3dImage.remove();*/
-    
-    //button.classList.add('active');
-    //button.classList.remove/delete('active');
-    button.classList.toggle('active');
-    
-});
+/*
+bla bl
 
+bla 
+sur plusieurs lgnes
+
+*/

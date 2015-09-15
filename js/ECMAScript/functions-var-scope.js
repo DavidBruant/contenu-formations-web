@@ -1,5 +1,9 @@
+'use strict';
+
+var c = 42; // ne jamais faire ça !
+
 // IIFE : Immediately Invoked Function Expression
-(function(global){
+(function yo(global){
     'use strict';
     
     var a = 1;
@@ -9,11 +13,30 @@
         a++;
     });
 
+    // window.lol
     global.lol = function(){
         return a;
     }
     
 })(this);
+
+// équivalent à
+function yo(){
+    // corps
+}
+yo();
+
+
+function yo1(){
+    'NOT strict mode';
+    this; // window (global object)
+}
+function yo2(){
+    'strict mode';
+    this; // undefined
+}
+
+
 
 console.log(lol());
 
@@ -38,6 +61,8 @@ this.a
 var yo = lol;
 yo;
 
+
+
 function s(a, b){
     if(b === undefined)
         b = 12;
@@ -52,6 +77,21 @@ console.log(s(21, undefined));
 
 
 
+
+(function(global){
+    'use strict';
+    c = 0; // error
+    
+    document.addEventListener('click', function(){
+        console.log('inc');
+        c++;
+    });
+
+    global.lol = function(){
+        return c;
+    }
+    
+})(this);
 
 
 
