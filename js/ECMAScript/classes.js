@@ -78,3 +78,14 @@ var Car3 = (function(){
 
 // pattern 4 with symbols 
 // Not super useful because of https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols
+
+
+
+function Car(){
+    'use strict';
+    if(!this) return new Car();
+
+}
+
+Car()
+new Car()
