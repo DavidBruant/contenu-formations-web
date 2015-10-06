@@ -55,18 +55,18 @@ Promise.all([fP, gP, hP])
     })
     .catch(errorHandler);
 
-/*
 
+/*
 fP.then(function(f){
-        return f.length
+    blabla(f)
   }) // 'then' returns a promise for the length
   .catch(function(err){
       //...
   }) // 'catch' returns a promise too
-  
+  */
 
 
-*/
+
 
 
 

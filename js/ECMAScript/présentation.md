@@ -124,6 +124,7 @@ o !== o3
 
 ## "Falsy values"
 
+false
 0
 NaN
 '' (chaine vide)
