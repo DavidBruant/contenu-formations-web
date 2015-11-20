@@ -41,12 +41,22 @@ readfile(file, function(err, f){
 
 
 // 3. Promise
-var fP = readfile(file);
-var gP = readfile(file2);
-var hP = readfile(file3);
+// https://twitter.com/edouard_lopez/status/527814903693062144
+function readfilePromise(f){
+    return new Promise(function(resolve){
+        readfile(f, function(err, content){
+            resolve(content);
+        })
+    })
+}
 
 
-Promise.all([fP, gP, hP])
+var fP = readfilePromise(file);
+var gP = readfilePromise(file2);
+var hP = readfilePromise(file3);
+
+
+var allP = Promise.all([fP, gP, hP])
     .then(function(results){
         var f = results[0];
         var g = results[1];
@@ -54,6 +64,13 @@ Promise.all([fP, gP, hP])
         return combine(f, g, h);
     })
     .catch(errorHandler);
+
+/*var timeoutP = new Promise(function(resolve, reject){
+    setTimeout(function(){
+        reject(new Error('Timeout!'))
+    }, 5000)  
+})
+Promise.race([allP, timeoutP])*/
 
 
 /*

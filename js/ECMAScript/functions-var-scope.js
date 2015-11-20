@@ -1,9 +1,9 @@
 'use strict';
 
-var c = 42; // ne jamais faire ça !
+var c = 45;
 
 // IIFE : Immediately Invoked Function Expression
-(function yo(global){
+(function(global){
     'use strict';
     
     var a = 1;

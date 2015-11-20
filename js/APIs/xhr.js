@@ -19,4 +19,4 @@
     
 })(this)
 
-getContent('https://rawgithub.com/DavidBruant/contenu-formations-web/master/tweets.json');
+//getContent('https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json');

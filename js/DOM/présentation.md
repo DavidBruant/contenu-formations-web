@@ -47,6 +47,7 @@ Array.from(document.querySelectorAll('section h1')).map(...)
     * e.removeAttribute('hidden')
 
 * e.textContent
+    * e.textContent = ...
 
 * e.id
 * e.querySelector(selector)

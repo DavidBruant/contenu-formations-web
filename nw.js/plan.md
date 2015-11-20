@@ -43,10 +43,45 @@
      
      
 
-
 * moment
 * ESlint
 * Menu
+
+* React
+
+render: function(){
+    var self = this;
+
+    React.createElement(
+        'li',
+        {
+            onClick: function(e){
+                e.stopPropagation();
+                self.setState({
+                    open: !self.state.open
+                })
+            }
+        }
+
+
+    )
+
+}
+
+
+React.createElement(
+    'input'
+    {
+        type: "text",
+        onChange: function(e){
+            e.target.value // 
+        }
+        
+    }
+    
+)
+
+
 
 
 

@@ -50,7 +50,7 @@ var Car3 = (function(){
     var states = new WeakMap();
     
     function Car3(color){
-        // JS engine initializes |this| to Object.create(Car.prototype)
+        // JS engine initializes |this| to Object.create(Car3.prototype)
         var s = Object.create(null);
         states.set(this, s)
         
@@ -75,6 +75,7 @@ var Car3 = (function(){
     return Car3;
 })();
 
+new Car3();
 
 // pattern 4 with symbols 
 // Not super useful because of https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/getOwnPropertySymbols

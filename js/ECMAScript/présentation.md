@@ -13,6 +13,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/JavaScript_technologies_
 * ECMAScript 5 (2009)
 * ECMAScript 6 / 2015
     * Array.from
+    * Arrow function
 
 * Versions de JavaScript (1.7, 1.7.5, 1.8, etc.) n'ont aucune importance
 
@@ -93,6 +94,7 @@ o !== o3
 
 * 'Yo'.toUpperCase()
 * 'Yo'.toLowerCase()
+* 'Yo'.slice(start, end)
 * 'Yo'.substring(start, end)
 * 'Yo'.substr(start, length)
 * str.replace(' ', '')
@@ -115,7 +117,7 @@ o !== o3
 * Math pour une collection de fonctions pour faire des maths.
 * Math.random()
 * Math.sqrt()
-* Math.hypot() (ES6)
+* Math.hypot(a, b, c) (ES6) // Math.sqrt( a*a + b*b + c*c )
 * Math.round/floor/ceil
 
 # Booleans
@@ -142,6 +144,7 @@ undefined
 (montrer classes.js)
 
 * if(o.a){}
+    * o["a"] :=: o.a
 * o.a = 12
 * delete o.a;
 * Object.keys(o) (ES5)
@@ -173,6 +176,8 @@ var arr2 = arr.map(function(e){ return e*e; });
     return acc+curr;
 }, 0)
 
+* a.sort(fun)
+
 arr = [...Set(arr)] // unique (ES6)
 
 # Fonctions
@@ -195,6 +200,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
 es5shim/es5sham
 https://github.com/es-shims/es5-shim
 https://github.com/paulmillr/es6-shim
++core-js
+
+http://labs.ft.com/2014/09/polyfills-as-a-service/
+
 
 # Concurrence
 
@@ -206,6 +215,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
 * Non-déterminisme limité à l'ordre de traitement des messages/évènements
 * setTimeout/setInterval
 * évènements
+
 
 # Parallélisme
 
