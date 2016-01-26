@@ -4,7 +4,8 @@
 1. Pas d'attributs de style (align, font, etc.). Pas de &lt;center>. Utiliser du CSS
     1. sauf img@width et img@height
 1. Unités : pas de tailles en px ou pt. Utiliser des % (contenants) ou em (textes)
-1. Pas de float
+1. Pas de float (sauf pour les cas avec ::first-letter)
+1. Pas de &lt;br>
 1. Interdiction d'utiliser !important
 
 1. Les images n'ont aucune importance. Juste prendre des images qui font la même taille/proportion

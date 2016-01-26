@@ -29,20 +29,23 @@ c.getColor();
 // pattern 2
 "use strict"; // début de fichier
 
-function Car(){
-    var privAttr1 = 1,
-        privAttr2 = false;
+function Car(color){
+    var privAttr = 25;
         
     function privMethod1(i){
         return i+1;
     }
 
-    this.pubMethod1 = function(x){
-        return privAttr2 ? Math.pow(x, 2) : privMethod1(x*2) + privAttr1;
-    };   
+    this.getColor = function(x){
+        return color;
+    };
+    
+    this.what = function(x){
+        return privAttr + privMethod1(x);
+    };
 }
 
-var c = new Car(); // only exposes 'pubMethod1'
+var c = new Car(); // only exposes 'getColor' and 'what'
 
 
 // pattern 3 (ES6)

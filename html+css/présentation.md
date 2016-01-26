@@ -78,7 +78,6 @@ Styler les éléments par défaut
 * Dans le &lt;head>
 * &lt;style>&lt;/style>
 * &lt;link rel="stylesheet" href="{{url}}">
-    * ajouter l'attribut `lazyload` quand on ne veut pas bloquer le permier rendu
     
 # Scripts    
     
@@ -133,14 +132,17 @@ Références
 * Pseudo-classes
     * n-ième élément (IE9)
         * `x:nth-of-type(3)`
+        * `x:nth-child(even)`
+        * `x:nth-child(odd)`
         * `x:nth-of-type(2n+1)`
         
         tr td{
 	        background-color: white;
 		}
-        tr:nth-of-type(2n+1) td{
+        tr:nth-child(odd) td{
 	        background-color: grey;
 		}
+    * http://nthmaster.com/
         
         
     * Style pour quand (IE9)
@@ -171,7 +173,6 @@ Références
   position: absolute;
   top: 0;
   left:0;
-  
 }
 
 * display
@@ -199,7 +200,7 @@ http://www.paulirish.com/2009/bulletproof-font-face-implementation-syntax/
 # Color
 
 #123456
-#1A3E56
+hsl(204, 27%, 24%)
 
 rgb(255, 33, 21);
 rgba(255, 33, 21, 0.1);
@@ -212,7 +213,6 @@ http://fr.wikipedia.org/wiki/Teinte_Saturation_Luminosit%C3%A9#Mod.C3.A8les_colo
 
 Normalize css http://necolas.github.io/normalize.css/
 Bootstrap http://getbootstrap.com/
-Pure http://purecss.io/
 
 Font d'icônes : http://fortawesome.github.io/Font-Awesome/
 

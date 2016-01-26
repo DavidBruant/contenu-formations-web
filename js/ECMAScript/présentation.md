@@ -17,7 +17,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/JavaScript_technologies_
 
 * Versions de JavaScript (1.7, 1.7.5, 1.8, etc.) n'ont aucune importance
 
-# Syntax
+# Syntaxe
 
 * not: !x
 * et: a && b
@@ -49,9 +49,10 @@ https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_func
 signe*mantisse*2^exp
 
 * string ('', 'yo', 'whatever'). '' ou "" indifféremment
+    * 'doesn\'t' et "doesn't"
 * boolean (true, false)
-* undefined
 * null (/!\ `typeof null === "object"`, comparer `maVariable === null`)
+* undefined
 * object (`Object(x) === x`)
     * objet normal
     * function (typeof f === 'function')
@@ -97,8 +98,10 @@ o !== o3
 * 'Yo'.slice(start, end)
 * 'Yo'.substring(start, end)
 * 'Yo'.substr(start, length)
-* str.replace(' ', '')
+* 'yyyyyyy'.replace('y', 'a')
     * /!\ only the first occurence
+    * 'yyyyyyy'.replace(/y/g, 'a')
+    * 
 * str.trim() (ES5)
 * str.match()
 * str.length
@@ -122,7 +125,9 @@ o !== o3
 
 # Booleans
 
-* !!maVariable
+* !!maValeur
+* 67 && 37 && null && 'kjhg'
+* 0 || 37 || null
 
 ## "Falsy values"
 
@@ -138,10 +143,9 @@ undefined
 "sac de propriété" + [[Prototype]]
 "un objet c'est une armoire"
 
-* clé (string) -> valeur (any)
+* propriété : clé (string) -> valeur (any)
 
 (montrer objets.js)
-(montrer classes.js)
 
 * if(o.a){}
     * o["a"] :=: o.a
@@ -193,6 +197,8 @@ arr = [...Set(arr)] // unique (ES6)
 # this
 
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
+
+* (montrer classes.js)
 
 
 # Polyfills
