@@ -50,11 +50,10 @@ function readfilePromise(f){
     })
 }
 
-
+// 3) Promise
 var fP = readfilePromise(file);
 var gP = readfilePromise(file2);
 var hP = readfilePromise(file3);
-
 
 var allP = Promise.all([fP, gP, hP])
     .then(function(results){
@@ -72,15 +71,13 @@ var allP = Promise.all([fP, gP, hP])
 })
 Promise.race([allP, timeoutP])*/
 
-
-/*
 fP.then(function(f){
     blabla(f)
   }) // 'then' returns a promise for the length
   .catch(function(err){
       //...
   }) // 'catch' returns a promise too
-  */
+  
 
 
 

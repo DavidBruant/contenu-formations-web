@@ -1,20 +1,82 @@
 "use strict";
 
-/*function carré(a){
-    return a*a;
-}
+var o = {
+    a: 1,
+    b: "yo",
+    c: {
+        patate: 2,
+        c3: function(){}
+    }
+};
 
-console.log(carré(2))
-console.log(carré(4))
-*/
+o.d = 5;
+o.a = false;
+// o["a"] <===> o.a;
+Number.isNaN
+//o[o.b] => o["yo"]
 
-function add(a, b){
-    b = b || 0;
+console.log(o.e); // undefined
+
+o.c.patate;
+
+var bla = o.c;
+
+console.log(o, o.c, bla, bla.patate)
+
+
+o.c = undefined;
+//o.c === undefined
+
+console.log(o.hasOwnProperty('c'), 'c' in o) // true, true
+
+delete o.c;
+//o.c === undefined
+
+console.log(o.hasOwnProperty('c'), 'c' in o) // false, false
+
+
+// o is like {a:false, b:"yo", d:5}
+// Could do the same with o as a function
+
+var o2 = {
+    a: 25,
     
-    return a+b;
-}
+    get r(){
+        return this.a + Math.random();
+    },
+    set r(v){
+        this.a = v;
+    }
+};
 
-//console.log(add(0.1, 0.2))
-//console.log(add(0.1))
 
-console.log( add.call(undefined, 2, 3) )
+
+console.log(Object.getOwnPropertyDescriptor(o2, a));
+
+
+var DEFAULT_CONFIG = {
+    host: 'localhost',
+    port: 80
+};
+
+
+var conf1 = Object.create(DEFAULT_CONFIG);
+conf1.host = 'google.com';
+
+var conf2 = Object.create(DEFAULT_CONFIG);
+
+
+
+// arrays
+
+'use strict';
+
+var arr = [12, 65, 546, true, "la vie d'adèle", {}, [], function(){}];
+
+arr[0] = 12;
+arr[1] = 65;
+arr[2] = 546;
+
+console.log( arr[0], arr["0"] );
+
+ObjectViz(arr);

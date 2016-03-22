@@ -5,14 +5,12 @@
 
 ## install
 
-npm install eslint -g
-
-(créer .eslintrc)
-eslint --init
+`npm install eslint -g`
 
 
-Dans .eslintrc, ajouter dans `env`:
-`"commonjs": true`
+`eslint --init # (créer .eslintrc)` 
+
+`eslint .`
 
 
 Créer .eslintignore (au même niveau que package.json)
@@ -20,3 +18,9 @@ Créer .eslintignore (au même niveau que package.json)
 node_modules
 browserify-bundle.js
 ```
+
+
+/*
+Dans .eslintrc, ajouter dans `env`:
+`"commonjs": true`
+*/

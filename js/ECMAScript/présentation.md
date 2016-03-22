@@ -14,6 +14,10 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/JavaScript_technologies_
 * ECMAScript 6 / 2015
     * Array.from
     * Arrow function
+* ECMAScript 2016
+* ECMAScript 2017
+* ECMAScript 2018
+* ...
 
 * Versions de JavaScript (1.7, 1.7.5, 1.8, etc.) n'ont aucune importance
 
@@ -54,11 +58,13 @@ signe*mantisse*2^exp
 * null (/!\ `typeof null === "object"`, comparer `maVariable === null`)
 * undefined
 * object (`Object(x) === x`)
-    * objet normal
+    * objet normal ("plain object")
     * function (typeof f === 'function')
     * Array (Array.isArray(x))
+        // https://www.youtube.com/watch?v=D5xh0ZIEUOE&feature=youtu.be
     * Date
     * RegExp
+    * Map/Set (ES6/2015)
 * symbols (ES6/2015)
 
 
@@ -101,7 +107,6 @@ o !== o3
 * 'yyyyyyy'.replace('y', 'a')
     * /!\ only the first occurence
     * 'yyyyyyy'.replace(/y/g, 'a')
-    * 
 * str.trim() (ES5)
 * str.match()
 * str.length
@@ -111,23 +116,21 @@ o !== o3
 * NaN, Infinity
     * NaN !== NaN
     * Number.isNaN(x) // ES6/2015
+* 0.1 + 0.2
 * toto.toFixed(2)
 * Math.PI.toFixed(3)
 * Math.PI.toString()
-* (35).toString()
-* 35..toString()
 
 * Math pour une collection de fonctions pour faire des maths.
 * Math.random()
-* Math.sqrt()
+* Math.sqrt(x)
+* Math.pow(num, exp)
 * Math.hypot(a, b, c) (ES6) // Math.sqrt( a*a + b*b + c*c )
 * Math.round/floor/ceil
 
 # Booleans
 
 * !!maValeur
-* 67 && 37 && null && 'kjhg'
-* 0 || 37 || null
 
 ## "Falsy values"
 
@@ -137,6 +140,22 @@ NaN
 '' (chaine vide)
 null
 undefined
+
+
+* 67 && 37 && null && 'kjhg'
+* 0 || 37 || null
+    * Number.isNaN = Number.isNaN || function(x){return x!==x};
+
+## !!object === true
+
+var el = document.querySelector('.tyui'); // element | null
+if(el){ // Object(el) === el
+
+}
+else{ // el === null
+
+}
+
 
 # Objects
 
@@ -164,25 +183,59 @@ http://davidbruant.github.io/ObjectViz/
 
 var arr = [12, 65, 546];
 
-arr[0]
-arr.length
+console.log(arr[0])
+console.log(arr.length)
 
-* arr.forEach(function(e, i, a){
-
+arr.forEach(function(e, i, a){
+  console.log(e, i, a)
 })
 * a.map(f)
 var arr = [12, 65, 546];
 var arr2 = arr.map(function(e){ return e*e; });
 * a.filter(f)
+// https://github.com/MyWebIntelligence/MyWebIntelligence/blob/master/common/cleanupURLs.js
+
 * Array.isArray(x)
 
 * a.reduce(function(acc, curr){
     return acc+curr;
 }, 0)
 
+* a.slice(debut, fin)
+
+arr
+.slice(0, 5)
+.forEach(function(e, i, a){
+  console.log(e, i, a)
+})
+
+Avant Array.prototype.find : 
+function find(predicate, arr){
+    var found;
+    
+    return arr.some(function(e){
+        if(predicate(e)){
+            found = e;
+            return true;
+        }
+        return false;
+    })
+
+}
+
+
+
+
 * a.sort(fun)
 
-arr = [...Set(arr)] // unique (ES6)
+arr = [...new Set(arr)] // unique (ES6/2015)
+
+# Set/Map (ES6/2015)
+
+* new Set(arr)
+
+var map = new Map();
+// Map : clé (any) => valeur (any)
 
 # Fonctions
 
@@ -203,18 +256,17 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
 
 # Polyfills
 
-es5shim/es5sham
-https://github.com/es-shims/es5-shim
-https://github.com/paulmillr/es6-shim
-+core-js
-
 http://labs.ft.com/2014/09/polyfills-as-a-service/
 
 
 # Concurrence
 
 * Boucle évènementielle
-https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop     
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop
+while(1){
+    var e = pickMessage('all');
+    processEvent(e)
+}
     * Pas de préemption (run-to-completion)
     * Pas d'accès concurrent synchrone à de la mémoire partagée
     * Pas de deadlock (conventionnel)

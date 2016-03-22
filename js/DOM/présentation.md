@@ -112,7 +112,7 @@ form.addEventListener('submit', function(e){
 
 * e.stopPropagation()
 * e.currentTarget
-* e.timestamp
+* e.timeStamp
 
 
 # Layout tree

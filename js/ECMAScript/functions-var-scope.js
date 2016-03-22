@@ -4,12 +4,12 @@ var c = 45;
 
 // IIFE : Immediately Invoked Function Expression
 (function(global){
-    'use strict';
+    // 'use strict';
     
     var a = 1;
     
     document.addEventListener('click', function(){
-        console.log('inc');
+        console.log('inc', a);
         a++;
     });
 
@@ -18,7 +18,11 @@ var c = 45;
         return a;
     }
     
-})(this);
+})(this); // this === window
+
+setInterval(function(){
+    console.log('lol', window.lol());
+}, 1000)
 
 // équivalent à
 function yo(){

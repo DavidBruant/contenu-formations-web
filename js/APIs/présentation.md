@@ -32,6 +32,14 @@ string -> string
 
 localStorage.setItem('', JSON.stringify())
 
+````
+function setToArray(s){
+    var a = [];
+    s.forEach(function(e){ a.push(e); });
+    return a;
+};
+````
+
 # Timers
 
 var t = setTimeout(function(){

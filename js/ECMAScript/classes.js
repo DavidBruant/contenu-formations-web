@@ -72,7 +72,7 @@ var Car3 = (function(){
         },
         changeWheel : function(position, newWheel){
             // ...
-        };  
+        }
     };
     
     return Car3;

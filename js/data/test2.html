@@ -111,14 +111,23 @@
             // pour chaque tweet, créer un <li>, mettre le texte dedans, mettre le <li> dans le <ol>
             // mettre le <ol> dans le <body>
             
-            // isoler une fonction, qui pour un objet tweet créé un <li>
+            // isoler une fonction, qui pour un objet tweet créé un <li> (séparer la phase de création des éléments et de composition)
                         
             // ajouter un bouton qui quand on clique dessus affiche 'click' dans la console.
             // -- qui quand on clique ne garde que les tweets en français
             // (et quand on reclique re-affiche tout)
             
             // retirer script#tweets
-            // aller chercher le json en "AJAX" sur 'https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json'
+            // aller chercher le json en "AJAX" sur 
+            
+            fetch('https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json')
+            .then(function(result){
+                return result.json()
+            })
+            .then(function(tweets){
+                console.log(tweets);
+            });
+            
         })
       </script>
     
