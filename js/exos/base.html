@@ -94,16 +94,23 @@
       <script>
           "use strict";
           
+          var TOKEN = "5d70c6c8c17821483e23cbe7d7fb55bfe3fc39fa";
+          
+          
         document.addEventListener('DOMContentLoaded', function(){
-            fetch('https://api.github.com/repos/facebook/react/commits?per_page=100')
+            fetch('https://api.github.com/repos/facebook/react/commits?per_page=100&access_token='+TOKEN)
             .then(function(result){ return result.json() })
             .then(function(commits){
                 // console.log de cet objet (pour l'afficher dans la console)
                 console.log('commits', commits);
                 
                 // pour le premier commit
-                //   créer une div qui contient le texte du tweet et ajouter la div au <body>
+                //   afficher son message dans la console
+                
+                
+                //   créer une div qui contient le texte du commit et ajouter la div au <body>
 
+                
                 // créer un <ol>
                 // pour chaque commit, créer un <li>, mettre le texte dedans, mettre le <li> dans le <ol>
                 // mettre le <ol> dans le <body>

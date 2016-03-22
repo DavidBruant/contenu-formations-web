@@ -2,14 +2,6 @@
 
 API pour manipuler un document HTML ou XML (arbre)
 
-# Structure
-
-* EventTarget
-    * Node
-        * Element + HTMLElement
-        * Document + HTMLDocument
-        * DocumentFragment
-        * (Comment)
 
 # Node
 
@@ -24,10 +16,10 @@ Node.prototype.remove = Node.prototype.remove || function(){
     this.parentNode.removeChild(this);
 }
 
+
 # Document + HTMLDocument
 
 * document.createElement('div')
-* document.createDocumentFragment()
 
 * document.getElementById('yo')
 * document.getElementsByClassName('active')
