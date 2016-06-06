@@ -21,9 +21,6 @@ Node.prototype.remove = Node.prototype.remove || function(){
 
 * document.createElement('div')
 
-* document.getElementById('yo')
-* document.getElementsByClassName('active')
-
 * document.querySelector(selector)
 * document.querySelectorAll(selector)
 

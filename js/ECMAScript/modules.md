@@ -41,12 +41,14 @@ Problème :
 * require synchrone
 
 
+// https://github.com/substack/browserify-handbook#bundling-commonjs-server-side
+
 
 
 # AMD (Asynchronous Module Definition)
 
 ````js
-requirejs(
+define(
     ["helper/util", "jQuery.js", "http://momentjs.org/moment.js"],
     function(util, jQuery, moment) {
     
@@ -56,10 +58,61 @@ requirejs(
         }
     }
 );
-
-
-
 ````
+// https://github.com/MapContrib/MapContrib/blob/1f33a525fbc95fe0bb82fe86da517be5e0760ee6/src/public/js/view/main.js
+
+
+# ES6/2015
+
+
+
+
+# TODO
+
+* installer Node (installe npm aussi)
+$ npm install browserify -g
+npm install watchify -g
+
+
+$ browserify main.js -o bundle.js -d
+watchify main.js -o bundle.js -d -v
+
+
+changer HTML:
+* enlever tous les scripts inline et les remplacer par 
+<script defer src="bundle.js"></script>
+
+Etape 1 :
+* créer un main.js (pas de dépendance)
+
+
+Etape 2 :
+main.js:
+````js
+'use strict';
+
+var fetchCommits = require('./fetchCommits.js');
+var displayCommits = require('./displayCommits.js');
+
+document.addEventListener('DOMContentLoaded', function(){
+    fetchCommits().then(displayCommits)
+});
+````
+
+Etape 3 :
+
+npm install moment --save # regarder package.json
+```
+var moment = require('moment');
+
+// ...
+
+moment(c.commit.author.date).fromNow()
+
+```
+
+
+
 
 
 

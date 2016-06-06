@@ -67,3 +67,30 @@ npm i es6-shim --save
 ```js
 require('es6-shim'); // no need to get the result in a variable
 ```
+
+
+## minifier
+
+npm install minifyify --save
+browserify -p [minifyify --no-map] main.js -o bundle.js
+
+export NODE_ENV="production"
+
+{
+    "scripts": {
+        "build:dev": "browserify main.js > bundle.js", // 800k
+        "build:prod": "browserify -p [minifyify --no-map] main.js > bundle.js", //350k
+        // 288k avec NODE_ENV="production"
+    }
+}
+
+npm run build:dev
+npm run build:prod
+
+
+
+
+
+
+
+

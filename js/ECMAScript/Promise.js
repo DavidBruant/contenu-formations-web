@@ -3,7 +3,7 @@ var f = readfile(file);
 var g = readfile(file2);
 var h = readfile(file3);
 
-combine(f, g, h);
+combine(f, g, h); // traitement inventé
 
 
 
@@ -56,13 +56,13 @@ var gP = readfilePromise(file2);
 var hP = readfilePromise(file3);
 
 var allP = Promise.all([fP, gP, hP])
-    .then(function(results){
-        var f = results[0];
-        var g = results[1];
-        var h = results[2];
-        return combine(f, g, h);
-    })
-    .catch(errorHandler);
+.then(function(results /* [f, g, h] */){
+    var f = results[0];
+    var g = results[1];
+    var h = results[2];
+    return combine(f, g, h);
+})
+.catch(errorHandler);
 
 /*var timeoutP = new Promise(function(resolve, reject){
     setTimeout(function(){

@@ -14,8 +14,6 @@ Objectif : afficher des stats sur les tweets d'un profil
 2) créer dosser + npm init
 3) installer dépendances
 
-    npm install q --save
-
     npm install request --save
 
 4) Créer une app Twitter à partir de http://dev.twitter.com/ (récupérer API key & API secret) http://iag.me/socialmedia/how-to-create-a-twitter-app-in-8-easy-steps/

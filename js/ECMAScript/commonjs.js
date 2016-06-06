@@ -23,6 +23,15 @@ var o = {
     b: 2
 }
 
+module.exports = function (dirname){
+    // ...
+    fs.hjk
+    f();
+    
+    return ; 
+}
+
+
 /*module.exports = {
     f1: function(){
         // ...
@@ -31,11 +40,3 @@ var o = {
         return o.b;
     }
 }*/
-
-module.exports = function readdirRec(dirname){
-    // ...
-    fs.hjk
-    f();
-    
-    return ; 
-}
