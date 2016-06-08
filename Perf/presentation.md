@@ -1,5 +1,7 @@
 # Perfermance
 
+https://www.youtube.com/playlist?list=PLS3jzvALRSe6uP9gVfXLCG6nWo7M0hAJY
+
 ## Outils d'analyse
 
 http://developers.google.com/speed/pagespeed/insights/

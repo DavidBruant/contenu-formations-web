@@ -5,21 +5,41 @@ npm install react react-dom --save
 
 Copier/coller le composant dans main.js et vous l'affichez.
 (rajouter des require('react'), require('react-dom'))
-var mountNode = document.body;
 
-setTimeout(function(){
+var mountNode = document.body;
+setInterval(function(){
     ReactDOM.render(
         React.createElement(
             HelloMessage,
-            { name: "David" }
+            { name: "David "+Math.random() }
         ),
-        document.body
+        mountNode
     );
-}, 3000)
+}, 1000);
 
 
 * Mettre le composant React dans son propre module
 * Faire un composant CommitListItem (<li>) et tester avec le premire commit ([0])
+
+
+## Pour passer un tableau en props
+
+On ne peut pas. Il faut créer un objet.
+
+React.createElement(
+    CommitList,
+    {list: commits}
+)
+
+// CommitList :
+//    ...
+//    render(){
+//      ...
+//      this.props.list.map(...)
+//    }
+      
+    
+
 
 ````
 module.exports = React.createClass({
@@ -39,11 +59,50 @@ module.exports = React.createClass({
 
 ````
 
+
+
+React.createClass({
+
+    render: function(){
+    
+        return React.createElement('ol', {},
+            this.props.list.map(function(commit){
+                React.createElement('li', {
+                    onClick: function(){
+                        console.log('commit', commit)
+                    }
+                },
+                commit.commit.message)
+            })
+        )
+    
+    }
+
+})
+
+
+
+
+
+
 * Faire composant CommitList (avec tous les commits et qui utilise CommitListItem)
 
 # Jour 3
 
+
+
+React.createElement(
+    Donut,
+    {
+        data: _.groupBy(commits, function(commit){
+            return moment(commit.author.date).format('dddd')
+        })
+    }
+)
+
+
 * Faire un composant DonutChart.
+http://bl.ocks.org/mbostock/3887193
     * props : {
         data: [
             ['label 1', 23],
@@ -63,7 +122,9 @@ var d3Shape = require('d3-shape');
         
         ...
         
-        var pie = d3Shape.pie();
+        var pie = d3Shape.pie()
+            /*.startAngle(-Math.PI/2)
+            .endAngle(Math.PI/2);*/
         var arc = d3Shape.arc()
             .innerRadius(xxx)
             .outerRadius(yyy);

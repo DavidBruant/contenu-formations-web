@@ -21,10 +21,20 @@ Problèmes :
 * Dépendance non-explicite
 
 
+## uglifyjs
+
+
+
+
+
+
+
 # CommonJS (Node.js)
 
 Un seul script@src
 ````js
+"use strict";
+
 var dep1 = require('dep1.js')
 var dep2 = require('dep2.js')
 
@@ -44,6 +54,17 @@ Problème :
 // https://github.com/substack/browserify-handbook#bundling-commonjs-server-side
 
 
+## Noms des modules CJS
+
+````js
+"use strict";
+
+var dep1 = require('blabla') // module natif node ou installé
+var dep2 = require('./blabla.js') // fichier local au projet
+
+````
+
+
 
 # AMD (Asynchronous Module Definition)
 
@@ -60,6 +81,11 @@ define(
 );
 ````
 // https://github.com/MapContrib/MapContrib/blob/1f33a525fbc95fe0bb82fe86da517be5e0760ee6/src/public/js/view/main.js
+
+Problème : 
+* Nombre d'A/R égal à la profondeur de l'arbre.
+
+Solution : r.js https://github.com/requirejs/r.js
 
 
 # ES6/2015
@@ -101,7 +127,9 @@ document.addEventListener('DOMContentLoaded', function(){
 
 Etape 3 :
 
+npm init
 npm install moment --save # regarder package.json
+
 ```
 var moment = require('moment');
 

@@ -111,17 +111,36 @@
                 //   créer une div qui contient le texte du commit et ajouter la div au <body>
 
                 
-                // créer un <ol>
+                // virer la div et créer un <ol>
                 // pour chaque commit, créer un <li>, mettre le texte dedans, mettre le <li> dans le <ol>
                 // mettre le <ol> dans le <body>
 
                 // isoler une fonction, qui pour un objet commit créé un <li> (séparer la phase de création des éléments et de composition)
+                function makeLi(commit){
+                    var li = document.createElement('li');
+                    li.textContent = commit.commit.message;
+                    return li;
+                }
+                
 
                 // ajouter un bouton qui quand on clique dessus affiche 'click' dans la console.
                 // -- qui quand on clique ne garde que les commits des 5 derniers jours
+                Date.now() - (new Date(commit.commit.author.date)).getTime() < 5*24*60*60*1000
+                
+                // vider :
+                ol.innerHTML = '';
+                
+                
                 // (et quand on reclique re-affiche tout)
             })
             .catch(function(err){ console.error(err); });
+            
+            // write
+            
+            function getPage(nb){
+                // return promesse pour une page
+            }
+            
             
         })
       </script>

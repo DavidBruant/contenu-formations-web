@@ -43,6 +43,11 @@ Toujours utiliser le mode strict
 "use strict";
 https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode/Transitioning_to_strict_mode
 
+# Polyfills
+
+https://cdn.polyfill.io/v2/docs/
+http://labs.ft.com/2014/09/polyfills-as-a-service/
+
 
 # Valeurs
 
@@ -64,6 +69,7 @@ signe*mantisse*2^exp
         // https://www.youtube.com/watch?v=D5xh0ZIEUOE&feature=youtu.be
     * Date
     * RegExp
+        * https://regexper.com/
     * Map/Set (ES6/2015)
 * symbols (ES6/2015)
 
@@ -107,7 +113,7 @@ o !== o3
 * 'yyyyyyy'.replace('y', 'a')
     * /!\ only the first occurence
     * 'yyyyyyy'.replace(/y/g, 'a')
-* str.trim() (ES5)
+* str.trim()
 * str.match()
 * str.length
 
@@ -145,10 +151,17 @@ undefined
 * 67 && 37 && null && 'kjhg'
 * 0 || 37 || null
     * Number.isNaN = Number.isNaN || function(x){return x!==x};
+    * function f(a, b){
+        b = b || 0;
+        
+        return a+b
+    }
+    
+    f('32');
 
 ## !!object === true
 
-var el = document.querySelector('.tyui'); // element | null
+var el = document.querySelector('table tr.active'); // element | null
 if(el){ // Object(el) === el
 
 }
@@ -233,9 +246,16 @@ arr = [...new Set(arr)] // unique (ES6/2015)
 # Set/Map (ES6/2015)
 
 * new Set(arr)
+s.add(value)
+s.has(value)
+s.delete(value)
 
 var map = new Map();
 // Map : clé (any) => valeur (any)
+map.set(key, value)
+map.get(key)
+map.has(key)
+map.delete(key)
 
 # Fonctions
 
@@ -254,9 +274,6 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/this
 * (montrer classes.js)
 
 
-# Polyfills
-
-http://labs.ft.com/2014/09/polyfills-as-a-service/
 
 
 # Concurrence
