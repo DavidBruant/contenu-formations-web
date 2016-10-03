@@ -4,18 +4,44 @@
 // <script src="bundle-makeCommitDonutData-test.js"></script>
 
 
-var makeCommitDonutData = require('../makeCommitDonutData.js');
 
-describe('makeCommitDonutData', function(){
-    it('should return an empty array when there are no commits', function(){
-        var commits = [];
-        var donutData = makeCommitDonutData(commits);
+describe('_.groupBy', function(){
+    it('should return an empty object for an empty array', function(){
+        var res = _.groupBy([], function(){});
         
-        donutData.should.be.an.Array();
-        donutData.should.have.length(0);
+        res.should.be.an.object;
+        res.should.have.keys([]);
     });
     
-    it('should return [["Thursday", 1]] when there is one commit on 2016-03-24', function(){
+    
+    it('should return an object with one key for [1]', function(){
+        var res = _.groupBy([1], function(){ return 'yo' });
+        
+        var keys = Object.keys(res);
+        
+        keys.should.length(1);
+        keys[0].should.equal('yo');
+    });
+    
+    
+    it('should return an object with one key for [1, 1]', function(){
+        var res = _.groupBy([1, 1], function(){ return 'yo' });
+        var keys = Object.keys(res);
+        
+        res.should
+        keys.should
+    });
+    
+    
+    it('should return an object with 3 keys for [1, 1, 2, 3] and identity function', function(){
+        var res = _.groupBy([1, 1, 2, 3], function(x){ return x});
+        var keys = Object.keys(res);
+        
+        res.should
+        keys.should
+    });
+    
+    /*it('should return [["Thursday", 1]] when there is one commit on 2016-03-24', function(){
         var commits = [
             {
                 commit: {
@@ -31,6 +57,6 @@ describe('makeCommitDonutData', function(){
         donutData.should.have.length(1);
         
         donutData[0].should.have.deepEqual(["Thursday", 1])
-    })
+    })*/
 });
 

@@ -37,6 +37,10 @@
 # Media
 
 * &lt;img src="http://example.org/azerty">
+    * jpeg
+    * png (transparence)
+    * svg
+    * gif
 * &lt;audio src="http://example.org/azerty">
 * &lt;video src="http://example.org/azerty">
     * &lt;source src="http://example.org/yo.webm" type="video/webm">
@@ -83,10 +87,10 @@ Styler les éléments par défaut
     
 * inline &lt;script>
     * Bloque le parser HTML à cause d'appels potentiels à `document.write`. NE PAS UTILISER !
-* &lt;script src="">&lt;/script> (toujours fermer !)
-    * Bloque le parser HTML
     * si attribut `type` n'est pas reconnu, le navigateur n'execute pas.
         * templates, données en JSON
+* &lt;script src="">&lt;/script> (toujours fermer !)
+    * Bloque le parser HTML
     * attribut `defer`
         * execution juste avant DOMContentLoaded
         * si plusieurs scripts avec defer, ordre d'execution préservé pour l'execution

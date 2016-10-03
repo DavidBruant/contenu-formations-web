@@ -51,27 +51,19 @@ http://labs.ft.com/2014/09/polyfills-as-a-service/
 
 # Valeurs
 
-7 types : 
-
-* number (1, 23, 1.6, Math.PI, etc.) (un seul type de nombre, pas de distinction int/float/double)
-
-signe*mantisse*2^exp
-
-* string ('', 'yo', 'whatever'). '' ou "" indifféremment
-    * 'doesn\'t' et "doesn't"
-* boolean (true, false)
-* null (/!\ `typeof null === "object"`, comparer `maVariable === null`)
-* undefined
-* object (`Object(x) === x`)
-    * objet normal ("plain object")
-    * function (typeof f === 'function')
-    * Array (Array.isArray(x))
-        // https://www.youtube.com/watch?v=D5xh0ZIEUOE&feature=youtu.be
-    * Date
-    * RegExp
-        * https://regexper.com/
-    * Map/Set (ES6/2015)
-* symbols (ES6/2015)
+| type          | typeof x    | Bon test          | Exemples                      |
+|---------------|-------------|-------------------|-------------------------------|
+| boolean       | "boolean"   |                   | `true`, `false`               |
+| string        | "string"    |                   | `''`, `"yo !"`, `'whatever'`  |
+| number        | "number"    |                   | `1`, `-2.3`, `NaN`, `Infinity` |
+| undefined     | "undefined" |                   |                               |
+| null          | ⚠ "object"  | `x === null`      |                               |
+| symbol        | "symbol"    |                   |                               |
+| simple object | "object"    | `Object(x) === x` | `{}`, `{a:1, b: "2"}`         |
+|---------------|-------------|-------------------|-------------------------------|
+| function      | ⚠ "function" |                   | `function(a, b){return a+b;}` |
+| array         | ⚠ "object"  | `Array.isArray`   | `[]`, `[1, 76, 87]`           |
+| set, map, weakmap, promise, date, regexp  | "object" | `Object.prototype.toString.call(x)` |  |                               |
 
 
 # Comparaison
