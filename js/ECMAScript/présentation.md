@@ -21,6 +21,8 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/JavaScript_technologies_
 
 * Versions de JavaScript (1.7, 1.7.5, 1.8, etc.) n'ont aucune importance
 
+https://kangax.github.io/compat-table/es6/
+
 # Syntaxe
 
 * not: !x
@@ -33,19 +35,53 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/JavaScript_technologies_
 * a = a+1
     a++
 
+````js
+if(x){
+    // x === true
+}
+else{
+    // x === false
+}
+````
+
 
 # Variables
 
 Déclarer avec `var`
-(montrer functions-var-scope.js)
 
 Toujours utiliser le mode strict
 "use strict";
+
 https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode/Transitioning_to_strict_mode
+
+
+````js
+"use strict";
+var a = 1;
+
+b = 2; // INTERDIT ! (mais pas grave)
+
+function c(d){
+    var e = 45;
+    f = "zertu"; // INTERDIT !
+
+    return e + d + a;
+}
+
+function g(){
+    var f; // undefined
+    console.log('yo');
+    f = "zertu"; // Pas d'prob !
+
+    return f;
+}
+````
+
 
 # Polyfills
 
 https://cdn.polyfill.io/v2/docs/
+
 http://labs.ft.com/2014/09/polyfills-as-a-service/
 
 
@@ -58,19 +94,22 @@ http://labs.ft.com/2014/09/polyfills-as-a-service/
 | number        | "number"    |                   | `1`, `-2.3`, `NaN`, `Infinity` |
 | undefined     | "undefined" |                   |                               |
 | null          | ⚠ "object"  | `x === null`      |                               |
-| symbol        | "symbol"    |                   |                               |
+| symbol (ES2015) | "symbol"    |                   |                               |
 | simple object | "object"    | `Object(x) === x` | `{}`, `{a:1, b: "2"}`         |
 |---------------|-------------|-------------------|-------------------------------|
 | function      | ⚠ "function" |                   | `function(a, b){return a+b;}` |
-| array         | ⚠ "object"  | `Array.isArray`   | `[]`, `[1, 76, 87]`           |
+| array         | ⚠ "object"  | `Array.isArray(x)` | `[]`, `[1, 76, 87]`           |
 | set, map, weakmap, promise, date, regexp  | "object" | `Object.prototype.toString.call(x)` |  |                               |
 
 
 # Comparaison
 
 Toujours utiliser === et !==
+
 == "presque égal"
+
 === "strictement égal"
+
 Comparaison par référence pour les objets, par valeur pour le reste.
 
 ````js
@@ -132,13 +171,14 @@ o !== o3
 
 ## "Falsy values"
 
+```
 false
 0
 NaN
 '' (chaine vide)
 null
 undefined
-
+```
 
 * 67 && 37 && null && 'kjhg'
 * 0 || 37 || null
@@ -153,6 +193,7 @@ undefined
 
 ## !!object === true
 
+````js
 var el = document.querySelector('table tr.active'); // element | null
 if(el){ // Object(el) === el
 
@@ -160,7 +201,7 @@ if(el){ // Object(el) === el
 else{ // el === null
 
 }
-
+````
 
 # Objects
 
@@ -186,6 +227,7 @@ http://davidbruant.github.io/ObjectViz/
 
 # Array
 
+```js
 var arr = [12, 65, 546];
 
 console.log(arr[0])
@@ -194,9 +236,15 @@ console.log(arr.length)
 arr.forEach(function(e, i, a){
   console.log(e, i, a)
 })
+```
+
 * a.map(f)
+
+```js
 var arr = [12, 65, 546];
 var arr2 = arr.map(function(e){ return e*e; });
+```
+
 * a.filter(f)
 // https://github.com/MyWebIntelligence/MyWebIntelligence/blob/master/common/cleanupURLs.js
 

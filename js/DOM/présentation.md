@@ -8,9 +8,7 @@ API pour manipuler un document HTML ou XML (arbre)
 * n.children/childNodes
 * n.parentNode
 * parent.appendChild(enfant)
-* n.removeChild(n2)
-    * n.parentNode.removeChild(n)
-    * DOM4: n.remove()
+* n.remove()
     
 Node.prototype.remove = Node.prototype.remove || function(){
     this.parentNode.removeChild(this);
@@ -47,13 +45,14 @@ Array.from(document.querySelectorAll('section h1')).map(...)
     
 * /!\ e.innerHTML (getter/setter)
 * e.insertAdjacentHTML(html, position)
-* e.className (pour changer les styles)
+* (moderne) e.classList (pour changer les styles)
+    * e.classList.add/remove/has/toggle?
+* (ancien, ne pas utiliser) e.className
 <div class="yo hyz"></div>
     * .yo.hyz{}
     * .yo .hyz{}
     * .yo, .hyz{}
-* e.classList (pour changer les styles)
-    * e.classList.add/remove/has/toggle?
+
 * e.style.backgroundColor
 * maDiv.style.height = x+"%";
 

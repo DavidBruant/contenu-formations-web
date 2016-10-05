@@ -1,20 +1,28 @@
-# XMLHttpRequest (AJAX)
+# Fetch (AJAX)
 
 Récupérer des nouvelles données sans recharger entièrement la page (demande coopération du serveur)
 
-(montrer exemple)
+Standard, mais moderne (polyfills).
 
-* xhr.open/send
-* xhr.setRequestHeader(header, value) (avant d'envoyer)
-* xhr.getResponseHeader(header) (après la réponse)
+````js 
 
-* Promise https://github.com/jakearchibald/es6-promise
-* sync document ready & xhr
+fetch('https://rawgit.com/anthill/ToilettesBordeaux/blob/master/data/toilettes.json')
+.then(function(resp){
+    return resp.json();
+    // return resp.text();
+})
+.then(function(toilettes){
+    console.log('toilettes', toilettes)
+})
 
 
-* DOMContentLoaded
-* getContent (xhr)
-* mise à jour
+````
+
+fetch retourne une promesse pour un résultat.
+
+
+
+
 
 JSONView http://jsonview.com/
 
