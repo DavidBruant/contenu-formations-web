@@ -101,6 +101,7 @@
 // 'https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets2.json'
 
             fetch('https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json')
+            .then(function(resp){return resp.json()})
             .then(function(tweets){
                 // var el = document.querySelector('#tweets');
                 // var tweets = JSON.parse(el.textContent)
