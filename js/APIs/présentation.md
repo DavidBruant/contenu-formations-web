@@ -31,6 +31,9 @@ JSONView http://jsonview.com/
 
 string -> string
 
+Stockage par origine
+origine : protocole + hostname + port
+
 * var value = localStorage.getItem(key)
 * localStorage.setItem(key, value)
 * localStorage.removeItem(key)

@@ -54,6 +54,7 @@ Toujours utiliser le mode strict
 
 https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode/Transitioning_to_strict_mode
 
+http://www.pixelstech.net/article/1320253282-How-One-Missing-%60var%60-Ruined-our-Launch
 
 ````js
 "use strict";
@@ -83,6 +84,13 @@ function g(){
 https://cdn.polyfill.io/v2/docs/
 
 http://labs.ft.com/2014/09/polyfills-as-a-service/
+
+````
+1) rajouter les polyfills
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js&features=fetch,Promise"></script>
+
+2) code métier
+````
 
 
 # Valeurs
@@ -233,10 +241,22 @@ var arr = [12, 65, 546];
 console.log(arr[0])
 console.log(arr.length)
 
-arr.forEach(function(e, i, a){
-  console.log(e, i, a)
+arr.forEach(function(e){
+  console.log(e)
 })
 ```
+
+## Différences entre un array et un object "normal" en JavaScript
+
+* Syntaxe de création
+
+`{a: 1}` vs `['yo', 'ya', 'yi']`
+
+* Les arrays ont une propriété `length` magique
+* `Array.isArray(x)`
+
+
+## Utilisation des tableaux
 
 * a.map(f)
 

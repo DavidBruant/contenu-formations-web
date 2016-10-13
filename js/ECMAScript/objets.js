@@ -9,6 +9,8 @@ var o = {
     }
 };
 
+console.log(o.a);
+
 o.d = 5;
 o.a = false;
 // o["a"] <===> o.a;
