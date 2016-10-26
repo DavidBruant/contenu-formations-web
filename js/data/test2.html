@@ -101,17 +101,23 @@
 // 'https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets2.json'
 
             fetch('https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json')
-            .then(function(resp){return resp.json()})
+			.then(function(resp){return resp.json()})
             .then(function(tweets){
                 // var el = document.querySelector('#tweets');
                 // var tweets = JSON.parse(el.textContent)
-
-                console.log(tweets);
+			var message;
+                //console.log(tweets);
                 // pour le premier tweet
                     // l'afficher
+                    message = tweets[0].text;
+					//console.log(message);
                     // afficher son message dans la console                
                     // créer une div qui contient le texte du commit et ajouter la div au <body>
-    
+					
+					var x = document.createElement('div');
+					document.body.appendChild(x);
+					x.textContent = message;
+					
 
                 /*
                 // créer un nouvel élément 'div'
@@ -127,26 +133,71 @@
                 element.textContent = str;
                 */
 
+                var tableau = [];
 
                 // afficher dans la console les text de tous les tweets du tableau en utilisant .forEach
+                tweets.forEach(function(t) { 
+                    console.log(t.text);
+                });
 
                 // créer un tableau avec seulement tous les textes des tweets
                 // créer un tableau avec seulement les dates de publication (created_at)
                 // créer un tableau avec seulement les tweets en français
-                
+                var texts = tweets.map(function(t) { 
+                    return t.text;
+                });
+
+                var dates = tweets.map(function(t) { 
+                    return t.created_at;
+                });
+
+                var tweetsFR = tweets.map(function(t) { 
+                    return t.lang === 'fr';
+                });
 
                 // créer un <ol>
+                var ol = document.createElement('ol');
+                x.appendChild(ol);
+
+                
+
                 // pour chaque tweet, créer un <li>, mettre le texte dedans, mettre le <li> dans le <ol>
                 // mettre le <ol> dans le <body>
+                tweets.forEach(function(t){
+                    var li = document.createElement('li')
+                    li.textContent = t.text;
+                    ol.appendChild(li);
+                });
 
-
+                document.body.appendChild(ol);
                 // isoler une fonction, qui pour un objet tweet créé un <li> (séparer la phase de création des éléments et de composition)
                         
                 // Créer et ajouter un <button> qui quand on clique dessus affiche 'click' dans la console.
+                var button = document.createElement('button');
+                document.body.appendChild(button);
+                button.textContent = 'Cliquez ici';
+
                 // -- qui quand on clique ne garde que les tweets en français
                 // (et quand on reclique re-affiche tout)
+                var filtre = false;
+
+                button.onclick = function() {
+                    console.log('click');
+
+                    if (filtre) {
+                        //On remet tout les tweets dans le Body
+                        filtre = false;
+                    }
+                    else {
+                        //On ne mets que les tweets FR
+                        filtre = true;
+                    }
+                    console.log(filtre);
+                }
+
+                
                 /*if(condition){
-                    // ...
+                    // ..
                 }
                 else{
                     // ...
@@ -175,7 +226,6 @@
             
         })
       </script>
-    
       
     <title>yo</title>
   </head>
