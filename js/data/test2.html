@@ -2,7 +2,6 @@
 <html lang="fr">
     <head>
         <meta charset="utf-8">
-
         <meta description="">
         <style>
             /*
@@ -77,7 +76,11 @@
             }
 
             li{
-                background-color: white;
+                padding:10px 5px;
+                margin:10px 5px;
+                background-color:#4890d4;
+                color:white;
+                border-radius:5px;
             }
             li.expanded{
                 background-color: #AAA;
@@ -103,10 +106,10 @@
             fetch('https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json')
             .then(function(resp){return resp.json()})
             .then(function(tweets){
-                // var el = document.querySelector('#tweets');
-                // var tweets = JSON.parse(el.textContent)
 
                 console.log(tweets);
+
+
                 // pour le premier tweet
                     // l'afficher
                     // afficher son message dans la console                
@@ -128,20 +131,103 @@
                 */
 
 
+                /*var premierTweet = tweets[0].text;
+
+                var monDiv = document.createElement('div');
+                document.body.appendChild(monDiv);
+                monDiv.textContent = premierTweet;*/
+
+
                 // afficher dans la console les text de tous les tweets du tableau en utilisant .forEach
 
+
                 // créer un tableau avec seulement tous les textes des tweets
+                /*var texts = [];
+                tweets.forEach(function(x){
+                    texts.push(x.text);
+                });
+                console.log(texts);*/
                 // créer un tableau avec seulement les dates de publication (created_at)
+               /* var created_at = [];
+                tweets.forEach(function(x){
+                    created_at.push(x.created_at);
+                });
+                console.log(created_at);*/
+
                 // créer un tableau avec seulement les tweets en français
-                
+                /*var tweetsFR = [];
+                tweets.forEach(function(x){
+                    if(x.lang === 'fr'){
+                        tweetsFR.push(x);
+                    }
+                });
+
+                //ou
+                // var tweetFR = tweets.filter(function(x){
+                //     return x.lang === 'fr';
+                // });
+                console.log(tweetsFR); */   
 
                 // créer un <ol>
                 // pour chaque tweet, créer un <li>, mettre le texte dedans, mettre le <li> dans le <ol>
                 // mettre le <ol> dans le <body>
 
 
+                /*var monOl = document.createElement('ol');
+
+                var tableauLi = tweets.map(function(x){
+                    return x.text;
+                });
+                tableauLi.forEach(function(x){
+                    var li = document.createElement('li');
+                    li.textContent = x.text;
+                    monOl.appendChild(li);
+                });
+
+                document.body.appendChild(monOl);
+                */
+
+
                 // isoler une fonction, qui pour un objet tweet créé un <li> (séparer la phase de création des éléments et de composition)
-                        
+                
+                function createLi(tweet){
+                    var li = document.createElement('li');
+                    li.textContent = tweet.text;
+                    return li;
+                }
+                
+                function createOl(lang){
+                    var monOl = document.createElement('ol');
+                    if (lang){
+                        tweets.filter(function(x){ 
+                            if (x.lang === lang){
+                                return x;
+                            }
+                        }).forEach(function(x){
+                            monOl.appendChild(createLi(x));
+                        });                        
+                    }else{
+                        tweets.forEach(function(x){
+                            monOl.appendChild(createLi(x));
+                        });
+                    }
+
+                    return monOl;
+                }
+                document.body.appendChild(createOl(''));
+
+                var swap = 0;
+                document.getElementById('buttonFR').addEventListener('click', function(){
+                    document.querySelector('ol').remove();
+                    if (swap){                        
+                        document.body.appendChild(createOl(''));
+                        swap = 0;
+                    }else{
+                        document.body.appendChild(createOl('fr'));
+                        swap = 1;
+                    }
+                });
+
                 // Créer et ajouter un <button> qui quand on clique dessus affiche 'click' dans la console.
                 // -- qui quand on clique ne garde que les tweets en français
                 // (et quand on reclique re-affiche tout)
@@ -155,7 +241,32 @@
 
                 // Faites un bouton (un peu gros) qui écoute mouseup/mousedown/click/dblclick et mesure le temps de click et de doubleclick 
                 // et affiche tempsClic1, tempsClic2, tempsDoubleClic
+                function convertTime(time){
+                    return time/1000 + 's';
+                }
 
+                var tReference = '';
+                var tReference2 = new Date();
+                var tFin;
+
+                document.getElementById('buttonTime').addEventListener('mousedown', function(){
+                    if(tReference != ''){
+                        tReference2 = tReference;
+                    }
+                    tReference = Date.now();
+                });
+                document.getElementById('buttonTime').addEventListener('mouseup', function(){
+                    tFin = Date.now() - tReference;
+                    console.log( 'mouseup : ' + convertTime(tFin));
+                });
+                document.getElementById('buttonTime').addEventListener('click', function(){
+                    tFin = Date.now() - tReference;
+                    console.log( '--click : ' + convertTime(tFin));
+                });
+                document.getElementById('buttonTime').addEventListener('dblclick', function(){
+                    tFin = Date.now() - tReference2;
+                    console.log( '2xClick : ' + convertTime(tFin));
+                });
             })
             .catch(function(e){
                 console.error(e);
@@ -177,9 +288,11 @@
       </script>
     
       
-    <title>yo</title>
+    <title>Exo1 David Bruant</title>
   </head>
-
   <body>
+      <button id="buttonFR">Lang</button>
+      <button id="buttonTime">Time</button>
   </body>
 </html>
+
