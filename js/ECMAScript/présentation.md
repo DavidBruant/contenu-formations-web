@@ -33,7 +33,7 @@ https://kangax.github.io/compat-table/es6/
 * a = a+y
     a += y
 * a = a+1
-    a++
+    a++Object.prototype.toString.c
 
 ````js
 if(x){
@@ -87,7 +87,7 @@ http://labs.ft.com/2014/09/polyfills-as-a-service/
 
 ````
 1) rajouter les polyfills
-<script src="https://cdn.polyfill.io/v2/polyfill.min.js&features=fetch,Promise"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,Promise"></script>
 
 2) code métier
 ````
@@ -140,6 +140,9 @@ var o3 = {
 o !== o3
 ````
 
+## Exception
+
+* Number.isNaN
 
 
 # Strings
@@ -266,6 +269,12 @@ var arr2 = arr.map(function(e){ return e*e; });
 ```
 
 * a.filter(f)
+
+```js
+var arr = [12, 2, 76, 65, 546, 98, 54, 34];
+var arr2 = arr.filter(function(e){ return e%2 === 0; });
+```
+
 // https://github.com/MyWebIntelligence/MyWebIntelligence/blob/master/common/cleanupURLs.js
 
 * Array.isArray(x)

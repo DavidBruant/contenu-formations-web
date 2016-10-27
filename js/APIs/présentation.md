@@ -27,7 +27,7 @@ fetch retourne une promesse pour un résultat.
 JSONView http://jsonview.com/
 
 
-# LocalStorage
+# LocalStorage (IE8+)
 
 string -> string
 
@@ -36,14 +36,20 @@ origine : protocole + hostname + port
 
 * var value = localStorage.getItem(key)
 * localStorage.setItem(key, value)
+    * object : '[Object object]' => JSON.stringify(obj)
 * localStorage.removeItem(key)
 * localStorage.length
 * localStorage.key(i)
 * localStorage.clear();
 
-localStorage.setItem('', JSON.stringify())
+localStorage.setItem(key, JSON.stringify())
 
 ````
+var s = new Set();
+s.add(x);
+s.has(x);
+s.remove(x);
+
 function setToArray(s){
     var a = [];
     s.forEach(function(e){ a.push(e); });

@@ -79,3 +79,66 @@ fetch('https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/list
 
 
  
+
+
+ // TweetLi.js
+function TweetLi(data){
+    var tweet = data.tweet;
+    var fav = data.fav;
+    var onFav = data.onFav;
+
+    React.createElement('li', {
+        className: fav ? 'fav' : '',
+        onClick: function(){
+            console.log('click', tweet);
+            onFav(tweet.id_str)
+        }
+    })
+}
+
+// dans TweetsOl.js
+// data: {tweets: [], favs, onFav: function(id){...}}
+React.createElement(TweetLi, {
+  tweet: tweet,
+  fav: favs.has(tweet.id_str),
+  onFav: onFav
+})
+
+// dans main-react.js
+var favs = new Set(JSON.parse(localStorage.getItem('fav')));
+
+function setToArray(s){
+    var a = [];
+    s.forEach(function(e){ a.push(e); });
+    return a;
+};
+
+function render(){
+    ReactDOM.render(
+        React.createElement(TweetsOl, {
+            onFav : function(id){
+                if(favs.has(id)){
+                    favs.remove(id)
+                }
+                else{
+                    favs.add(id);
+                }
+                
+                localStorage.setItem(
+                    'fav', 
+                    JSON.stringify(setToArray(favs))
+                )
+            
+                render();
+            }, 
+            tweets: tweets,
+            favs: favs
+        },
+        document.body
+    )
+}
+render();
+    
+    
+    
+    

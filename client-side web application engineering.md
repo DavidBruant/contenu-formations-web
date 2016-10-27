@@ -74,9 +74,30 @@ Give example maybe with TodoApp
 
 ## Isomorphic applications "with React"
 
+Composant ("createTweetsOl.js") :
+
+```js
+
+export default function(tweets){
+
+    return ReactDOM.createElement('ol', {}, tweets.map(function(t){
+        return ReactDOM.createElement('li', {},
+            ReactDOM.createElement('span', {}, t.user.name),
+            ReactDOM.createElement('span', {}, t.created_at),
+            ReactDOM.createElement('span', {}, t.text),
+            ReactDOM.createElement('button', {
+                onClick: function(e){
+                    console.log('on a cliqué sur', t);
+                }
+            }, 'Fav !')
+            
+        )
+    }))
 
 
+}
 
+```
 
 
 

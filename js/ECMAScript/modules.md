@@ -62,6 +62,9 @@ Problème :
 var dep1 = require('blabla') // module natif node ou installé
 var dep2 = require('./blabla.js') // fichier local au projet
 
+module.exports = function(){
+
+}
 ````
 
 
@@ -90,22 +93,35 @@ Solution : r.js https://github.com/requirejs/r.js
 
 # ES6/2015
 
+````js
+import React from 'React';
+import createTweetsOl from './createTweetsOl';
 
+// ...
+
+export default function(){
+    // ....
+}
+````
 
 
 # TODO
 
-* installer Node (installe npm aussi)
-$ npm install browserify -g
-npm install watchify -g
+* installer Node.js (installe npm aussi)
 
+```bash
+# dans le dossier projet :
+npm init -y
+npm install browserify -g
+# npm install watchify -g
+npm i rollupify --save 
 
-$ browserify main.js -o bundle.js -d
-watchify main.js -o bundle.js -d -v
-
+browserify main.js -o bundle.js -t rollupify -d
+# watchify main.js -o bundle.js -t rollupify -d -v
+```
 
 changer HTML:
-* enlever tous les scripts inline et les remplacer par 
+* enlever tous les <script> et les remplacer par 
 <script defer src="bundle.js"></script>
 
 Etape 1 :
@@ -115,31 +131,43 @@ Etape 1 :
 Etape 2 :
 main.js:
 ````js
-'use strict';
-
-var fetchCommits = require('./fetchCommits.js');
-var displayCommits = require('./displayCommits.js');
+import createTweetsOl from './createTweetsOl.js';
+import createTimeButton from './createTimeButton.js';
 
 document.addEventListener('DOMContentLoaded', function(){
-    fetchCommits().then(displayCommits)
+    // ... createTweetsOl() ...
+    // ... createTimeButton() ...
 });
 ````
 
+createTweetsOl.js
+````js
+export default function(tweets){
+    // ...
+}
+````
+
+
+
+
+
 Etape 3 :
 
-npm init
-npm install moment --save # regarder package.json
-
+```bash
+npm install moment --save 
+# regarder package.json
 ```
-var moment = require('moment');
+
+```js
+import moment from 'moment';
 
 // ...
 
-moment(c.commit.author.date).fromNow()
+moment(t.created_at).fromNow()
 
 ```
-
-
+https://www.npmjs.com/
+https://npms.io/
 
 
 

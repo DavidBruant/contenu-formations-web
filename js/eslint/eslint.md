@@ -21,10 +21,11 @@ node_modules
 browserify-bundle.js
 ```
 
-/*
-Dans .eslintrc, ajouter dans `env`:
-`"commonjs": true`
-*/
 
 pre-commit hook
 watch?
+
+Corriger les problèmes tout seul
+````
+eslint . --fix
+````

@@ -1,8 +1,8 @@
 # Modules
 
-
 ## History
 
+* CommonJS (oublié)
 * AMD (require.js)
 * CommonJS (~Node.js)
 
@@ -14,9 +14,10 @@ https://github.com/substack/browserify-handbook#bundling-commonjs-server-side
 ```
 npm init
 npm install browserify -g
-npm install watchify -g
+# npm install watchify -g
+npm i rollupify --save 
 
-browserify main.js -o browserify-bundle.js -d -v
+browserify main.js -o browserify-bundle.js -t rollupify -d -v
 ```
 
 
@@ -26,23 +27,17 @@ index.html devient
 
 // main.js
 ```js
-
-var getContents = require('./getContents.js'); // import
-
+import getContents from './getContents.js';
 
 ```
 
 
 // getContents.js
 ````js
-
-// export
-module.exports = function(url){
+export default function(url){
     return new Promise(function(){
-    
-    
-    })
 
+    })
 };
 
 ````
@@ -57,16 +52,6 @@ npm install react react-dom --save
 (télécharge react dans `node_modules`, et garder une mention dans le package.json)
 
 
-
-## Polyfills
-
-```bash
-npm i es6-shim --save
-```
-
-```js
-require('es6-shim'); // no need to get the result in a variable
-```
 
 
 ## minifier

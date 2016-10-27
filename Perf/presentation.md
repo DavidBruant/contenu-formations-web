@@ -29,7 +29,7 @@ Dans l'ordre :
 
 Bordeaux -> San Francisco (ligne droite) : 9.136,68 km (9.14*10⁶ m)
 A la vitesse de la lumière (3*10⁸m/s) : 0.031s (31ms)
-
+eventually
 Sur le web, la lumière ne transporte pas l'information et pas en ligne droite :-)
 La latence réseau est douloureuse pour la performance.
 

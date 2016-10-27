@@ -28,8 +28,6 @@ readfile(file3, function(err, _h){
 
 
 // 2.bis Node.js 2
-var f, g, h;
-
 readfile(file, function(err, f){
     readfile(file2, function(err, g){
         readfile(file3, function(err, h){
@@ -39,18 +37,42 @@ readfile(file, function(err, f){
 });
 
 
-
 // 3. Promise
 // https://twitter.com/edouard_lopez/status/527814903693062144
-function readfilePromise(f){
-    return new Promise(function(resolve){
-        readfile(f, function(err, content){
-            resolve(content);
-        })
-    })
-}
 
-// 3) Promise
+// 3.1 exemple de base
+
+var fP = readfile(file);
+// fP : Promise
+// f : vrai contenu
+fP.then(function(f){
+    console.log(f)
+});
+
+// 3.2 gestion des erreurs
+fP.catch(function(err){
+    console.error(err)
+});
+
+// 3.3 chainer
+
+var ffP = fP.then(function(f){
+    var obj = JSON.parse(f);
+    var fichierSuivant = obj.next;
+    return readfile(fichierSuivant);
+});
+
+// contenuSuivant === résultat de readfile(fichierSuivante)
+var fffP = ffP.then(function(contenuSuivant){
+    return contenuSuivant.nombres.map(function(e){ return e*e })
+})
+
+fffP.then(...)
+.then(...)
+.catch(...)
+
+// 3.4 combiner
+
 var fP = readfilePromise(file);
 var gP = readfilePromise(file2);
 var hP = readfilePromise(file3);
@@ -80,35 +102,58 @@ fP.then(function(f){
   
 
 
+// fetch
+
+fetch(url)
+.then(function(resp){
+    // réponse HTTP (avec code de statut et headers, mais pas de body)
+    resp.headers
+    resp.status
+    // ...
+    //return resp.text();
+    return resp.json()
+})
+.then(function(body){
+
+})
 
 
+/*
+Suite de l'exercice :
+1) écrire un module qui contient une seule fonction getTweets() qui retourne une 
+promesse pour un array de tweets
+2) modifier main-react.js pour qu'il utilise cette fonction
+3) changer la fonction pour qu'elle charge des tweets de 2 urls :
+https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json
+https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets2.json
+(20 tweets et 100 tweets)
+combiner les résultats avec Promise.all() (et la méthode .concat() pour fusionner 
+les tableaux)
+
+L'exemple de MDN contient des arrow function 
+````js
+p.then(valeur => console.log(valeur))
+````
+Cette syntaxe est INTERDITE !!
+Utiliser : 
+````js
+p.then(function(valeur){ console.log(valeur) })
+ */
 
 
-define(function(){
-    'use strict';
-    return function getContents(url){
-        return new Promise(function(resolve, reject){
-            var xhr = new XMLHttpRequest();
-            xhr.open('GET', url);
-            xhr.addEventListener('load', function(){
-                if(xhr.status < 400)
-                    resolve(JSON.parse(xhr.responseText));
-                else
-                    reject('Could not get content from '+url);
-            });
-            xhr.send();
-        });
-    }
-});
+button.addEventListener('click', function l(e){
+    //desactiver
+    //button.removeEventListener('click', l);
+    button.setAttribute('disabled', '');
 
-
-// ...
-
-var tweetsP = getContents('http://...');
-document._readyP = new Promise(function(resolve, reject){
-    document.addEventListener('DOMContentLoaded', function(){ resolve(document) });
-});
-
-Promise.all([tweetsP, document._readyP]).then(function(results){
-    var tweets = results[0];
-});
+    traitement()
+    .then(function(){
+        button.removeAttribute('disabled');
+        //button.addEventListener('click', l)
+    })
+    .catch(function(err){
+        afficherErreur(err);
+        button.removeAttribute('disabled');
+        //button.addEventListener('click', l)
+    })
+})

@@ -95,7 +95,23 @@
       <script>
           "use strict";
 
-        document.addEventListener('DOMContentLoaded', function(){
+          function createTweetLi(tweet){
+              var li = document.createElement('li');
+              li.append(tweet.text)
+              return li;
+          }
+
+          function createTweetsOl(tweets){
+              var ol = document.createElement('ol');
+              tweets.forEach(function(t){
+                  ol.append(createTweetLi(t));
+              })
+              return ol;
+          }
+
+        document.addEventListener('DOMContentLoaded', function(e){
+
+            console.log('time', e.timeStamp, performance.now())
 
 // charger et afficher les tweets de 
 // 'https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets2.json'
@@ -103,45 +119,65 @@
             fetch('https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json')
             .then(function(resp){return resp.json()})
             .then(function(tweets){
-                // var el = document.querySelector('#tweets');
-                // var tweets = JSON.parse(el.textContent)
+                console.log('Le tableau de tweet', tweets)
 
-                console.log(tweets);
                 // pour le premier tweet
                     // l'afficher
-                    // afficher son message dans la console                
+                console.log(tweets[0])
+                    // afficher son message dans la console
+                console.log(tweets[0].text)             
                     // créer une div qui contient le texte du commit et ajouter la div au <body>
-    
+                var div = document.createElement('div');
+                //div.textContent = '<h1 onclick="alert(\'ahah\')">yo</h1>';
+                //document.body.append(div);                 
 
                 /*
                 // créer un nouvel élément 'div'
                 var x = document.createElement('div');
 
                 // rajouter un enfant
-                parent.appendChild(enfant);
+                parent.append(enfant);
                 
                 // accéder au <body>
                 document.body
 
                 // changer le texte d'un élément
-                element.textContent = str;
+                element.append(str);
                 */
 
 
                 // afficher dans la console les text de tous les tweets du tableau en utilisant .forEach
+                tweets.forEach(function(t){
+                    console.log(t.text);
+                })
+
 
                 // créer un tableau avec seulement tous les textes des tweets
+                var texts = tweets.map(function(t){
+                    return t.text;
+                });
                 // créer un tableau avec seulement les dates de publication (created_at)
+                var dates = tweets.map(function(t){
+                    return t.created_at;
+                });
                 // créer un tableau avec seulement les tweets en français
-                
+                var frs = tweets.filter(function(t){
+                    return t.lang === 'fr';
+                });
 
                 // créer un <ol>
+                var ol = document.createElement('ol');
                 // pour chaque tweet, créer un <li>, mettre le texte dedans, mettre le <li> dans le <ol>
+                tweets.forEach(function(t){
+                    var li = document.createElement('li');
+                    li.append(t.text);
+                    ol.append(li);
+                })
                 // mettre le <ol> dans le <body>
-
+                document.body.append(ol);
 
                 // isoler une fonction, qui pour un objet tweet créé un <li> (séparer la phase de création des éléments et de composition)
-                        
+
                 // Créer et ajouter un <button> qui quand on clique dessus affiche 'click' dans la console.
                 // -- qui quand on clique ne garde que les tweets en français
                 // (et quand on reclique re-affiche tout)
@@ -152,34 +188,92 @@
                     // ...
                 }*/
 
+                var b = document.createElement('button');
+                b.append('toggle');
 
-                // Faites un bouton (un peu gros) qui écoute mouseup/mousedown/click/dblclick et mesure le temps de click et de doubleclick 
+                var all = true;
+                b.addEventListener('click', function(){
+                    var newOl = createTweetsOl( all ? frs : tweets );
+                    ol.replaceWith(newOl);
+                    ol = newOl;
+                    all = !all;
+                });
+
+                document.body.append(b);
+
+
+                // Faites un bouton (un peu gros) qui écoute mousedown/click/dblclick et mesure le temps de click et de doubleclick 
                 // et affiche tempsClic1, tempsClic2, tempsDoubleClic
 
+                var timeButton = document.createElement('button');
+                timeButton.append('TIME !');
+                document.body.append(timeButton);
+
+
+                var blastmd, blastclick, lastmd, lastclick;
+
+                timeButton.addEventListener('mousedown', function(e){
+                    blastmd = lastmd;
+                    lastmd = e.timeStamp;
+                });
+
+                timeButton.addEventListener('click', function(e){
+                    blastclick = lastclick;
+                    lastclick = e.timeStamp;
+                    console.log('click', lastclick - lastmd);
+                });
+
+                timeButton.addEventListener('dblclick', function(e){
+                    console.log('c1', blastclick - blastmd);
+                    console.log('c2', lastclick - lastmd);
+                    console.log('dblclick', e.timeStamp - blastmd);
+
+                    timeButton.setAttribute('disabled', '');
+                });
             })
             .catch(function(e){
                 console.error(e);
             });
 
-            // supprimer le gloubiboulga d'en haut
             // Créer plusieurs fichiers avec du code
-            // * main.js
             // * createTweetLi.js
             // * createTweetsOl.js
+            // * createClickTimeButton.js
+            // * main.js
 
-            // charger tout ça via des <script src="...">
-
-            // créer une fonction 'createClickTimeButton(text)' dans un nouveau fichier qui créé un bouton de calcul de temps de clic
-            // (déplacer le code + l'appeler dans le main.js, 2 fois pour créer 2 boutons avec 2 textes différents)
-
-            
+            // charger tout ça via des <script defer src="...">
         })
       </script>
-    
+    <!--
+        Exo (localStorage) : 
+        1) Rajouter un bouton "fav" à chaque li
+        2) quand le bouton est cliqué, changer le style du li (rajouter une classe 'fav')
+        + et stocker l'ensemble des id_str fav dans le localStorage
+        3) au chargement de la page, lire le localStorage pour favoriser les favoris.
+
+        function(tweet){
+            React.createElement('li', {
+                onClick: function(){
+                    console.log('click', tweet)
+                }
+            })
+        }
+
+
+
+    -->
       
     <title>yo</title>
   </head>
 
   <body>
+  
+  <script id="data-tweets" type="application/json">
+    // json
+  </script>  
+  <script id="data-autre" type="inconnu">
+    // données textuelle arbitraires
+  </script>
   </body>
+
 </html>

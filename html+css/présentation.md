@@ -77,6 +77,11 @@ Styler les éléments par défaut
 * `class`
 * `id`
 
+## Input 
+
+* `button`
+* autocomplete
+
 # Styles    
     
 * Dans le &lt;head>

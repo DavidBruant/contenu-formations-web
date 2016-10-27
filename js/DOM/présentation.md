@@ -7,8 +7,10 @@ API pour manipuler un document HTML ou XML (arbre)
 
 * n.children/childNodes
 * n.parentNode
-* parent.appendChild(enfant)
+* parent.append(enfant)
+* (anciennement) parent.appendChild(enfant)
 * n.remove()
+* n.replaceWith(n2)
     
 Node.prototype.remove = Node.prototype.remove || function(){
     this.parentNode.removeChild(this);
@@ -18,6 +20,7 @@ Node.prototype.remove = Node.prototype.remove || function(){
 # Document + HTMLDocument
 
 * document.createElement('div')
+    * créé une div orpheline
 
 * document.querySelector(selector)
 * document.querySelectorAll(selector)
@@ -58,7 +61,6 @@ Array.from(document.querySelectorAll('section h1')).map(...)
 
 .yo{
     background-color: red;
-
 }
 
 * vider un élément
@@ -66,40 +68,52 @@ Array.from(document.querySelectorAll('section h1')).map(...)
 
 # EventTarget
 
-* n.addEventListener(type, listener, capture=false)
-* n.removeEventListener(type, listener, capture=false)
+* n.addEventListener(type, listener)
+```js
+document.body.addEventListener('click', function(){
+    console.log('yo');
+})
+```
+
+* n.removeEventListener(type, listener)
     * Attention, comparaison par référence
     * var listener = function(){...}.bind(this);
-    * n.addEventListener(type, listener)
-    * n.removeEventListener(type, listener)
     
 * n.dispatchEvent(e)
+
+* /!\ attributs on* interdits ! (onclick, etc.)
+    * unique par élémént
 
 # Evènements
 
 * DOMContentLoaded
+    * Quand le HTML est chargée et que l'arbre DOM est construit 
 * load
-* click (mousedown/mouseup/doubleclick)
+    * Quand la page entière est chargée (CSS, fonts, images, etc.)
+* click (mousedown/mouseup/dblclick)
 * keypress (keyup/keydown)
 * mouseover
 * submit (&lt;form>)
 * input
+* change
 * scroll
 
 * "event delegation"
 
+````js
 el.addEventListener('click', function(e){
     // Event e
 })
+````
 
 * e.target
+* e.currentTarget
 * e.preventDefault()
 form.addEventListener('submit', function(e){
     e.preventDefault();
 })
 
 * e.stopPropagation()
-* e.currentTarget
 * e.timeStamp
 
 
