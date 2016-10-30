@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "start": "npm run start-server & npm run gulp",
+    "start": "npm run gulp",
     "start-server": "python -m SimpleHTTPServer 3000",
     "gulp": "gulp"
   },

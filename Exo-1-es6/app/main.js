@@ -28,7 +28,7 @@ document.addEventListener('DOMContentLoaded', function(){
 
 
             getTweets()
-                .then(function(tweets){
+                .then(tweets => {
 
                 // Création des tableaux
 
@@ -53,11 +53,13 @@ document.addEventListener('DOMContentLoaded', function(){
                  * Création du toggle de sélection de la langue des Tweets
                  */
 
-                 (function(){
+                 /* Block scope avec let et {} */
+
+                 {
 
                     let onlyFr = false;
 
-                    frButton.addEventListener('click', function(e){
+                    frButton.addEventListener('click', evt => {
 
                         let listCreator;
                         mainWrapper.innerHTML = '';
@@ -71,6 +73,6 @@ document.addEventListener('DOMContentLoaded', function(){
                         onlyFr = !onlyFr;
                     });
 
-                })();
+                };
             });           
             });

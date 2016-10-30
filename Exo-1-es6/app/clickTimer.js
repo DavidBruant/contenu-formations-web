@@ -7,13 +7,13 @@ export default function createClickButton(){
 
         let mouseDownTime, tempsClic1;
                         
-        clickButton.addEventListener('mousedown', function(e){
-            mouseDownTime = e.timeStamp;
+        clickButton.addEventListener('mousedown', evt => {
+            mouseDownTime = evt.timeStamp;
             return mouseDownTime;
         });
 
-        clickButton.addEventListener('click', function(e){
-            let clickTime = e.timeStamp;
+        clickButton.addEventListener('click', evt => {
+            let clickTime = evt.timeStamp;
             tempsClic1 = clickTime - mouseDownTime;
             console.log(tempsClic1 / 1000);
         });

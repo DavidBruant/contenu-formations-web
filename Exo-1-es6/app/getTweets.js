@@ -16,16 +16,16 @@
 export default function getTweets(){
 
 	let twentyTweetsP = fetch('https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json')
-						.then(function(resp){
+						.then(resp => {
 					    	return resp.json()}
 					    );
 	let hundredTweetsP = fetch('https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets2.json')
-						.then(function(resp){
+						.then(resp => {
 					    	return resp.json()}
 					    );
 
 	let allTweets = Promise.all([twentyTweetsP, hundredTweetsP])
-						   .then(function([twentyTweets, hundredTweets]){
+						   .then( ([twentyTweets, hundredTweets]) => {
 								return twentyTweets.concat(hundredTweets);
 							});
 
