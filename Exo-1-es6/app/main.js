@@ -4,7 +4,7 @@ import createTweetsOl from './tweetOl.js';
 import createClickButton from './clickTimer.js';
 import getTweets from './getTweets.js';
 
-document.addEventListener('DOMContentLoaded', function(){
+document.addEventListener('DOMContentLoaded', () => {
 
         // Création du container principal
 

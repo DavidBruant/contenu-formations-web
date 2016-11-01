@@ -26,7 +26,7 @@ export default function getTweets(){
 
 	let allTweets = Promise.all([twentyTweetsP, hundredTweetsP])
 						   .then( ([twentyTweets, hundredTweets]) => {
-								return twentyTweets.concat(hundredTweets);
+								return [...twentyTweets, ...hundredTweets];
 							});
 
 	return allTweets;
