@@ -44,9 +44,18 @@ document.addEventListener('DOMContentLoaded', function(){
 		var data = [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday];
 		var arcs = d3.pie()(data);
 
+		 var i = 0;
+ 		arcs.forEach(function(e){
+   			console.log(e);
+   			var arc = d3.arc()
+   			.innerRadius(200)
+   			.outerRadius(300)
+   			.startAngle(e.startAngle)
+   			.endAngle(e.endAngle);
 
+   			document.body.appendChild(arc);
+   		});
 
-		console.log(arcs);
 
 
 	});
