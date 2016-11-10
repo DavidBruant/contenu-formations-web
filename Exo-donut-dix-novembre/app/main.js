@@ -1,5 +1,8 @@
 "use strict";
 
+import * as d3 from 'd3-shape';
+
+
 import getCommits from './getCommits';
 import createCharts from './createCharts';
 
@@ -20,6 +23,25 @@ document.addEventListener('DOMContentLoaded', () =>{
 	.then(commits =>{
 		
 		const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
-		createCharts(weekDays, commits, chartContainer);
+
+		const weekArray = [];
+		createCharts(weekDays, commits, chartContainer, weekArray);
+
+		const arcs = d3.pie()(weekArray);
+
+		arcs.forEach(arcProps => {
+			const arcG = document.createElement('g');
+			arcG.classList.add('arc');
+			const arcGPath = document.createElement('path');
+			chartContainer.appendChild(arcG);
+
+			var arc = d3.arc();
+
+			arc({arcProps});
+
+			arcGPath.setAttribute('d', arc);
+
+			console.log(arcProps);
+		});
 	});
 });

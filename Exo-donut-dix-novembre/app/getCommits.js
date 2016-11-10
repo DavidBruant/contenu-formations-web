@@ -3,11 +3,11 @@ export default function getCommits(){
 					.then(resp => {
 						return resp.json();
 					});
-	const _commits2 = fetch('https://api.github.com/repos/Financial-Times/polyfill-service/commits?page=2?access_token=1d1ea5599fad961bab88d7fddeafb9a7fb69e0cd')
+	const _commits2 = fetch('https://api.github.com/repos/Financial-Times/polyfill-service/commits?page=2&access_token=1d1ea5599fad961bab88d7fddeafb9a7fb69e0cd')
 					.then(resp => {
 						return resp.json();
 					});
-	const _commits3 = fetch('https://api.github.com/repos/Financial-Times/polyfill-service/commits?page=3?access_token=1d1ea5599fad961bab88d7fddeafb9a7fb69e0cd')
+	const _commits3 = fetch('https://api.github.com/repos/Financial-Times/polyfill-service/commits?page=3&access_token=1d1ea5599fad961bab88d7fddeafb9a7fb69e0cd')
 					.then(resp => {
 						return resp.json();
 					});
