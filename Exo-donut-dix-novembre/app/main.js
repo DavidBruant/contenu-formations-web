@@ -8,11 +8,11 @@ import createCharts from './createCharts';
 
 document.addEventListener('DOMContentLoaded', () =>{
 	
-	const svgContainer = document.createElement('svg');
-	svgContainer.style.width = '960px';
-	svgContainer.style.height = '500px';
+	const svgContainer = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+	svgContainer.setAttribute('width', '960');
+	svgContainer.setAttribute('height', '500');
 
-	const chartContainer = document.createElement('g');
+	const chartContainer = document.createElementNS('http://www.w3.org/2000/svg', 'g');
 	chartContainer.setAttribute('transform','translate(480,250)');
 
 	svgContainer.appendChild(chartContainer);
@@ -30,16 +30,24 @@ document.addEventListener('DOMContentLoaded', () =>{
 		const arcs = d3.pie()(weekArray);
 
 		arcs.forEach(arcProps => {
-			const arcG = document.createElement('g');
+			const arcG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
 			arcG.classList.add('arc');
-			const arcGPath = document.createElement('path');
-			chartContainer.appendChild(arcG);
+			const arcGPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 
-			const arc = d3.arc({arcProps});
+			const arc = d3.arc()
+						  .innerRadius(0)
+						  .outerRadius(200)
+						  .startAngle(arcProps.startAngle)
+						  .endAngle(arcProps.endAngle);
 
-			arcGPath.setAttribute('d', arc);
+			const hue = Math.floor(Math.random() * 100) + 1; 
+
+			arcGPath.setAttribute('d', arc());
+			arcGPath.setAttribute('style', `fill:hsl(${hue}, 70%, 50%)`);
 
 			console.log(arcProps);
+			arcG.appendChild(arcGPath);
+			chartContainer.appendChild(arcG);
 		});
 	});
 });
