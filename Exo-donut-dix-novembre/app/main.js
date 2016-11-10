@@ -33,9 +33,11 @@ document.addEventListener('DOMContentLoaded', () =>{
 			const arcG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
 			arcG.classList.add('arc');
 			const arcGPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+			const arcGText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+			arcGText.textContent = arcProps.data;
 
 			const arc = d3.arc()
-						  .innerRadius(0)
+						  .innerRadius(70)
 						  .outerRadius(200)
 						  .startAngle(arcProps.startAngle)
 						  .endAngle(arcProps.endAngle);
@@ -45,9 +47,15 @@ document.addEventListener('DOMContentLoaded', () =>{
 			arcGPath.setAttribute('d', arc());
 			arcGPath.setAttribute('style', `fill:hsl(${hue}, 70%, 50%)`);
 
-			console.log(arcProps);
+			const textPosition = arc.centroid((arc.startAngle+arc.endAngle)/2, (70+200)/2);
+
+			console.log(textPosition[0] + ',' + textPosition[1]);
+
+			arcGText.setAttribute('transform', 'translate('+textPosition[0] + ',' + textPosition[1]+')');
+
 			arcG.appendChild(arcGPath);
 			chartContainer.appendChild(arcG);
+			arcG.appendChild(arcGText);
 		});
 	});
 });
