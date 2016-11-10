@@ -7,14 +7,17 @@ function fetchCommitUrl(page) {
     });
 }
 
-export default function getContributors() {
-    // var totalFetches = Math.ceil(totalCommits / 100);
+export default function getContributors(totalCommits) {
+    // Get the number of pages needed for the total number of tweets
+    var totalFetches = Math.ceil(totalCommits / 100);
     var fetchPromises = [];
 
-    for (var i = 1; i <= 3; i++) {
+    // Fetch all the pages
+    for (var i = 1; i <= totalFetches; i++) {
         fetchPromises.push(fetchCommitUrl(i));
     }
 
+    // Combine all the promises and return one array
     return Promise.all(fetchPromises)
         .then(function(results) {
             return [].concat.apply([], results);

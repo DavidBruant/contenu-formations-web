@@ -14,13 +14,12 @@ export default function orderCommitsByDay(commits) {
         'Sunday': []
     };
 
+    // Transform the date format and group the commits by day of week
     commits.forEach(function(commit) {
-
         var commitDayFormatted = moment(commit.commit.committer.date);
         var commitDayOfWeek = commitDayFormatted.format('dddd');
 
         commitsByDay[commitDayOfWeek].push(commit);
-
     });
 
     return commitsByDay;
