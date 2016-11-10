@@ -47,38 +47,58 @@ export default function generateDonutChart(data) {
         transform.appendChild(g);
 
         // Create the Path element
-        var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        path.setAttribute('d', d);
-        path.setAttribute('fill', colors[index]);
-        g.appendChild(path);
+        g.appendChild(createPath(d, colors[index]));
 
         // Create the Legend
-        var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-        rect.setAttribute('width', '25');
-        rect.setAttribute('height', '25');
-        rect.setAttribute('fill', colors[index]);
-        var rectTransformVertical = (width / 2) * -1 + 10;
-        var rectTransformHorizontal = ((height / 2) * -1) + index * 50 + 10;
-        rect.setAttribute('transform', 'translate('+ rectTransformVertical +', '+ rectTransformHorizontal +')');
-        g.appendChild(rect);
+        g.appendChild(createLegendColor(index, colors[index], width, height));
 
         // Create the Legend label element
-        var label = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        label.classList.add('label');
-        label.textContent = arc.data.label;
-        var labelTransformVertical = (width / 2) * -1 + 50;
-        var labelTransformHorizontal = ((height / 2) * -1) + index * 50 + 26 ;
-        label.setAttribute('transform', 'translate('+ labelTransformVertical +', '+ labelTransformHorizontal +')');
-        g.appendChild(label);
+        g.appendChild(createLegendLabel(arc, index, width, height));
 
         // Create the number label element
-        var number = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        number.classList.add('number');
-        number.textContent = arc.data.count;
-        number.setAttribute('fill', '#fff');
-        number.setAttribute('transform', 'translate('+ arcD3.centroid(arc) +')');
-        g.appendChild(number);
+        g.appendChild(createNumberLabel(arc, arcD3));
     });
 
     return svg;
+}
+
+function createPath(d, color) {
+    var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+    path.setAttribute('d', d);
+    path.setAttribute('fill', color);
+
+    return path;
+}
+
+function createLegendColor(index, color, width, height) {
+    var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+    rect.setAttribute('width', '25');
+    rect.setAttribute('height', '25');
+    rect.setAttribute('fill', color);
+    var rectTransformVertical = (width / 2) * -1 + 10;
+    var rectTransformHorizontal = ((height / 2) * -1) + index * 50 + 10;
+    rect.setAttribute('transform', 'translate('+ rectTransformVertical +', '+ rectTransformHorizontal +')');
+
+    return rect;
+}
+
+function createLegendLabel(arc, index, width, height) {
+    var label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    label.classList.add('label');
+    label.textContent = arc.data.label;
+    var labelTransformVertical = (width / 2) * -1 + 50;
+    var labelTransformHorizontal = ((height / 2) * -1) + index * 50 + 26 ;
+    label.setAttribute('transform', 'translate('+ labelTransformVertical +', '+ labelTransformHorizontal +')');
+
+    return label;
+}
+
+function createNumberLabel(arc, arcD3) {
+    var number = document.createElementNS("http://www.w3.org/2000/svg", "text");
+    number.classList.add('number');
+    number.textContent = arc.data.count;
+    number.setAttribute('fill', '#fff');
+    number.setAttribute('transform', 'translate('+ arcD3.centroid(arc) +')');
+
+    return number;
 }
