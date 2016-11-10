@@ -39,7 +39,7 @@ document.addEventListener('DOMContentLoaded', () =>{
 
 			arcGPath.setAttribute('d', arc);
 
-			console.log(arc);
+			console.log(arcProps);
 		});
 	});
 });
