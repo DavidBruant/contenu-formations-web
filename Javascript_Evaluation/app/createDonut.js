@@ -1,4 +1,5 @@
 "use strict";
+
 import * as d3 from 'd3-shape';
 export default function createDonnut(commitsDay) {
 
@@ -39,7 +40,7 @@ export default function createDonnut(commitsDay) {
 		path.setAttribute("d", arc());
 
 		const color = Math.floor(Math.random() * 100) + 1;
-		path.setAttribute("style", 'fill: hsl(' + color +', 50%, 50%)');
+		path.setAttribute("style", 'fill: hsl(' + color +', 70%, 50%)');
 
 		var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
 		text.innerHTML = key + " - " + commitsDay[key].length;
