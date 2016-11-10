@@ -35,13 +35,11 @@ document.addEventListener('DOMContentLoaded', () =>{
 			const arcGPath = document.createElement('path');
 			chartContainer.appendChild(arcG);
 
-			var arc = d3.arc();
-
-			arc({arcProps});
+			const arc = d3.arc({arcProps});
 
 			arcGPath.setAttribute('d', arc);
 
-			console.log(arcProps);
+			console.log(arc);
 		});
 	});
 });
