@@ -1,7 +1,7 @@
 "use strict";
 import getCommits from "./getCommits";
 import moment from "moment";
-import * as d3 from 'd3-shape'
+import createDonut from "./createDonut";
 
 
 document.addEventListener('DOMContentLoaded', function(){
@@ -47,7 +47,11 @@ document.addEventListener('DOMContentLoaded', function(){
             }  
         })
         
-        console.log(allTabs.monday);
+        createDonut(allTabs);
+        
+//        Object.keys(allTabs).forEach(function(day){
+//            createDonut(allTabs[day].length);
+//        })
         
     })
 })
