@@ -1,12 +1,23 @@
 "use strict";
 
-export default function getCommits() {
+function fetchCommitUrl(page) {
+    var url = 'https://api.github.com/repos/Financial-Times/polyfill-service/commits?access_token=ddd6d8c4072452e98600552370fc6551815f2709&?page='+ page +'&per_page=100';
+    return fetch(url).then(function(result) {
+        return result.json();
+    });
+}
 
-    var url = 'https://api.github.com/repos/Financial-Times/polyfill-service/commits';
+export default function getContributors() {
+    // var totalFetches = Math.ceil(totalCommits / 100);
+    var fetchPromises = [];
 
-    return fetch(url)
-        .then(function(result) {
-            return result.json();
+    for (var i = 1; i <= 3; i++) {
+        fetchPromises.push(fetchCommitUrl(i));
+    }
+
+    return Promise.all(fetchPromises)
+        .then(function(results) {
+            return [].concat.apply([], results);
         })
         .catch(function(error) {
             console.log(error);
