@@ -1,0 +1,22 @@
+{
+  "name": "financial_times_bram_van_osta",
+  "version": "0.0.1",
+  "description": "ECV exercice using Github API",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Bram van Osta",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-preset-es2015": "^6.18.0",
+    "babelify": "^7.3.0",
+    "browserify": "^13.1.1",
+    "gulp": "^3.9.1",
+    "gulp-util": "^3.0.7",
+    "vinyl-source-stream": "^1.1.0"
+  },
+  "dependencies": {
+    "d3-shape": "^1.0.3"
+  }
+}
