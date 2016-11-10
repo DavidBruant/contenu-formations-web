@@ -2,6 +2,9 @@
 
 // import getContributors from './getContributors';
 import getCommits from './getCommits';
+import orderCommitsByDay from './orderCommitsByDay';
+import formatCommitDataForChart from './formatCommitDataForChart';
+import generateDonutChart from './generateDonutChart';
 
 document.addEventListener('DOMContentLoaded', function () {
 
@@ -14,7 +17,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // });
 
     getCommits().then(function(commits) {
-        console.log(commits);
-    })
+        var commitsByDay = orderCommitsByDay(commits);
+        var formattedData = formatCommitDataForChart(commitsByDay);
+
+        generateDonutChart(formattedData);
+    });
 
 });
