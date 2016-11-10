@@ -1,0 +1,20 @@
+{
+  "name": "contenu-formations-web",
+  "version": "1.0.0",
+  "description": "Contenu formations web ======================",
+  "main": "data-test.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Laguigue/contenu-formations-web.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Laguigue/contenu-formations-web/issues"
+  },
+  "homepage": "https://github.com/Laguigue/contenu-formations-web#readme"
+}
