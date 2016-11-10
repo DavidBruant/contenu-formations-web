@@ -37,7 +37,9 @@ export default function createDonnut(commitsDay) {
 
 		var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 		path.setAttribute("d", arc());
-		path.setAttribute("style", "fill: rgb(152, 171, 197)");
+
+		const color = Math.floor(Math.random() * 100) + 1;
+		path.setAttribute("style", 'fill: hsl(' + color +', 50%, 50%)');
 
 		var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
 		text.innerHTML = key + " - " + commitsDay[key].length;
