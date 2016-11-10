@@ -12,9 +12,9 @@ document.addEventListener('DOMContentLoaded', function(){
 			var day = moment(commit.commit.author.date).format('dddd');
 			return day;
 		});
-       
-       createDonut(commitsDay);
 
+		createDonut(commitsDay);
     });
+    
 
 })
