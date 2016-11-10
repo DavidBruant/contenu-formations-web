@@ -18,5 +18,3 @@ export default function getCommits(){
 							  });
 	return allCommits;
 };
-
-// 1d1ea5599fad961bab88d7fddeafb9a7fb69e0cd

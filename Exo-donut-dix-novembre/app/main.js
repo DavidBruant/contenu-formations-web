@@ -24,35 +24,38 @@ document.addEventListener('DOMContentLoaded', () =>{
 		
 		const weekDays = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'];
 
-		const weekArray = [];
-		createCharts(weekDays, commits, chartContainer, weekArray);
-
-		const arcs = d3.pie()(weekArray);
+		// Returns arcs
+		const arcs = createCharts(weekDays, commits);
 
 		arcs.forEach(arcProps => {
+			// Creating DOM Nodes for each arcs
 			const arcG = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-			arcG.classList.add('arc');
 			const arcGPath = document.createElementNS('http://www.w3.org/2000/svg', 'path');
 			const arcGText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-			arcGText.textContent = arcProps.data;
 
+			// Adding class to each
+			arcG.classList.add('arc');
+
+			// Creating arcs
 			const arc = d3.arc()
 						  .innerRadius(70)
 						  .outerRadius(200)
 						  .startAngle(arcProps.startAngle)
 						  .endAngle(arcProps.endAngle);
 
-			const hue = Math.floor(Math.random() * 100) + 1; 
-
 			arcGPath.setAttribute('d', arc());
+
+			// Adding random color
+			const hue = Math.floor(Math.random() * 100) + 1; 
 			arcGPath.setAttribute('style', `fill:hsl(${hue}, 70%, 50%)`);
 
+
+			// Handling text
+			arcGText.textContent = arcProps.data;
 			const textPosition = arc.centroid((arc.startAngle+arc.endAngle)/2, (70+200)/2);
-
-			console.log(textPosition[0] + ',' + textPosition[1]);
-
 			arcGText.setAttribute('transform', 'translate('+textPosition[0] + ',' + textPosition[1]+')');
 
+			// Append to the DOM
 			arcG.appendChild(arcGPath);
 			chartContainer.appendChild(arcG);
 			arcG.appendChild(arcGText);
