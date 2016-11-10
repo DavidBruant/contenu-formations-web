@@ -11,11 +11,9 @@ export default function getContributors() {
     // var totalFetches = Math.ceil(totalCommits / 100);
     var fetchPromises = [];
 
-    // for (var i = 1; i <= 3; i++) {
-    //     fetchPromises.push(fetchCommitUrl(i));
-    // }
-
-    fetchPromises.push(fetchCommitUrl(1));
+    for (var i = 1; i <= 3; i++) {
+        fetchPromises.push(fetchCommitUrl(i));
+    }
 
     return Promise.all(fetchPromises)
         .then(function(results) {

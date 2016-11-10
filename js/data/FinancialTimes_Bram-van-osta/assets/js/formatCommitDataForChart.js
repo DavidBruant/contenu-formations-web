@@ -7,6 +7,6 @@ export default function (commitsByDate) {
             'label': day,
             'count': commitsByDate[day].length
         };
-    })
+    });
 
 }

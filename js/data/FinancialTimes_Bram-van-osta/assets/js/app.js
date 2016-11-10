@@ -19,8 +19,10 @@ document.addEventListener('DOMContentLoaded', function () {
     getCommits().then(function(commits) {
         var commitsByDay = orderCommitsByDay(commits);
         var formattedData = formatCommitDataForChart(commitsByDay);
+        console.log(formattedData);
 
-        generateDonutChart(formattedData);
+        var svg = generateDonutChart(formattedData);
+        document.body.appendChild(svg);
     });
 
 });
