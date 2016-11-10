@@ -46,15 +46,36 @@ export default function generateDonutChart(data) {
 
         // Create the Path element
         var path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        path.setAttribute("d", d);
-        path.setAttribute("fill", colors[index]);
+        path.setAttribute('d', d);
+        path.setAttribute('fill', colors[index]);
         g.appendChild(path);
 
-        // Create the Text element
-        var text = document.createElementNS("http://www.w3.org/2000/svg", "text");
-        text.textContent = arc.data.label + ' - ' + arc.data.count;
-        text.setAttribute('transform', 'translate('+ arcD3.centroid(arc) +')');
-        g.appendChild(text);
+        // Create the Legend
+        var rect = document.createElementNS("http://www.w3.org/2000/svg", "rect");
+        rect.setAttribute('width', '25');
+        rect.setAttribute('height', '25');
+        rect.setAttribute('fill', colors[index]);
+        var rectTransformVertical = (width / 2) * -1 + 10;
+        var rectTransformHorizontal = ((height / 2) * -1) + index * 50 + 10;
+        rect.setAttribute('transform', 'translate('+ rectTransformVertical +', '+ rectTransformHorizontal +')');
+        g.appendChild(rect);
+
+        // Create the Legend label element
+        var label = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        label.classList.add('label');
+        label.textContent = arc.data.label;
+        var labelTransformVertical = (width / 2) * -1 + 50;
+        var labelTransformHorizontal = ((height / 2) * -1) + index * 50 + 26 ;
+        label.setAttribute('transform', 'translate('+ labelTransformVertical +', '+ labelTransformHorizontal +')');
+        g.appendChild(label);
+
+        // Create the number label element
+        var number = document.createElementNS("http://www.w3.org/2000/svg", "text");
+        number.classList.add('number');
+        number.textContent = arc.data.count;
+        number.setAttribute('fill', '#fff');
+        number.setAttribute('transform', 'translate('+ arcD3.centroid(arc) +')');
+        g.appendChild(number);
     });
 
     return svg;
