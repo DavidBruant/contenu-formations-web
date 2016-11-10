@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function(){
    			.startAngle(e.startAngle)
    			.endAngle(e.endAngle);
 
-   			document.body.appendChild(arc);
    		});
 
 
