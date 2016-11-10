@@ -27,6 +27,8 @@ export default function generateDonutChart(data) {
 
     // Instantiate the D3 pie function with basic settings
     var pieD3 = d3.pie()
+        .startAngle((Math.PI / 2) * -1)
+        .endAngle(Math.PI / 2)
         .sort(null)
         .value(function(d) { return d.count; });
 
