@@ -4,13 +4,23 @@ Récupérer des nouvelles données sans recharger entièrement la page (demande 
 
 Standard, mais moderne (polyfills).
 
-````js 
+`fetch` retourne une promesse pour un résultat, mais le retourne en deux temps.
 
-fetch('https://rawgit.com/anthill/ToilettesBordeaux/blob/master/data/toilettes.json')
+
+
+
+````js 
+fetch('https://rawgit.com/anthill/ToilettesBordeaux/master/data/toilettes.json')
+// La première promesse se résoud quand on a reçu le status et les headers, mais pas encore le body
 .then(function(resp){
+    // resp.status (resp.ok)
+    // resp.headers
+
+    // on explique la manière dont on attend le body quand il arrivera
     return resp.json();
     // return resp.text();
 })
+// cette seconxde promesse se résoud quand le body est revenu et qu'il est dans la forme qu'on attend (ici un objet JS obtenu en parsant le JSON)
 .then(function(toilettes){
     console.log('toilettes', toilettes)
 })
@@ -18,7 +28,6 @@ fetch('https://rawgit.com/anthill/ToilettesBordeaux/blob/master/data/toilettes.j
 
 ````
 
-fetch retourne une promesse pour un résultat.
 
 
 

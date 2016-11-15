@@ -1,0 +1,15 @@
+{
+  "name": "es",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Promise.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "David Bruant <bruant.d@gmail.com> (https://twitter.com/DavidBruant)",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.15.2",
+    "rollupify": "^0.3.4"
+  }
+}
