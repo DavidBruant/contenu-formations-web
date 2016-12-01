@@ -4,13 +4,17 @@ import d3 from 'd3-shape';
 document.addEventListener('DOMContentLoaded', function(){
 
 	// charger et afficher les tweets de 
-	var commits = fetch('https://api.github.com/repos/Financial-Times/polyfill-service/commits?access_token=5b1b53776a1207333639b073bc7201af4d1a53ba&?page=1&per_page=100')
+	var commits1 = fetch('https://api.github.com/repos/Financial-Times/polyfill-service/commits?access_token=5b1b53776a1207333639b073bc7201af4d1a53ba&?page=1&per_page=100')
+	.then(function(result){ return result.json() });
+	var commits2 = fetch('https://api.github.com/repos/Financial-Times/polyfill-service/commits?access_token=5b1b53776a1207333639b073bc7201af4d1a53ba&?page=2&per_page=100')
+	.then(function(result){ return result.json() });
+	var commits3 = fetch('https://api.github.com/repos/Financial-Times/polyfill-service/commits?access_token=5b1b53776a1207333639b073bc7201af4d1a53ba&?page=3&per_page=100')
 	.then(function(result){ return result.json() });
 
 	var arr = { "Monday" : 0, "Tuesday" : 0, "Wednesday": 0, "Thursday" : 0, "Friday" : 0, "Saturday" : 0, "Sunday" : 0 };
 	var compteur = 0;
 
-	Promise.all([commits])
+	Promise.all([commits1, commits2, commits3])
 	.then(function(result){
 
 		console.log(result);
