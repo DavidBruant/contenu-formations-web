@@ -15,23 +15,18 @@ document.addEventListener('DOMContentLoaded', function(){
 	var compteur = 0;
 
 	Promise.all([commits1, commits2, commits3])
-	.then(function(result){
+	.then(function(results) {
 
-		console.log(result);
-		commits = result[0];
+ 		var commits = results[0].concat(results[1], results[2]);
 
 		commits.forEach(function(x){
-	    	var jour = moment(x.commit.author.date).format('dddd');
-	    	//var jour = x.commit.author.date;
-	    	console.log(jour);
+			var jour = moment(x.commit.author.date).format('dddd');
+			//var jour = x.commit.author.date;
+			console.log(jour);
 
-	    	arr[jour] = arr[jour] + 1;
-	    	compteur = compteur + 1;
-
+			arr[jour] = arr[jour] + 1;
+			compteur = compteur + 1;
 		});
-
-		console.log(arr);
-		console.log(compteur);
 
 		//Calcul en pourcentage du nombre de commits sur une journée
 		var Monday = (arr["Monday"] * 100) / compteur;
@@ -41,9 +36,6 @@ document.addEventListener('DOMContentLoaded', function(){
 		var Friday = (arr["Friday"] * 100) / compteur;
 		var Saturday = (arr["Saturday"] * 100) / compteur;
 		var Sunday = (arr["Sunday"] * 100) / compteur;
-
-		console.log(Monday);
-
 
 		var data = [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday];
 		var arcs = d3.pie()(data);
@@ -56,10 +48,13 @@ document.addEventListener('DOMContentLoaded', function(){
    			.outerRadius(300)
    			.startAngle(e.startAngle)
    			.endAngle(e.endAngle);
-
    		});
 
-
-
-	});
+		var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+		svg.setAttribute("width","960");
+		svg.setAttribute("height","960");
+		
+ 	})
+ 	.catch(function(e){console.error(e)});
+		
 });
