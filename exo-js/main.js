@@ -1,6 +1,8 @@
 import moment from 'moment';
 import d3 from 'd3-shape';
 
+//browserify main.js -o browserify-bundle.js -t rollupify -d -v
+
 document.addEventListener('DOMContentLoaded', function(){
 
 	// charger et afficher les tweets de 
@@ -36,23 +38,48 @@ document.addEventListener('DOMContentLoaded', function(){
 		var Friday = (arr["Friday"] * 100) / compteur;
 		var Saturday = (arr["Saturday"] * 100) / compteur;
 		var Sunday = (arr["Sunday"] * 100) / compteur;
-
-		var data = [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday];
-		var arcs = d3.pie()(data);
-
-		 var i = 0;
- 		arcs.forEach(function(e){
-   			console.log(e);
-   			var arc = d3.arc()
-   			.innerRadius(200)
-   			.outerRadius(300)
-   			.startAngle(e.startAngle)
-   			.endAngle(e.endAngle);
-   		});
+		
+		var color = ["#0E4F7F", "#24597F", "#1683CC", "#208FCE", "#2DBEFF", "#CFE5FF", "#6ABFFF"];
 
 		var svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
 		svg.setAttribute("width","960");
 		svg.setAttribute("height","960");
+
+		var gGlobal = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+		gGlobal.setAttribute("transform", "translate(480,380)");
+	
+		var i = 0;
+
+		arcs.forEach(function(e){
+
+			var g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
+			var path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+
+			console.log(e);
+			var arc = d3.arc()
+			.innerRadius(200)
+			.outerRadius(300)
+			.startAngle(e.startAngle)
+			.endAngle(e.endAngle);
+
+			path.setAttribute('d', arc());
+			path.setAttribute('fill', color[i]);
+
+
+			var text = document.createElementNS('http://www.w3.org/2000/svg', 'text');
+			text.textContent = e.data;
+			text.setAttribute("transform", "translate(" + arc.centroid((arcs[i].startAngle+arcs[i].endAngle)/2, (arcs[i].innerRadius+arcs[i].outerRadius)/2) + ")");
+
+			g.appendChild(path);
+			g.appendChild(text);
+			gGlobal.appendChild(g);
+
+			i++;
+
+		});
+
+		document.body.appendChild(svg);
+		svg.appendChild(gGlobal);
 		
  	})
  	.catch(function(e){console.error(e)});
