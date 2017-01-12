@@ -18,14 +18,13 @@
 Problèmes :
 
 * performance (limite de nombre de requêtes HTTP en parallèle)
-* Dépendance non-explicite
+* Dépendances entre les scripts sont non-explicite
 
+## Aparté
 
-## uglifyjs
-
-
-
-
+Les différents morceaux de code d'une application dépendent les uns des autres. Mais en JavaScript, ces dépendances étaient **implicites**.
+On rend les dépendances explicites afin de savoir exactement quel est le code qu'on doit chargé dans la page.
+Ce n'est pas une liste de fichiers. C'est l'ensemble des fichiers que l'on peut atteindre par lien de dépendance à partir du point d'entrée. 
 
 
 
@@ -93,19 +92,27 @@ Solution : r.js https://github.com/requirejs/r.js
 
 # ES6/2015
 
+C'est comme ça qu'on définit un module
+
 ````js
+// un module importe d'autres modules 
 import React from 'React';
 import createTweetsOl from './createTweetsOl';
 
 // ...
 
+// un module exporte quelque chose
 export default function(){
     // ....
 }
 ````
 
+Quand on importe un module, on "récupère" ce que ce module exporte.
+Le module "point d'entrée" n'exporte rien. Les modules "feuilles" n'importe rien.
 
 # TODO
+
+On utilise un outil qui s'appelle browserify afin de créer un "bundle" qui sera le seul (gros) script qu'on l'on charge (script@src) à partir du module d'entrée.
 
 * installer Node.js (installe npm aussi)
 
