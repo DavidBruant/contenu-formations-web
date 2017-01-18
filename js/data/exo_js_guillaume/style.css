@@ -1,0 +1,99 @@
+/*
+http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+*/
+*, *:before, *:after {
+    box-sizing: border-box;
+    /* if you really care about older browsers, add prefixed versions at your own risks */
+}
+/*
+Repeating the background mostly makes sense in the <body>. Otherwise, people usually want the image and preferably its center (not the top-right corner)
+*/
+*:not(body) {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+}
+/*
+Makes the hidden attribute works even when an element is styled display: flex
+http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2014-May/254198.html
+*/
+[hidden] {
+    display: none !important;
+}
+html, body {
+    padding: 0;
+    margin: 0;
+}
+/*
+In applications, there can be lists but HTML lists have bullet points and a bunch of useless styling attributes 
+*/
+ul, ol, menu {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+ol{
+    padding-top:100px;
+}
+li {
+    margin: 0;
+    padding: 0;
+}
+/*
+fairly classic thing to do
+*/
+.table-layout {
+    display: table;
+}
+.table-layout > *, .table-row-layout {
+    display: table-row;
+}
+.table-layout > * > *, table-row-layout > * {
+    display: table-cell;
+    vertical-align: top; /* because otherwise text blobs appear at the bottom which is not what people want */
+}
+* {
+    border-collapse: collapse;
+}
+li:hover{
+    border: 1px grey dashed;
+}
+li{
+    background-color: white;
+}
+li.expanded{
+    background-color: #AAA;
+}
+li .extra{
+    display: none;
+}
+li.expanded .extra{
+    display: block;
+}
+
+button{
+    display: block;
+    margin: 50px auto;
+}
+
+button:hover{
+    cursor: pointer;
+}
+
+#button2{
+    background-color:#d2d2d2;
+    border:none;
+    width:200px;
+    height:100px;
+}
+
+section{
+    display:flex;
+    padding-bottom=100px;
+    flex-direction: column;
+}
+
+section div{
+    text-align: center;
+}

@@ -1,0 +1,16 @@
+{
+  "name": "exam_gui",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "d3-shape": "^1.0.3",
+    "moment": "^2.16.0",
+    "rollupify": "^0.3.5"
+  }
+}
