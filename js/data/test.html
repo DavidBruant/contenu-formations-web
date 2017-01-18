@@ -1,114 +1,108 @@
 <!DOCTYPE html>
 <html lang="fr">
-  <head>
-    <meta charset="utf-8">
-      
-      <meta description="">
-    <style>
-    /*
-      http://www.paulirish.com/2012/box-sizing-border-box-ftw/
-    */
-    *, *:before, *:after {
-        box-sizing: border-box;
-        /* if you really care about older browsers, add prefixed versions at your own risks */
+    <head>
+        <meta charset="utf-8">
+        <meta description="">
+        <script src="scripts/createTweetLi.js"></script>
+        <script src="scripts/createTweetsOl.js"></script>
+        <script src="scripts/createTimeButton.js"></script>
+        <script src="scripts/main.js"></script>
+        <style>
+            /*
+            http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+            */
+            *, *:before, *:after {
+                box-sizing: border-box;
+                /* if you really care about older browsers, add prefixed versions at your own risks */
 
-        overflow: auto; /* http://bocoup.com/weblog/new-overflow-default/ */
-    }
+            }
 
-    /*
-      Repeating the background mostly makes sense in the <body>. Otherwise, people usually want the image and preferably its center (not the top-right corner)
-    */
-    *:not(body) {
-        background-repeat: no-repeat;
-        background-position: center center;
-        background-size: cover;
-    }
+            /*
+            Repeating the background mostly makes sense in the <body>. Otherwise, people usually want the image and preferably its center (not the top-right corner)
+            */
+            *:not(body) {
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+            }
 
-    /*
-      Makes the hidden attribute works even when an element is styled display: flex
-      http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2014-May/254198.html
-    */
-    [hidden] {
-        display: none !important;
-    }
-
-
-    html, body {
-        padding: 0;
-        margin: 0;
-    }
-
-    /*
-      In applications, there can be lists but HTML lists have bullet points and a bunch of useless styling attributes 
-    */
-    ul, ol, menu {
-        list-style: none;
-
-        margin: 0;
-        padding: 0;
-    }
-
-    li {
-        margin: 0;
-        padding: 0;
-    }
-
-    /*
-      fairly classic thing to do
-    */
-    .table-layout {
-        display: table;
-    }
-    .table-layout > *, .table-row-layout {
-        display: table-row;
-    }
-    .table-layout > * > *, table-row-layout > * {
-        display: table-cell;
-        vertical-align: top; /* because otherwise text blobs appear at the bottom which is not what people want */
-    }
-
-    * {
-        border-collapse: collapse;
-    }
+            /*
+            Makes the hidden attribute works even when an element is styled display: flex
+            http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2014-May/254198.html
+            */
+            [hidden] {
+                display: none !important;
+            }
 
 
-        li:hover{
-            border: 1px grey dashed;
-            
-        }
-        
-        li{
-            background-color: white;
-        }
-        li.expanded{
-            background-color: #AAA;
-        }
-        li .extra{
-            display: none;
-        }
-        li.expanded .extra{
-            display: block;
-        }
-        
-    </style>
-      
-      <script src="./Promise.js"></script>
-      <!--
-      <script src="./getContents.js"></script>
-      <script src="./tweetLi.js"></script>
-      <script src="./tweetCollection.js"></script>
-      
-      <script src="main.js"> </script> -->
-      
-      <script data-main="main" src="require.js"></script>
-    
-      
-    <title>yo</title>
+            html, body {
+                padding: 0;
+                margin: 0;
+            }
+
+            /*
+            In applications, there can be lists but HTML lists have bullet points and a bunch of useless styling attributes 
+            */
+            ul, ol, menu {
+                list-style: none;
+
+                margin: 0;
+                padding: 0;
+            }
+
+            li {
+                margin: 0;
+                padding: 0;
+            }
+
+            /*
+            fairly classic thing to do
+            */
+            .table-layout {
+                display: table;
+            }
+            .table-layout > *, .table-row-layout {
+                display: table-row;
+            }
+            .table-layout > * > *, table-row-layout > * {
+                display: table-cell;
+                vertical-align: top; /* because otherwise text blobs appear at the bottom which is not what people want */
+            }
+
+            * {
+                border-collapse: collapse;
+            }
+
+
+            li:hover{
+                border: 1px grey dashed;
+
+            }
+
+            li{
+                background-color: white;
+            }
+            li.expanded{
+                background-color: #AAA;
+            }
+            li .extra{
+                display: none;
+            }
+            li.expanded .extra{
+                display: block;
+            }
+            .buttonFat, #buttonTweets {
+                padding: 40px;
+                width: 300px;
+            }
+            .display_none {
+                display: none;
+            }</style>
+
+    <title>Javascript</title>
   </head>
 
-  <body>
-      <button id="decr">Decrement</button>
-      <button id="inc">Increment</button>
-      <output></output>
-  </body>
+    <body>
+        <button id="buttonTweets" >Display French Tweets</button>
+    </body>
 </html>
