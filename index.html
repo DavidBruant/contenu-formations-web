@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="fr">
+    <head>
+        <meta charset="utf-8">
+
+        <meta description="">
+        <style>
+ 
+            /*
+            http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+            */
+            *, *:before, *:after {
+                box-sizing: border-box;
+                /* if you really care about older browsers, add prefixed versions at your own risks */
+            }
+            /*
+            Repeating the background mostly makes sense in the <body>. Otherwise, people usually want the image and preferably its center (not the top-right corner)
+            */
+            *:not(body) {
+                background-repeat: no-repeat;
+                background-position: center center;
+                background-size: cover;
+            }
+            /*
+            Makes the hidden attribute works even when an element is styled display: flex
+            http://lists.whatwg.org/pipermail/whatwg-whatwg.org/2014-May/254198.html
+            */
+            [hidden] {
+                display: none !important;
+            }
+            html, body {
+                padding: 0;
+                margin: 0;
+            }
+            /*
+            In applications, there can be lists but HTML lists have bullet points and a bunch of useless styling attributes 
+            */
+            ul, ol, menu {
+                list-style: none;
+                margin: 0;
+                padding: 0;
+            }
+            li {
+                margin: 0;
+                padding: 0;
+            }
+            /*
+            fairly classic thing to do
+            */
+            .table-layout {
+                display: table;
+            }
+            .table-layout > *, .table-row-layout {
+                display: table-row;
+            }
+            .table-layout > * > *, table-row-layout > * {
+                display: table-cell;
+                vertical-align: top; /* because otherwise text blobs appear at the bottom which is not what people want */
+            }
+            * {
+                border-collapse: collapse;
+            }
+           /* li:hover{
+                border: 1px grey dashed;
+            }*/
+            li{
+                background-color: white;
+            }
+            li.expanded{
+                background-color: #AAA;
+            }
+            li .extra{
+                display: none;
+            }
+            li.expanded .extra{
+                display: block;
+            }
+
+            button{
+                width: 150px;
+                height: 150px;
+            }
+
+        </style>
+
+        
+      <script>
+          "use strict";
+        document.addEventListener('DOMContentLoaded', function(){
+// charger et afficher les tweets de 
+// 'https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets2.json'
+            fetch('https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json')
+            .then(function(resp){return resp.json()})
+            .then(function(tweets){
+                // var el = document.querySelector('#tweets');
+                // var tweets = JSON.parse(el.textContent)
+                console.log(tweets);
+                console.log(tweets[0].text); // [].. ensuite pour accéder à une prop => . (ex: o.a)
+                    // pour le premier tweet
+                    // l'afficher
+                    // afficher son message dans la console                
+                    // créer une div qui contient le texte du commit et ajouter la div au <body>
+    
+                var div = document.createElement('div');
+                var ul = document.createElement('ul');
+
+
+                document.body.appendChild(div)
+                 div.textContent = tweets[0].text 
+                /*
+                // créer un nouvel élément 'div'
+                var x = document.createElement('div');
+                // rajouter un enfant
+                parent.appendChild(enfant);
+                
+                // accéder au <body>
+                document.body
+                // changer le texte d'un élément
+                element.textContent = str;
+                */
+
+                var tweetstext = tweets.map(function(tweet){
+                        return tweet.text;
+                });
+                
+                console.log(tweetstext);
+
+                var createdat = tweets.map(function(tweet){
+                        return tweet.created_at;
+                });
+
+                console.log(createdat);
+
+                var frtweets = tweets.filter(function(tweet){
+                        return tweet.lang === 'fr';
+                });
+
+                console.log(frtweets);
+
+                // afficher dans la console les text de tous les tweets du tableau en utilisant .forEach
+                /*tweets.forEach (function(tweet){
+                    console.log(tweet.text)
+                })*/
+
+
+                // créer un tableau avec seulement tous les textes des tweets
+                // créer un tableau avec seulement les dates de publication (created_at)
+                // créer un tableau avec seulement les tweets en français
+             
+
+                var ol = document.createElement('ol');
+                tweets.forEach (function(tweet){
+                    var li = document.createElement('li')
+                    li.textContent = tweet.text;
+                    ol.appendChild(li);
+
+                });
+
+                document.body.appendChild(ol);
+
+                // créer un <ol>
+                // pour chaque tweet, créer un <li>, mettre le texte dedans, mettre le <li> dans le <ol>
+                // mettre le <ol> dans le <body>
+
+
+                // isoler une fonction, qui pour un objet tweet créé un <li> (séparer la phase de création des éléments et de composition)
+                function createtweetLi (tweet){
+                    var li = document.createElement('li')
+                    //...
+                    return li;
+                }
+
+                function createtweetOl (tweet){
+                    var li = document.createElement('ol')
+                    //...
+                    return li;
+                }
+                // Créer et ajouter un <button> qui quand on clique dessus affiche 'click' dans la console.
+                // -- qui quand on clique ne garde que les tweets en français
+                // (et quand on reclique re-affiche tout)
+                /*if(condition){
+                    // ...
+                }
+                else{
+                    // ...
+                }*/
+
+                var buttonfr = document.createElement("button")
+                document.body.appendChild(buttonfr);
+                var onlyfr = false
+
+                buttonfr.addEventListener('click', function(){
+                    console.log('YiYi');
+                });
+
+                buttonfr.addEventListener('click', function(){
+                    ol.remove();
+                    if(onlyfr){
+                        ol = createtweetOl(frtweets);
+                    }
+                    else{
+                        ol = createtweetOl(tweets);
+                    }
+
+                    onlyfr = !onlyfr;
+
+                    document.body.appendChild(ol);
+                });
+                // Faites un bouton (un peu gros) qui écoute mouseup/mousedown/click/dblclick et mesure le temps de click et de doubleclick 
+                // et affiche tempsClic1, tempsClic2, tempsDoubleClic
+                
+                // var timeButton = document.createElement('button');
+                // timeButton.append('TIME !');
+
+                // document.body.append(timeButton);
+                // var blastmd, blastclick, lastmd, lastclick;
+
+                // timeButton.addEventListener('mousedown', function(e){
+                //     blastmd = lastmd;
+                //     lastmd = e.timeStamp;
+                // });
+
+                // timeButton.addEventListener('click', function(e){
+                //     blastclick = lastclick;
+                //     lastclick = e.timeStamp;
+                //     console.log('click', lastclick - lastmd);
+                // });
+
+                // timeButton.addEventListener('dblclick', function(e){
+                //     console.log('c1', blastclick - blastmd);
+                //     console.log('c2', lastclick - lastmd);
+                //     console.log('dblclick', e.timeStamp - blastmd);
+                //     timeButton.setAttribute('disabled', '');
+                // });
+                
+                document.documentElement.addEventListener('mousedown', function(event){
+                    console.log('mousedown', event.pageX, event.pageY);  
+                }.bind(this));
+
+                document.documentElement.addEventListener('click', function(event){
+                    console.log('click', event.pageX, event.pageY);  
+                }.bind(this));
+                
+                document.documentElement.addEventListener('dblclick', function(event){
+                    console.log('dblclick', event.pageX, event.pageY);
+                    console.log('c1', mousedown - click);
+                    console.log('c2', click - dblclick);  
+                }.bind(this));
+
+                
+            })
+            .catch(function(e){
+                console.error(e);
+            });
+            // supprimer le gloubiboulga d'en haut
+            // Créer plusieurs fichiers avec du code
+            // * main.js
+            // * createTweetLi.js
+            // * createTweetsOl.js
+            // charger tout ça via des <script src="...">
+            // créer une fonction 'createClickTimeButton(text)' dans un nouveau fichier qui créé un bouton de calcul de temps de clic
+            // (déplacer le code + l'appeler dans le main.js, 2 fois pour créer 2 boutons avec 2 textes différents)
+            
+        })
+      </script>
+    
+      
+    <title>yo</title>
+  </head>
+
+  <body>
+  </body>
+</html>
