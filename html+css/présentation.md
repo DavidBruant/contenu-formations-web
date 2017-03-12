@@ -194,6 +194,10 @@ Références
         * table-row
         * table-cell
     * flex
+        * `flex-direction` `column` `row`
+        * `justify-content`
+        * `align-items`
+        * https://css-tricks.com/snippets/css/a-guide-to-flexbox/
     * none
     
 * position
