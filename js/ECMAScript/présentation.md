@@ -236,16 +236,29 @@ else{ // el === null
 
 http://davidbruant.github.io/ObjectViz/
 
+# JSON
+
+JSON : JavaScript Object Notation
+Format d'échange (manière de sérialiser des données structurées)
+
+`JSON.stringify(obj) => string`
+`JSON.parse(string) => obj`
+
+
+
+
 # Array
 
 ```js
+"use strict";
+
+console.clear()
 var arr = [12, 65, 546];
 
-console.log(arr[0])
-console.log(arr.length)
+console.log('mon tableau', arr[0], arr.length)
 
 arr.forEach(function(e){
-  console.log(e)
+  console.log(e+1)
 })
 ```
 
@@ -260,6 +273,8 @@ arr.forEach(function(e){
 
 
 ## Utilisation des tableaux
+
+https://twitter.com/steveluscher/status/741089564329054208
 
 * a.map(f)
 
@@ -285,46 +300,56 @@ var arr2 = arr.filter(function(e){ return e%2 === 0; });
 
 * a.slice(debut, fin)
 
+````js
 arr
 .slice(0, 5)
 .forEach(function(e, i, a){
   console.log(e, i, a)
 })
+````
 
-Avant Array.prototype.find : 
-function find(predicate, arr){
-    var found;
-    
-    return arr.some(function(e){
-        if(predicate(e)){
-            found = e;
-            return true;
-        }
-        return false;
-    })
+* a.find(pred)
 
-}
-
-
-
+````js
+var found = arr.find(function(e){
+    return e >= 1000 && e%27 === 13;
+})
+````
 
 * a.sort(fun)
 
 arr = [...new Set(arr)] // unique (ES6/2015)
+ou https://lodash.com/docs/4.17.4#uniq
 
 # Set/Map (ES6/2015)
 
-* new Set(arr)
+````js
+var s = new Set(arr)
 s.add(value)
 s.has(value)
 s.delete(value)
+````
 
+````js
 var map = new Map();
 // Map : clé (any) => valeur (any)
 map.set(key, value)
 map.get(key)
 map.has(key)
 map.delete(key)
+map.keys() // iterator
+````
+
+````js
+var wm = new WeakMap();
+wm.set(key, value)
+wm.get(key)
+wm.has(key)
+wm.delete(key)
+// pas de .keys(), on ne peut pas itérer sur une WeakMap
+````
+
+
 
 # Fonctions
 

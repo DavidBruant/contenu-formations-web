@@ -77,6 +77,8 @@ Styler les éléments par défaut
 * `lang` (surtout pour &lt;html>)
 * `class`
 * `id`
+* data attribute
+    * attributs libres qui commencent par `data-`
 
 ## Input 
 
@@ -126,15 +128,18 @@ Références
 * L'élément avec l'id `tabs`
     * `#tabs`
 * Les éléments avec un certain attribut
-    a[href]{
-        
-    }
-    input[type="email"]{
-            
-    }
-    a[class*="chosen"]
+````
+a[href]{
     
-    a[href^="https://"]
+}
+input[type="email"]{
+        
+}
+a[class*="chosen"]
+
+a[href^="https://"]
+````
+
 * Composition
     * `E, F` "et"
     * `E F` "descendant"
@@ -145,6 +150,7 @@ Références
         * `x:nth-child(even)`
         * `x:nth-child(odd)`
         * `x:nth-of-type(2n+1)`
+        * `:first-child`, `:last-child`
         
         tr td{
 	        background-color: white;
@@ -179,11 +185,13 @@ Références
 
 * document flow
 
+````
 *{
   position: absolute;
   top: 0;
   left:0;
 }
+````
 
 * display
     * block

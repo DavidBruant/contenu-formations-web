@@ -95,27 +95,10 @@
       <script>
           "use strict";
 
-          function createTweetLi(tweet){
-              var li = document.createElement('li');
-              li.append(tweet.text)
-              return li;
-          }
-
-          function createTweetsOl(tweets){
-              var ol = document.createElement('ol');
-              tweets.forEach(function(t){
-                  ol.append(createTweetLi(t));
-              })
-              return ol;
-          }
-
         document.addEventListener('DOMContentLoaded', function(e){
-
-            console.log('time', e.timeStamp, performance.now())
 
 // charger et afficher les tweets de 
 // 'https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets2.json'
-
             fetch('https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json')
             .then(function(resp){return resp.json()})
             .then(function(tweets){
@@ -123,13 +106,8 @@
 
                 // pour le premier tweet
                     // l'afficher
-                console.log(tweets[0])
                     // afficher son message dans la console
-                console.log(tweets[0].text)             
                     // créer une div qui contient le texte du commit et ajouter la div au <body>
-                var div = document.createElement('div');
-                //div.textContent = '<h1 onclick="alert(\'ahah\')">yo</h1>';
-                //document.body.append(div);                 
 
                 /*
                 // créer un nouvel élément 'div'
@@ -147,93 +125,33 @@
 
 
                 // afficher dans la console les text de tous les tweets du tableau en utilisant .forEach
-                tweets.forEach(function(t){
-                    console.log(t.text);
-                })
-
+            
 
                 // créer un tableau avec seulement tous les textes des tweets
-                var texts = tweets.map(function(t){
-                    return t.text;
-                });
+               
                 // créer un tableau avec seulement les dates de publication (created_at)
-                var dates = tweets.map(function(t){
-                    return t.created_at;
-                });
+                
                 // créer un tableau avec seulement les tweets en français
-                var frs = tweets.filter(function(t){
-                    return t.lang === 'fr';
-                });
+                
 
                 // créer un <ol>
-                var ol = document.createElement('ol');
+                
                 // pour chaque tweet, créer un <li>, mettre le texte dedans, mettre le <li> dans le <ol>
-                tweets.forEach(function(t){
-                    var li = document.createElement('li');
-                    li.append(t.text);
-                    ol.append(li);
-                })
+                
                 // mettre le <ol> dans le <body>
-                document.body.append(ol);
+                
 
                 // isoler une fonction, qui pour un objet tweet créé un <li> (séparer la phase de création des éléments et de composition)
 
                 // Créer et ajouter un <button> qui quand on clique dessus affiche 'click' dans la console.
                 // -- qui quand on clique ne garde que les tweets en français
                 // (et quand on reclique re-affiche tout)
-                /*if(condition){
-                    // ...
-                }
-                else{
-                    // ...
-                }*/
-
-                var b = document.createElement('button');
-                b.append('toggle');
-
-                var all = true;
-                b.addEventListener('click', function(){
-                    var newOl = createTweetsOl( all ? frs : tweets );
-                    ol.replaceWith(newOl);
-                    ol = newOl;
-                    all = !all;
-                });
-
-                document.body.append(b);
-
+                
 
                 // Faites un bouton (un peu gros) qui écoute mousedown/click/dblclick et mesure le temps de click et de doubleclick 
                 // et affiche tempsClic1, tempsClic2, tempsDoubleClic
 
-                var timeButton = document.createElement('button');
-                timeButton.append('TIME !');
-                document.body.append(timeButton);
-
-
-                var blastmd, blastclick, lastmd, lastclick;
-
-                timeButton.addEventListener('mousedown', function(e){
-                    blastmd = lastmd;
-                    lastmd = e.timeStamp;
-                });
-
-                timeButton.addEventListener('click', function(e){
-                    blastclick = lastclick;
-                    lastclick = e.timeStamp;
-                    console.log('click', lastclick - lastmd);
-                });
-
-                timeButton.addEventListener('dblclick', function(e){
-                    console.log('c1', blastclick - blastmd);
-                    console.log('c2', lastclick - lastmd);
-                    console.log('dblclick', e.timeStamp - blastmd);
-
-                    timeButton.setAttribute('disabled', '');
-                });
-            })
-            .catch(function(e){
-                console.error(e);
-            });
+               
 
             // Créer plusieurs fichiers avec du code
             // * createTweetLi.js
@@ -241,7 +159,7 @@
             // * createClickTimeButton.js
             // * main.js
 
-            // charger tout ça via des <script defer src="...">
+            // charger tout ça via des script defer src="...">
         })
       </script>
     <!--
@@ -258,8 +176,6 @@
                 }
             })
         }
-
-
 
     -->
       

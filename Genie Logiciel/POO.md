@@ -16,7 +16,8 @@ Mon opinion :
 
 ### JavaScript
 
-Il n'y a que des propriétés dans les objets en JS. Les méthodes sont des propriétés dont la valeur est une fonction et que l'on appelle avec le `.`.
+Il n'y a que des propriétés dans les objets en JS. 
+Les méthodes sont des propriétés dont la valeur est une fonction et que l'on appelle avec le `.`.
 
 ````js
 var circle = {
@@ -33,7 +34,7 @@ circle.getDiameter();
 
 ## Encapsulation
 
-Un objet définit une frontière. Il "encapsule" son état interne et n'affiche qu'un ensemble de méthodes.
+Un objet définit une frontière, une "interface". Il "encapsule" son état interne et n'affiche qu'un ensemble de méthodes.
 Celà permet de garantir que certaines choses ne peuvent pas être modifiées et donc avoir des garanties sur la correction du programme. Par voie de conséquence, des programmes pratiquant correctement l'encapsulation garantissent une meilleure sécurité.
 
 En Java, PHP, C++, les propriétés et méthodes peuvent être définies `public` ou `private`.
