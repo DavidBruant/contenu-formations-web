@@ -116,17 +116,6 @@ On utilise un outil qui s'appelle browserify afin de créer un "bundle" qui sera
 
 * installer Node.js (installe npm aussi)
 
-"transform": [
-      [
-        "babelify",
-        {
-          "presets": [
-            "es2015"
-          ],
-
-    "babel-preset-es2015": "^6.24.0",
-    "babelify": "^7.3.0",
-
 ```bash
 # dans le dossier projet :
 npm init -y
