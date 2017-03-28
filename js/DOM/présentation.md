@@ -98,7 +98,7 @@ document.body.addEventListener('click', function(){
 * change
 * scroll
 
-* "event delegation"
+## Event properties
 
 ````js
 el.addEventListener('click', function(e){

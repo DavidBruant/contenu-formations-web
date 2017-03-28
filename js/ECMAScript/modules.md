@@ -82,7 +82,7 @@ define(
     }
 );
 ````
-// https://github.com/MapContrib/MapContrib/blob/1f33a525fbc95fe0bb82fe86da517be5e0760ee6/src/public/js/view/main.js
+// https://github.com/MapContrinpm install react react-dom --saveb/MapContrib/blob/1f33a525fbc95fe0bb82fe86da517be5e0760ee6/src/public/js/view/main.js
 
 Problème : 
 * Nombre d'A/R égal à la profondeur de l'arbre.
@@ -116,15 +116,26 @@ On utilise un outil qui s'appelle browserify afin de créer un "bundle" qui sera
 
 * installer Node.js (installe npm aussi)
 
+"transform": [
+      [
+        "babelify",
+        {
+          "presets": [
+            "es2015"
+          ],
+
+    "babel-preset-es2015": "^6.24.0",
+    "babelify": "^7.3.0",
+
 ```bash
 # dans le dossier projet :
 npm init -y
 npm install browserify -g
 # npm install watchify -g
-npm i rollupify --save 
+npm i babelify babel-preset-es2015 --save 
 
-browserify main.js -o bundle.js -t rollupify -d
-# watchify main.js -o bundle.js -t rollupify -d -v
+browserify main.js -o bundle.js -t [ babelify --presets [ es2015 ] ] -d
+# watchify main.js -o bundle.js -t [ babelify --presets [ es2015 ] ] -d -v
 ```
 
 changer HTML:
