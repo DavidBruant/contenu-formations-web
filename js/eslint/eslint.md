@@ -40,6 +40,15 @@ browserify-bundle.js
 ```
 
 Il reste une poignée d'erreurs.
+
+````
+nia/nia/nia/bla.js    
+    6:9   error  'SCORE_FIXED' is defined but never used  no-unused-vars
+    8:9   error  'tex' is defined but never used          no-unused-vars
+    9:9   error  'notBlank' is defined but never used     no-unused-vars
+  115:19  error  'item' is defined but never used         no-unused-vars
+````
+
 Pour chaque "erreur" :
 * Décider si on veut que ce soit une erreur ("error"), un warning ("warn") ou ignoré ("off")
 * Modifier `.eslintrc` pour configurer eslint selon ce qu'on a décidé avec le nom de la règle.
@@ -48,6 +57,7 @@ Pour chaque "erreur" :
 
 
 pre-commit hook
+
 watch?
 
 Corriger les problèmes tout seul

@@ -1,22 +1,22 @@
 {
     "rules": {
         "indent": [
-            0,
+            "off",
             "tab"
         ],
         "quotes": [
-            0,
+            "error",
             "single"
         ],
         "linebreak-style": [
-            2,
+            "error",
             "unix"
         ],
         "semi": [
-            2,
+            "error",
             "never"
         ],
-        "no-console": 1
+        "no-console": "warn"
     },
     "env": {
         "es6": true,

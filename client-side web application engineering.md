@@ -80,12 +80,12 @@ Composant ("createTweetsOl.js") :
 
 export default function(tweets){
 
-    return ReactDOM.createElement('ol', {}, tweets.map(function(t){
-        return ReactDOM.createElement('li', {},
-            ReactDOM.createElement('span', {}, t.user.name),
-            ReactDOM.createElement('span', {}, t.created_at),
-            ReactDOM.createElement('span', {}, t.text),
-            ReactDOM.createElement('button', {
+    return React.createElement('ol', {}, tweets.map(function(t){
+        return React.createElement('li', {},
+            React.createElement('span', {}, t.user.name),
+            React.createElement('span', {}, t.created_at),
+            React.createElement('span', {}, t.text),
+            React.createElement('button', {
                 onClick: function(e){
                     console.log('on a cliqué sur', t);
                 }
@@ -93,8 +93,6 @@ export default function(tweets){
             
         )
     }))
-
-
 }
 
 ```

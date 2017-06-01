@@ -7,6 +7,7 @@ npm install react react-dom --save
 ````
 
 composant1.js
+
 ```js
 import React from 'react';
 
@@ -16,6 +17,7 @@ export default function(data){
 ```
 
 main-react.js
+
 ````js
 import React from 'react';
 import ReactDOM from 'react-dom';
@@ -30,12 +32,12 @@ ReactDOM.render(
 Créer `react.html`
 
 ````
-watchify main-react.js -o bundle-react.js -t rollupify -d -v
+watchify main-react.js -o bundle-react.js -t [ babelify --presets [ es2015 ] ] -d -v
 ````
 
 
-React.createElement(Composant, attributs/données, enfant1, enfant2, ...)
-Enfant : string | Element | Enfant[]
+`React.createElement(Composant, attributs/données, enfant1, enfant2, ...)`
+`Enfant : string | Element | Enfant[]`
 
 Créer un composant qui prend un objet avec une propriété 'tweets' (tableau d'objets tweet : {tweets: tweets}) et retourne un élément 'ol' avec ses enfants 'li'.
 

@@ -18,3 +18,8 @@
 
 4. script chargés "on-demand"
 ++ disqus
+
+## Resources
+
+https://html.spec.whatwg.org/multipage/scripting.html#attr-script-defer
+

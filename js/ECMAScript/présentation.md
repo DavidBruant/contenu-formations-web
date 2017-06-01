@@ -31,9 +31,9 @@ https://kangax.github.io/compat-table/es6/
 
 * a = b
 * a = a+y
-    a += y
+    * a += y
 * a = a+1
-    a++Object.prototype.toString.c
+    * a++Object.prototype.toString.c
 
 ````js
 if(x){

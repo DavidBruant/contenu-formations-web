@@ -82,7 +82,7 @@ define(
     }
 );
 ````
-// https://github.com/MapContrinpm install react react-dom --saveb/MapContrib/blob/1f33a525fbc95fe0bb82fe86da517be5e0760ee6/src/public/js/view/main.js
+// https://github.com/MapContrib/MapContrib/blob/1f33a525fbc95fe0bb82fe86da517be5e0760ee6/src/public/js/view/main.js
 
 Problème : 
 * Nombre d'A/R égal à la profondeur de l'arbre.

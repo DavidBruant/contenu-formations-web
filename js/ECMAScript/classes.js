@@ -36,17 +36,21 @@ function Car(color){
         return i+1;
     }
 
-    this.getColor = function(x){
-        return color;
-    };
-    
-    this.what = function(x){
-        return privAttr + privMethod1(x);
-    };
+    return {
+        getColor: function(x){
+            return color;
+        },
+        what: function(x){
+            return privAttr + privMethod1(x);
+        },
+        setAttr: function(a){
+            privAttr = a;
+        }
+    }
 }
 
 var c = new Car(); // only exposes 'getColor' and 'what'
-
+c.color // undefined
 
 // pattern 3 (ES6)
 var Car3 = (function(){

@@ -107,10 +107,7 @@ La valeur de résolution de cette nouvelle promesse est un tableau qui contient 
 ... et on a regagné en lisibilité de code
 */
 var allP = Promise.all([fP, gP, hP])
-.then(function(results /* [f, g, h] */){
-    var f = results[0];
-    var g = results[1];
-    var h = results[2];
+.then(function([f, g, h]){
     return combine(f, g, h);
 })
 .catch(errorHandler);
@@ -133,25 +130,29 @@ fP.then(function(f){
 
 // fetch
 
-fetch(url)
-.then(function(resp){
+var httpRespP = fetch(url)
+
+var bodyP = httpRespP.then(function(resp){
     // réponse HTTP (avec code de statut et headers, mais pas de body)
     resp.headers
     resp.status
     // ...
     //return resp.text();
     return resp.json()
-})
-.then(function(body){
+});
 
+bodyP.then(function(body){
+    console.log(body.lol)
 })
 
 
 /*
 Suite de l'exercice :
-1) écrire un module qui contient une seule fonction getTweets() qui retourne une 
+1) écrire un fichier JS qui contient une seule fonction getTweets() qui retourne une 
 promesse pour un array de tweets
-2) modifier main-react.js pour qu'il utilise cette fonction
+getTweets() : Promise<Array<Tweet>>
+
+2) modifier main.js pour qu'il utilise cette fonction
 3) changer la fonction pour qu'elle charge des tweets de 2 urls :
 https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json
 https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets2.json
