@@ -48,3 +48,86 @@ ReactDOM.render(
     React.createElement(TweetsOl, {tweets: tweets}),
     document.body
 )
+
+
+````css
+label{
+    display: block;
+}
+
+````
+
+
+
+
+````js
+// composant.js
+function Form(data){
+    return React.createElement('form', {
+        onSubmit: function(e){
+            e.preventDefault();
+            console.log('submit', e);
+            var name = e.target.querySelector('input[name="name"]').value;
+
+            console.log(name);
+
+            var country = ...;
+
+            data.onUserFormSubmit({
+                name: name,
+                country: country
+            })
+        }
+    },
+        React.createElement('label', {},
+            'Name',
+            React.createElement('input', {
+                name: 'name',
+                defaultValue: data.name,
+                disabled: data.readonly,
+                onChange:
+            })
+        ),
+        React.createElement('label', {},
+            'Country',
+            React.createElement('select', {name: 'country'},
+                data.countries.map(function(c){
+                    return React.createElement('option', {value: document}, c)
+                })
+            )
+        ),
+        React.createElement('button', {type: 'submit'}, 'Yo')
+    )
+}
+
+// main.js
+var store = {
+    countries: ['a', 'b', 'c'],
+    country: 'a',
+    name: 'dav',
+    readonly: false
+}
+
+function render(){
+    ReactDOM.render(
+        React.createElement(Form, Object.assign(
+            {
+                onUserFormSubmit: function(formData){
+                    store = Object.assign(store, formData);
+                    render();
+                },
+                onChangeNiania
+            },
+            store
+        )),
+        document.body
+    )
+}
+
+render();
+
+setTimeout(function(){
+    store.readonly = true;
+    render()
+}, 5*1000)
+`````

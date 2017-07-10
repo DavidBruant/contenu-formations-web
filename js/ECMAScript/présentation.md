@@ -81,13 +81,15 @@ function g(){
 
 # Polyfills
 
+Bibliothèque qui implémente un standard
+
 https://cdn.polyfill.io/v2/docs/
 
 http://labs.ft.com/2014/09/polyfills-as-a-service/
 
 ````
 1) rajouter les polyfills
-<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=fetch,Promise"></script>
+<script src="https://cdn.polyfill.io/v2/polyfill.min.js?features=default,fetch,Promise"></script>
 
 2) code métier
 ````
@@ -165,7 +167,6 @@ o !== o3
     * NaN !== NaN
     * Number.isNaN(x) // ES6/2015
 * 0.1 + 0.2
-* toto.toFixed(2)
 * Math.PI.toFixed(3)
 * Math.PI.toString()
 
@@ -221,7 +222,7 @@ else{ // el === null
 
 * propriété : clé (string) -> valeur (any)
 
-(montrer objets.js)
+(montrer [objets.js](./objets.js))
 
 * if(o.a){}
     * o["a"] :=: o.a
@@ -286,13 +287,11 @@ var arr2 = arr.map(function(e){ return e*e; });
 * a.filter(f)
 
 ```js
-var arr = [12, 2, 76, 65, 546, 98, 54, 34];
+var arr = [12, 2, 76, 65, 545, 98, 57, 34];
 var arr2 = arr.filter(function(e){ return e%2 === 0; });
 ```
 
 // https://github.com/MyWebIntelligence/MyWebIntelligence/blob/master/common/cleanupURLs.js
-
-* Array.isArray(x)
 
 * a.reduce(function(acc, curr){
     return acc+curr;
@@ -321,7 +320,7 @@ var found = arr.find(function(e){
 arr = [...new Set(arr)] // unique (ES6/2015)
 ou https://lodash.com/docs/4.17.4#uniq
 
-# Set/Map (ES6/2015)
+# Set/Map
 
 ````js
 var s = new Set(arr)

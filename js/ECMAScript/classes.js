@@ -25,6 +25,55 @@ var c2 = new Car("black");
 
 c.getColor();
 
+/* ES6 
+class Car{
+    constructor(color){
+        this.color = color;
+        this.leftFrontWheel  = new Wheel();
+        this.rightFrontWheel = new Wheel();
+        this.leftRearWheel   = new Wheel();
+        this.rightRearWheel  = new Wheel();
+    }
+    getColor : function(){
+        return this.color;
+    },
+    changeWheel : function(position, newWheel){
+        // ...
+    }
+}
+*/
+
+// pattern 1.1
+function ElectricCar(color){
+    Car.call(this, color); // super()
+    
+    this.battery = new ElectricBattery();
+}
+
+ElectricCar.prototype = Object.assign(
+    Object.create(Car.prototype),
+    {
+        rechargeBattery: function(){
+            this.battery.recharge();
+        }
+    }
+)
+
+var e = new ElectricCar('violet')
+
+/* ES6 
+class ElectricCar extends Car{
+    constructor(color){
+        super();
+    
+        this.battery = new ElectricBattery();
+    }
+    rechargeBattery: function(){
+        this.battery.recharge();
+    }
+}
+*/
+
 
 // pattern 2
 "use strict"; // début de fichier

@@ -97,6 +97,7 @@ document.body.addEventListener('click', function(){
 * input
 * change
 * scroll
+    * le listener bloque le scroll
 
 ## Event properties
 
@@ -109,9 +110,12 @@ el.addEventListener('click', function(e){
 * e.target
 * e.currentTarget
 * e.preventDefault()
+
+```js
 form.addEventListener('submit', function(e){
     e.preventDefault();
 })
+```
 
 * e.stopPropagation()
 * e.timeStamp
