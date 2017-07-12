@@ -22,7 +22,7 @@ Node.prototype.remove = Node.prototype.remove || function(){
 
 * document.createElement('div')
     * créé une div orpheline
-* document.createElementNS('g', 'http://www.w3.org/2000/svg')
+* document.createElementNS('http://www.w3.org/2000/svg', 'g')
     * Pour le SVG
 
 ```js
