@@ -11,11 +11,12 @@ API pour manipuler un document HTML ou XML (arbre)
 * (anciennement) parent.appendChild(enfant)
 * n.remove()
 * n.replaceWith(n2)
-    
+
+```js
 Node.prototype.remove = Node.prototype.remove || function(){
     this.parentNode.removeChild(this);
 }
-
+```
 
 # Document + HTMLDocument
 
@@ -24,10 +25,16 @@ Node.prototype.remove = Node.prototype.remove || function(){
 * document.createElementNS('g', 'http://www.w3.org/2000/svg')
     * Pour le SVG
 
+```js
+function svgElement(name){
+    return document.createElementNS(name, 'http://www.w3.org/2000/svg')
+}
+```
+
 * document.querySelector(selector)
 * document.querySelectorAll(selector)
 
-Array.from(document.querySelectorAll('section h1')).map(...)
+`Array.from(document.querySelectorAll('section h1')).map(...)`
 
 
 # Element + HTMLElement
