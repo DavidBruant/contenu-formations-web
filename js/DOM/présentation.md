@@ -27,7 +27,7 @@ Node.prototype.remove = Node.prototype.remove || function(){
 
 ```js
 function svgElement(name){
-    return document.createElementNS(name, 'http://www.w3.org/2000/svg')
+    return document.createElementNS('http://www.w3.org/2000/svg', name)
 }
 ```
 
