@@ -90,9 +90,8 @@ var fffP = ffP.then(function(contenuSuivant){
     return contenuSuivant.nombres.map(function(e){ return e*e })
 })
 
-fffP.then(...)
+var fffP = fP.then(...)
 .then(...)
-.catch(...)
 
 // 3.4 combiner
 
@@ -107,7 +106,11 @@ La valeur de résolution de cette nouvelle promesse est un tableau qui contient 
 ... et on a regagné en lisibilité de code
 */
 var allP = Promise.all([fP, gP, hP])
-.then(function([f, g, h]){
+//.then(function([f, g, h]){
+.then(function(result){
+    var f = result[0];
+    var g = result[1];
+    var h = result[2];    
     return combine(f, g, h);
 })
 .catch(errorHandler);
@@ -128,62 +131,47 @@ fP.then(function(f){
   
 
 
-// fetch
+// Exemples
 
-var httpRespP = fetch(url)
+// chainer
 
-var bodyP = httpRespP.then(function(resp){
-    // réponse HTTP (avec code de statut et headers, mais pas de body)
-    resp.headers
-    resp.status
-    // ...
-    //return resp.text();
-    return resp.json()
-});
-
-bodyP.then(function(body){
-    console.log(body.lol)
+// 1.1
+var p1 = new Promise(function(resolve){
+    setTimeout(function(){
+        resolve(12)   
+    }, 1500)
 })
 
-
-/*
-Suite de l'exercice :
-1) écrire un fichier JS qui contient une seule fonction getTweets() qui retourne une 
-promesse pour un array de tweets
-getTweets() : Promise<Array<Tweet>>
-
-2) modifier main.js pour qu'il utilise cette fonction
-3) changer la fonction pour qu'elle charge des tweets de 2 urls :
-https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json
-https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets2.json
-(20 tweets et 100 tweets)
-combiner les résultats avec Promise.all() (et la méthode .concat() pour fusionner 
-les tableaux)
-
-L'exemple de MDN contient des arrow function 
-````js
-p.then(valeur => console.log(valeur))
-````
-Cette syntaxe est INTERDITE !!
-Utiliser : 
-````js
-p.then(function(valeur){ console.log(valeur) })
- */
-
-
-button.addEventListener('click', function l(e){
-    //desactiver
-    //button.removeEventListener('click', l);
-    button.setAttribute('disabled', '');
-
-    traitement()
-    .then(function(){
-        button.removeAttribute('disabled');
-        //button.addEventListener('click', l)
-    })
-    .catch(function(err){
-        afficherErreur(err);
-        button.removeAttribute('disabled');
-        //button.addEventListener('click', l)
-    })
+var p2 = p1.then(function(x){
+    console.log('p1 x', x);
+    return x+1;
 })
+
+p2.then(function(x){
+    console.log('p2 x', x);
+})
+
+// 1.2
+
+p1.then(function(y){
+    console.log('y', y)
+    return y*2;
+})
+.then(function(y){
+    console.log('y', y)
+    return y*2;
+})
+.then(function(y){
+    console.log('y', y)
+    return y*2;
+})
+.then(function(y){
+    console.log('y', y)
+    return y*2;
+})
+.then(function(y){
+    console.log('y final', y)
+})
+
+// animation schédulée par des promesses
+// https://github.com/dtc-innovation/dataviz-finances-gironde/blob/042f53ad7f0ca9a868961dae0b030da38dc599fe/src/public/js/components/BudgetConstructionAnimation.js#L69

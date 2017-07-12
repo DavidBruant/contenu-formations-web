@@ -17,8 +17,8 @@
 
 Problèmes :
 
-* performance (limite de nombre de requêtes HTTP en parallèle)
-* Dépendances entre les scripts sont non-explicite
+* Performance (limite de nombre de requêtes HTTP en parallèle)
+* Dépendances entre les scripts sont implicites
 
 ## Aparté
 
@@ -30,7 +30,8 @@ Ce n'est pas une liste de fichiers. C'est l'ensemble des fichiers que l'on peut 
 
 # CommonJS (Node.js)
 
-Un seul script@src
+Un seul `<script>`
+
 ````js
 "use strict";
 
@@ -43,14 +44,12 @@ module.exports = function(a){
     var h = dep1(48);
     return h + dep2(a);
 };
-
 ````
 
 Problème :
 * require synchrone
 
-
-// https://github.com/substack/browserify-handbook#bundling-commonjs-server-side
+https://github.com/substack/browserify-handbook#bundling-commonjs-server-side
 
 
 ## Noms des modules CJS
@@ -127,16 +126,18 @@ browserify main.js -o bundle.js -t [ babelify --presets [ es2015 ] ] -d
 # watchify main.js -o bundle.js -t [ babelify --presets [ es2015 ] ] -d -v
 ```
 
-changer HTML:
-* enlever tous les <script> et les remplacer par 
-<script defer src="bundle.js"></script>
+## changer le HTML
 
-Etape 1 :
-* créer un main.js (pas de dépendance)
+Enlever tous les <script> et les remplacer par `<script defer src="bundle.js"></script>`
 
+## Etape 1
 
-Etape 2 :
-main.js:
+créer un main.js (pas de dépendance)
+
+## Etape 2
+
+`main.js`
+
 ````js
 import createTweetsOl from './createTweetsOl.js';
 import createTimeButton from './createTimeButton.js';
@@ -147,7 +148,8 @@ document.addEventListener('DOMContentLoaded', function(){
 });
 ````
 
-createTweetsOl.js
+`createTweetsOl.js`
+
 ````js
 export default function(tweets){
     // ...
@@ -155,10 +157,10 @@ export default function(tweets){
 ````
 
 
+## Etape 3
 
-
-
-Etape 3 :
+https://www.npmjs.com/
+https://npms.io/
 
 ```bash
 npm install moment --save 
@@ -170,13 +172,44 @@ import moment from 'moment';
 
 // ...
 
-moment(t.created_at).fromNow()
-
+moment(t.created_at, 'dd MMM DD HH:mm:ss ZZ YYYY', 'en').fromNow()
 ```
-https://www.npmjs.com/
-https://npms.io/
 
 
+# NPM tasks
 
+Remplace grunt/gulp la plupart du temps
 
+http://substack.net/task_automation_with_npm_run
+https://gist.github.com/oncletom/1e233f2100c4e0877922
+http://naholyr.fr/2015/11/ecrire-des-scripts-npm-multi-plateforme/
+
+```bash
+npm run build:dev
+npm run build:prod
+```
+
+https://www.npmjs.com/package/npm-run-all
+https://www.npmjs.com/package/watch-exec
+
+Exemple : https://github.com/dtc-innovation/dataviz-finances-gironde/blob/master/package.json
+
+## Minifier
+
+```bash
+npm install minifyify --save
+browserify -p [minifyify --no-map] main.js -o bundle.js
+
+export NODE_ENV="production"
+```
+
+```json
+{
+    "scripts": {
+        "build:dev": "browserify main.js > bundle.js", // 800k
+        "build:prod": "browserify -p [minifyify --no-map] main.js > bundle.js", //350k
+        // 288k avec NODE_ENV="production"
+    }
+}
+```
 

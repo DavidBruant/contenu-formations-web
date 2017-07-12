@@ -24,10 +24,10 @@ https://github.com/feross/eslint-config-standard
 
 ## install
 
-````
+````bash
 npm install eslint -g
 # aller dans un projet (cd ./nia/nia/nia)
-# créer .eslintrc avec la commande
+# créer .eslintrc avec la commande :
 eslint --init 
 eslint .
 # la première fois, `eslint .` liste des centaines ou des milliers d'erreurs 
@@ -57,8 +57,8 @@ Pour chaque "erreur" :
 
 
 pre-commit hook
+https://www.npmjs.com/package/husky
 
-watch?
 
 Corriger les problèmes tout seul
 ````

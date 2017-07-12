@@ -120,6 +120,7 @@
         function createTweetsOl(tweets /* tableau de tweets */){
             var ol = document.createElement('ol');
             ol.append(...tweets.map(createTweetLi));
+         // ol.append(...tweets.map(function(t){ return createTweetLi(t) }));
             return ol;
         }
 

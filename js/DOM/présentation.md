@@ -68,12 +68,15 @@ Array.from(document.querySelectorAll('section h1')).map(...)
 
 # EventTarget
 
-* n.addEventListener(type, listener)
+* n.addEventListener(type, listener, options)
 ```js
 document.body.addEventListener('click', function(){
     console.log('yo');
 })
 ```
+
+options: 
+* once
 
 * n.removeEventListener(type, listener)
     * Attention, comparaison par référence

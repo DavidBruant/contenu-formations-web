@@ -40,11 +40,11 @@ Applications started being built as a serie of JavaScript scripts that were incl
 A tool that takes a set of scripts and bundles them together. Only one script is included which removes the correlation between the number of source scripts and delay before start.
 
 
-## Single-Page Application (SPA) with empty &lt;/body>
+## Single-Page Application (SPA) with empty &lt;body/>
 
 ### Aside on modules 
 
-SPAs typically have a module system (typically AMD with requirejs or commonJS with browserify). One of the benefits of a module system is that dependencies between scripts is explicit. The `main.js` script requires `x.js`, `y.js` and `z.js`; `x.js` requires `x1.js` and `x2.js`, etc.
+SPAs typically have a module system (typically AMD with requirejs or CommonJS with browserify). One of the benefits of a module system is that dependencies between scripts is explicit. The `main.js` script requires `x.js`, `y.js` and `z.js`; `x.js` requires `x1.js` and `x2.js`, etc.
 
 AMD could acquire dependencies asychronously which led to the unfortunate characteristics that, used naively, the application could not start before (`dependency tree depth`*`latency`) whic resulted in an unhealthy dependency between code maintainability and performance. `r.js` was created to work around this problem by bundling all modules into one script.
 

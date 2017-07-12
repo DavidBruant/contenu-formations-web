@@ -7,6 +7,8 @@ https://www.youtube.com/playlist?list=PLS3jzvALRSe6uP9gVfXLCG6nWo7M0hAJY
 http://developers.google.com/speed/pagespeed/insights/
 https://developers.google.com/speed/pagespeed/insights_extensions
 
+http://yellowlab.tools
+
 https://github.com/addyosmani/above-the-fold-css-tools
 
 ## Performance réelle
@@ -34,7 +36,7 @@ Sur le web, la lumière ne transporte pas l'information et pas en ligne droite :
 La latence réseau est douloureuse pour la performance.
 
 * Envoyer **le moins de requêtes HTTP possible** et le faire **aussi tôt que possible**. Une grosse requête vaut mieux que 10 petites requêtes.
-* Utiliser le cache HTTP (voire localStorage dans certains cas)
+* Utiliser le cache HTTP voire ServiceWorker (voire localStorage dans certains cas)
 * (Utiliser un CDN quand on a les moyens)
 
 
