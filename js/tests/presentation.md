@@ -1,42 +1,50 @@
 # Tests
 
-npm install mocha chai chai-as-promised --save-dev
-
-Dans `package.json`, "scripts"
-    "test": "mocha test"
+`npm install mocha chai chai-as-promised --save-dev`
 
 /*
     test/index.html
 */
 https://mochajs.org/#running-mocha-in-the-browser
-Rajouter <script src="http://chaijs.com/chai.js"></script>
+
 
 /*
-    test/index.js
-*/
-"use strict";
-
-https://mochajs.org/#getting-started
-Remplacer `var assert = require('assert');` par `var assert = chai.assert;
-
-/*
-    test/getContents.js
+    test/isParisMuseum.js
     
-    // watchify test/getContents.js -o test/browserify-tests.js -v -d
-    // ajouter <script src="browserify-tests.js"></script>
+watchify test/isParisMuseum.js -o test/bundle-tests.js -v -t [ babelify --presets [ es2015 ] ] -d
+    
+ajouter <script src="bundle-tests.js"></script>
 */
+
+`test/isParisMuseum.js`
+```js
 "use strict";
 
-var chai = require('chai')
-chai.use(require('chai-as-promised'));
+import chai from 'chai';
+import asPromised from 'chai-as-promised';
+
+import isParisMuseum from '../isParisMuseum';
+
 var expect = chai.expect;
 
-var getContents = require('../getContents');
+chai.use(asPromised);
 
-describe('getContents', function () {
-    it('should return a resolving promise if passed a valid URL', function () {
-        var tweetsP = getContents("https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json");
+describe('isParisMuseum', function () {
+    it('should return false for an empty object', function () {
+        var museum = {};
+        
+        expect(isParisMuseum(museum)).to.be.false;
 
-        return expect(tweetsP).to.eventually.be.an('array');
+        /*(function() {
+            isParisMuseum(museum)
+        }).should.throw();*/
     });
 });
+```
+
+
+```js
+function isParisMuseum(m){
+    return !!(m && m.fields && m.fields.ville && m.fields.ville.toUpperCase() === 'PARIS')
+}
+```

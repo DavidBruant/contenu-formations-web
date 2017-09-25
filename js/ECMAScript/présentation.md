@@ -100,7 +100,7 @@ http://labs.ft.com/2014/09/polyfills-as-a-service/
 | type          | typeof x    | Bon test          | Exemples                      |
 |---------------|-------------|-------------------|-------------------------------|
 | boolean       | "boolean"   |                   | `true`, `false`               |
-| string        | "string"    |                   | `''`, `"yo !"`, `'whatever'`  |
+| string        | "string"    |                   | `''`, `"yo !"`, ``whatever``  |
 | number        | "number"    |                   | `1`, `-2.3`, `NaN`, `Infinity` |
 | undefined     | "undefined" |                   |                               |
 | null          | ⚠ "object"  | `x === null`      |                               |
@@ -119,6 +119,8 @@ Toujours utiliser === et !==
 == "presque égal"
 
 === "strictement égal"
+
+http://dorey.github.io/JavaScript-Equality-Table/
 
 Comparaison par référence pour les objets, par valeur pour le reste.
 
@@ -246,7 +248,24 @@ Format d'échange (manière de sérialiser des données structurées)
 `JSON.parse(string) => obj`
 
 
+````js
+var o = {
+  a: 1,
+  bloublou: 9,
+  chapito: "yo",
+  brave: {
+    autre: "object"
+  }
+}
 
+var o2 = {
+  a: o
+};
+
+o.stylo = o2
+
+console.log(JSON.stringify(o))
+````
 
 # Array
 
