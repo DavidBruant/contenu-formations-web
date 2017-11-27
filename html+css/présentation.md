@@ -28,7 +28,6 @@ https://www.chromestatus.com/metrics/css/popularity
 * &lt;ul> &lt;ol> &lt;li>
 
 * "HTML5" &lt;article> &lt;menu> &lt;section> &lt;footer> &lt;header> &lt;nav> &lt;main> &lt;template>
-    * https://github.com/aFarkas/html5shiv#manual-installation (pour que ces éléments soient stylés sur IE6-9)
 
 * &lt;table> Seulement pour des données tabulaires
     * Regarder [`display:flex`](https://developer.mozilla.org/en-US/docs/Web/CSS/flex) ou [`display:table`](https://developer.mozilla.org/en-US/docs/Web/CSS/display) en CSS pour aligner/centrer des éléments visuellement.
@@ -43,7 +42,7 @@ https://www.chromestatus.com/metrics/css/popularity
     * svg
     * gif
 * &lt;audio src="http://example.org/azerty">
-* &lt;video src="http://example.org/azerty">
+* &lt;video src="http://example.org/azerty.mp4">
     * &lt;source src="http://example.org/yo.webm" type="video/webm">
 
 # Comportements par défaut
@@ -82,14 +81,13 @@ Styler les éléments par défaut
 
 ## Input 
 
-* `button`
 * autocomplete
 
 # Styles    
     
 * Dans le &lt;head>
-* &lt;style>&lt;/style>
-* &lt;link rel="stylesheet" href="{{url}}">
+* inline : &lt;style>&lt;/style>
+* fichier séparé : &lt;link rel="stylesheet" href="{{url}}">
     
 # Scripts    
     
@@ -128,16 +126,16 @@ Références
 * L'élément avec l'id `tabs`
     * `#tabs`
 * Les éléments avec un certain attribut
-````
+````css
 a[href]{
     
 }
 input[type="email"]{
         
 }
-a[class*="chosen"]
-
-a[href^="https://"]
+input[disabled]{
+    cursor: disabled;
+}
 ````
 
 * Composition
@@ -162,7 +160,7 @@ a[href^="https://"]
         
         
     * Style pour quand (IE9)
-        *`:target`
+        * `:target`
             * [stackoverflow](http://stackoverflow.com/questions/21951734/react-js-custom-events-for-communicating-with-parent-nodes#comment33261204_21951734)
             * image gallery
     * Style pour quand on passe la souris par-dessus
@@ -207,12 +205,14 @@ a[href^="https://"]
         * `align-items`
         * https://css-tricks.com/snippets/css/a-guide-to-flexbox/
     * none
+    * grid
     
-* position
+* position (+top/right/bottom/left)
     * relative
     * absolute
         * et relative > absolute
     * fixed
+
 
 # Text
 

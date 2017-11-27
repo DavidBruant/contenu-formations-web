@@ -107,21 +107,21 @@
                 // pour le premier tweet
                     // l'afficher
                 console.log(tweets[0]);
-                    // afficher son texte dans la console
-                    // créer une div qui contient le texte du tweet et ajouter la div au <body>
+                    // afficher son message dans la console
+                    // créer une div qui contient le texte du commit et ajouter la div au <body>
 
                 /*
                 // créer un nouvel élément 'div'
                 var x = document.createElement('div');
 
                 // rajouter un enfant
-                parentEl.append(enfantEl);
+                parent.append(enfant);
                 
                 // accéder au <body>
                 document.body
 
-                // ajouter un texte à un élément
-                element.append('le texte yo !');
+                // changer le texte d'un élément
+                element.append(str);
                 */
 
 
@@ -136,40 +136,39 @@
                 
 
                 // créer un <ol>
-                
+                var ol = document.createElement('ol');
+
                 // pour chaque tweet, créer un <li>, mettre le texte dedans, mettre le <li> dans le <ol>
-                
+                tweets.forEach(function(t){
+                    var li = document.createElement('li');
+                    li.append(t.text);
+                    ol.append(li);
+                })
+
                 // mettre le <ol> dans le <body>
+                document.body.append(ol);
                 
                 // (pause)
                 // isoler une fonction, qui pour un objet tweet créé un <li> (séparer la phase de création des éléments et de composition)
 
-                // (pause)
                 // Créer et ajouter un <button> qui quand on clique dessus affiche 'click' dans la console.
                 // -- qui quand on clique ne garde que les tweets en français
                 // (et quand on reclique re-affiche tout)
                 
-                // (pause)
+
                 // Faites un bouton (un peu gros) qui écoute mousedown/click/dblclick et mesure le temps de click et de doubleclick 
                 // et affiche tempsClic1, tempsClic2, tempsDoubleClic
 
-               
+                // Créer plusieurs fichiers avec du code
+                // * createTweetLi.js
+                // * createTweetsOl.js
+                // * createClickTimeButton.js
+                // * main.js
 
-            // Créer plusieurs fichiers avec du code
-            // * createTweetLi.js
-            // * createTweetsOl.js
-            // * createClickTimeButton.js
-            // * main.js
-
-            // charger tout ça via des <script defer src="...">
+                // charger tout ça via des <script defer src="...">
             })
             .catch(function(e){console.error(e)});
             
-            /*
-                Ecrire une fonction 'jsonGet' qui a comme paramètre une url et qui retourne une promesses pour des tweets en utilisant fetch
-            */
-
-
         })
       </script>
     <!--

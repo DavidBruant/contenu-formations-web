@@ -74,6 +74,7 @@
                 justify-content: space-around;
                 align-items: center;
             }
+            
             .large-images > *:target::before{
                 content: '#' attr(id);
                 position: fixed;
@@ -83,9 +84,8 @@
                 font-size: 2em;
                 
                 color: white;
-                
-                
             }
+
             .large-images > *:target .close{
                 position: fixed; /* rendering issue likely related to https://bugzilla.mozilla.org/show_bug.cgi?id=874718 */
                 
@@ -192,25 +192,3 @@
         
     </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

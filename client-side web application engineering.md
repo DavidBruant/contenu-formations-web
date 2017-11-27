@@ -78,16 +78,19 @@ Composant ("createTweetsOl.js") :
 
 ```js
 
+import favTweet from './favTweet'
+
 export default function(tweets){
 
-    return React.createElement('ol', {}, tweets.map(function(t){
-        return React.createElement('li', {},
-            React.createElement('span', {}, t.user.name),
-            React.createElement('span', {}, t.created_at),
-            React.createElement('span', {}, t.text),
-            React.createElement('button', {
+    return element('ol', {}, tweets.map(function(t){
+        return element('li', {},
+            element('span', {}, t.user.name),
+            element('span', {}, t.created_at),
+            element('span', {}, t.text),
+            element('button', {
                 onClick: function(e){
                     console.log('on a cliqué sur', t);
+                    favTweet(t);
                 }
             }, 'Fav !')
             

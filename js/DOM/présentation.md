@@ -79,13 +79,16 @@ function svgElement(name){
 
 * n.addEventListener(type, listener, options)
 ```js
-document.body.addEventListener('click', function(){
+monElement.addEventListener('click', function(){
     console.log('yo');
 })
 ```
 
 options: 
+
 * once
+
+Autre : 
 
 * n.removeEventListener(type, listener)
     * Attention, comparaison par référence
@@ -104,7 +107,7 @@ options:
     * Quand la page entière est chargée (CSS, fonts, images, etc.)
 * click (mousedown/mouseup/dblclick)
 * keypress (keyup/keydown)
-* mouseover
+* mouseenter/mouseleave
 * submit (&lt;form>)
 * input
 * change

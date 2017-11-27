@@ -43,6 +43,7 @@ class Car{
 }
 */
 
+
 // pattern 1.1
 function ElectricCar(color){
     Car.call(this, color); // super()

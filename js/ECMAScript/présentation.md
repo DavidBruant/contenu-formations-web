@@ -8,7 +8,7 @@ https://developer.mozilla.org/en-US/docs/Web/JavaScript/JavaScript_technologies_
 # Standards
 
 * ECMAScript 3 (1999)
-    * IE6+
+    * IE8+
 * Pas de ECMAScript 4 !
 * ECMAScript 5 (2009)
 * ECMAScript 6 / 2015
@@ -47,10 +47,9 @@ else{
 
 # Variables
 
-Déclarer avec `var`
+Toujours déclarer avec `var` (ou `const` ou `let` ES6+)
 
-Toujours utiliser le mode strict
-"use strict";
+Toujours utiliser le mode strict `"use strict";`
 
 https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode/Transitioning_to_strict_mode
 
@@ -107,10 +106,10 @@ http://labs.ft.com/2014/09/polyfills-as-a-service/
 | symbol (ES2015) | "symbol"    |                   |                               |
 | simple object | "object"    | `Object(x) === x` | `{}`, `{a:1, b: "2"}`         |
 |---------------|-------------|-------------------|-------------------------------|
-| function      | ⚠ "function" |                   | `function(a, b){return a+b;}` |
+| function      | ⚠ "function" |                   | `function somme(a, b){return a+b;}` |
 | array         | ⚠ "object"  | `Array.isArray(x)` | `[]`, `[1, 76, 87]`           |
 | set, map, weakmap, promise, date, regexp  | "object" | `Object.prototype.toString.call(x)` |  |                               |
-
+https://rawgit.com/DavidBruant/contenu-formations-web/beb866b3e6c294b2da586fa79d09a1df6f735528/js/data/liste-musees-de-france-a-paris.json
 
 # Comparaison
 
@@ -125,6 +124,8 @@ http://dorey.github.io/JavaScript-Equality-Table/
 Comparaison par référence pour les objets, par valeur pour le reste.
 
 ````js
+'use strict';
+
 (1 === 1)
 ('yo' === 'yo')
 
@@ -134,19 +135,22 @@ var o = {
 
 var o2 = o;
 
-o === o2;
+console.log(o === o2); // true
 
 
 var o3 = {
     a:1
 }
 
-o !== o3
+console.log(o === o3) // false
+
+o2.b = 24;
+console.log(o.b) // 24
 ````
 
 ## Exception
 
-* Number.isNaN
+* `NaN` => `Number.isNaN`
 
 
 # Strings
@@ -278,7 +282,7 @@ var arr = [12, 65, 546];
 console.log('mon tableau', arr[0], arr.length)
 
 arr.forEach(function(e){
-  console.log(e+1)
+  console.log(e+27)
 })
 ```
 

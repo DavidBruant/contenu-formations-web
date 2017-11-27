@@ -33,7 +33,7 @@ eslint .
 # la première fois, `eslint .` liste des centaines ou des milliers d'erreurs 
 ````
 
-Créer .eslintignore (au même niveau que package.json)
+Créer `.eslintignore` (au même niveau que package.json)
 ```
 node_modules
 browserify-bundle.js

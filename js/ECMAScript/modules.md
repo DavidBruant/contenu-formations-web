@@ -17,7 +17,7 @@
 
 Problèmes :
 
-* Performance (limite de nombre de requêtes HTTP en parallèle)
+* Performance (limite de nombre de requêtes HTTP en parallèle (6))
 * Dépendances entre les scripts sont implicites
 
 ## Aparté
@@ -97,6 +97,9 @@ C'est comme ça qu'on définit un module
 // un module importe d'autres modules 
 import React from 'React';
 import createTweetsOl from './createTweetsOl';
+import {arc, pie} from 'd3-shape'; // arc
+// import * as d3 from 'd3-shape'; // d3.arc
+
 
 // ...
 
@@ -180,17 +183,17 @@ moment(t.created_at, 'dd MMM DD HH:mm:ss ZZ YYYY', 'en').fromNow()
 
 Remplace grunt/gulp la plupart du temps
 
-http://substack.net/task_automation_with_npm_run
-https://gist.github.com/oncletom/1e233f2100c4e0877922
-http://naholyr.fr/2015/11/ecrire-des-scripts-npm-multi-plateforme/
+* http://substack.net/task_automation_with_npm_run
+* https://gist.github.com/oncletom/1e233f2100c4e0877922
+* http://naholyr.fr/2015/11/ecrire-des-scripts-npm-multi-plateforme/
 
 ```bash
 npm run build:dev
 npm run build:prod
 ```
 
-https://www.npmjs.com/package/npm-run-all
-https://www.npmjs.com/package/watch-exec
+* https://www.npmjs.com/package/npm-run-all
+* https://www.npmjs.com/package/watch-exec
 
 Exemple : https://github.com/dtc-innovation/dataviz-finances-gironde/blob/master/package.json
 

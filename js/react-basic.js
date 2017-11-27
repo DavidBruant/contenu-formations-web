@@ -8,41 +8,41 @@ var moment = require('moment');
 
 module.exports = React.createClass({
     displayName: 'Tweet',
-    
-    getInitialState: function(){
+
+    getInitialState: function () {
         return {
             favorite: false
         };
     },
-    
+
     render: function () {
         var self = this;
         var props = this.props;
         var state = this.state;
-        
+
         console.log('favorite', state.favorite, props)
-        
+
         return React.createElement(
-            'li', 
+            'li',
             {
                 className: [
                     "tweet",
                     state.favorite ? 'favorite' : ''
                 ].join(' ')
             },
-            React.createElement('b', ...),    
+            React.createElement('b', ...),
             this.props.text,
             React.createElement('i', {}, moment(this.props.created_at).fromNow()),
             React.createElement('button', {
                 //disabled: state.favorite,
-                onClick: function(e){
+                onClick: function (e) {
                     self.setState({
                         favorite: !state.favorite
                     });
                 }
             }, 'fav')
         );
-        
+
     }
 });
 
@@ -61,13 +61,13 @@ module.exports = React.createClass({
     render: function () {
 
         return React.createElement(
-            'ol', 
+            'ol',
             {},
-            this.props.tweets.map(function(tweet){
+            this.props.tweets.map(function (tweet) {
                 return React.createElement(Tweet, tweet);
             })
         );
-        
+
     }
 });
 
@@ -89,9 +89,9 @@ var ReactDOM = require('react-dom');
 
 var TweetList = require('./TweetList.js');
 
-module.exports = function(tweets){
+module.exports = function (tweets) {
     ReactDOM.render(
-        React.createElement(TweetList, {tweets: tweets}),
+        React.createElement(TweetList, { tweets: tweets }),
         document.body
     );
 }
@@ -111,9 +111,9 @@ var displayTweets = require('./displayTweets.js');
 var tweetsSoFar = [];
 
 Promise.all(..µ.)
-.then(function(){
-    // ...
-    displayTweets(tweetsSoFar)
-})
-.catch()
+    .then(function () {
+        // ...
+        displayTweets(tweetsSoFar)
+    })
+    .catch()
 

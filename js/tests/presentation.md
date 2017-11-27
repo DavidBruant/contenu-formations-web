@@ -1,50 +1,50 @@
 # Tests
 
-`npm install mocha chai chai-as-promised --save-dev`
+## TODO
 
-/*
-    test/index.html
-*/
-https://mochajs.org/#running-mocha-in-the-browser
+`npm install jest babel-jest --save-dev`
 
 
-/*
-    test/isParisMuseum.js
-    
-watchify test/isParisMuseum.js -o test/bundle-tests.js -v -t [ babelify --presets [ es2015 ] ] -d
-    
-ajouter <script src="bundle-tests.js"></script>
-*/
+Dans `package.json`
+```json
+{
+    "scripts": {
+        "test": "jest"
+    },
+    "babel": {
+        "presets": ["es2015"]
+    }
+}
+```
 
-`test/isParisMuseum.js`
+
+`test/commitsToAuthorMap.test.js`
 ```js
-"use strict";
+import commitsToAuthorMap from '../commitsToAuthorMap'
 
-import chai from 'chai';
-import asPromised from 'chai-as-promised';
+test('Map vide quand tableau vide', () => {
+    const commits = []
+    const authorMap = commitsToAuthorMap(commits);
 
-import isParisMuseum from '../isParisMuseum';
-
-var expect = chai.expect;
-
-chai.use(asPromised);
-
-describe('isParisMuseum', function () {
-    it('should return false for an empty object', function () {
-        var museum = {};
-        
-        expect(isParisMuseum(museum)).to.be.false;
-
-        /*(function() {
-            isParisMuseum(museum)
-        }).should.throw();*/
-    });
+    expect(authorMap).toEqual(expect.any(Map));
+    expect(authorMap.size).toBe(0);
 });
 ```
 
+`npm test`
 
-```js
-function isParisMuseum(m){
-    return !!(m && m.fields && m.fields.ville && m.fields.ville.toUpperCase() === 'PARIS')
-}
-```
+
+## Code coverage
+
+Attention
+
+## Tests de non-régression
+
+1. on a observé un bug
+2. on écrit un test qui échoue et démontre le bug
+3. on corrige le bug (et le test passe)
+
+
+## Tests automatisés sur vrais navigateurs
+
+https://developers.google.com/web/updates/2017/06/headless-karma-mocha-chai

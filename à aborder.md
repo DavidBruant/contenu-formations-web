@@ -1,4 +1,2 @@
-* Vanilla JS
+* closure
 * Promesses
-* Modules
-* Tests automatisés
