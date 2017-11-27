@@ -108,7 +108,9 @@ http://labs.ft.com/2014/09/polyfills-as-a-service/
 |---------------|-------------|-------------------|-------------------------------|
 | function      | ⚠ "function" |                   | `function somme(a, b){return a+b;}` |
 | array         | ⚠ "object"  | `Array.isArray(x)` | `[]`, `[1, 76, 87]`           |
-| set, map, weakmap, promise, date, regexp  | "object" | `Object.prototype.toString.call(x)` |  |                               |
+| set, map, weakmap, promise, date, regexp  | "object" | `Object.prototype.toString.call(x)` |  |      
+
+                         |
 https://rawgit.com/DavidBruant/contenu-formations-web/beb866b3e6c294b2da586fa79d09a1df6f735528/js/data/liste-musees-de-france-a-paris.json
 
 # Comparaison
