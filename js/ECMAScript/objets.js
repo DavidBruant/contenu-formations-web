@@ -25,6 +25,10 @@ var bla = o.c;
 
 console.log(o, o.c, bla, bla.patate)
 
+// Liste des propriété de l'objet
+var props = Object.keys(o);
+// ['a', 'b', 'c', 'd']
+
 
 o.c = undefined;
 //o.c === undefined

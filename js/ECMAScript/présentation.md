@@ -47,7 +47,7 @@ else{
 
 # Variables
 
-Toujours déclarer avec `var` (ou `const` ou `let` ES6+)
+Toujours déclarer avec `const` ou `let` (IE11+. Anciennement `var`)
 
 Toujours utiliser le mode strict `"use strict";`
 
@@ -78,7 +78,13 @@ function g(){
 ````
 
 
-# Polyfills
+# Le code du futur dans les navigateurs du présent
+
+## Syntaxe - babel
+
+Babel https://babeljs.io/
+
+## Runtime - polyfills
 
 Bibliothèque qui implémente un standard
 
@@ -157,8 +163,6 @@ console.log(o.b) // 24
 
 # Strings
 
-* 'Yo'.toUpperCase()
-* 'Yo'.toLowerCase()
 * 'Yo'.slice(start, end)
 * 'Yo'.substring(start, end)
 * 'Yo'.substr(start, length)
@@ -168,6 +172,8 @@ console.log(o.b) // 24
 * str.trim()
 * str.match()
 * str.length
+
+[Enlever les accents](https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript/37511463#37511463)
 
 # Number
 
@@ -180,9 +186,6 @@ console.log(o.b) // 24
 
 * Math pour une collection de fonctions pour faire des maths.
 * Math.random()
-* Math.sqrt(x)
-* Math.pow(num, exp)
-* Math.hypot(a, b, c) (ES6) // Math.sqrt( a*a + b*b + c*c )
 * Math.round/floor/ceil
 
 # Booleans
@@ -286,6 +289,12 @@ console.log('mon tableau', arr[0], arr.length)
 arr.forEach(function(e){
   console.log(e+27)
 })
+
+
+for(let e of arr){
+  console.log('for', e)
+}
+
 ```
 
 ## Différences entre un array et un object "normal" en JavaScript

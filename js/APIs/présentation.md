@@ -43,6 +43,8 @@ string -> string
 Stockage par origine
 origine : protocole + hostname + port
 
+http://yo.com:5000
+
 * var value = localStorage.getItem(key)
 * localStorage.setItem(key, value)
     * object : '[Object object]' => JSON.stringify(obj)

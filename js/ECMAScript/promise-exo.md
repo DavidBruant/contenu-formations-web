@@ -1,5 +1,26 @@
 # Suite de l'exercice
 
+## Objectif 
+
+`main.js` devient en essence :
+
+````js
+import getTweets from './getTweets';
+// import nia nia nia
+
+document.addEventListener('DOMContentLoaded', function(){
+    // on supprime "fetch( niania )..."
+    getTweets().then(function(tweets){
+        console.log('tweets', tweets);
+        
+        // ...
+
+    })
+})
+````
+
+## Implémentation
+
 `npm i json-fetch --save`
 
 main.js
@@ -16,36 +37,14 @@ jsonFetch('https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/
 })
 ````
 
-## écrire un fichier JS qui contient une seule fonction getTweets() qui retourne une promesse pour un array de tweets
-
-getTweets() : Promise<Array<Tweet>>
-
-main.js devient en essence :
-````js
-import getTweets from './getTweets';
-// import nia nia nia
-
-document.addEventListener('DOMContentLoaded', function(){
-    getTweets().then(function(tweets){
-        console.log('tweets', tweets);
-        
-        // ...
-
-    })
-})
-
-````
 
 
-## Modifier main.js pour qu'il utilise cette fonction
-
-
-## Changer la fonction getTweets pour qu'elle charge des tweets de 2 urls
+## Changer la fonction getTweets pour qu'elle charge 120 tweets de 2 urls
 
 https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets.json
 https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets2.json
 (20 tweets et 100 tweets)
-combiner les résultats avec Promise.all() (et la méthode .concat() pour fusionner 
+combiner les résultats avec `Promise.all()` (et la méthode `.concat()` pour fusionner 
 les tableaux)
 
 L'exemple de MDN contient des arrow function 
@@ -53,7 +52,7 @@ L'exemple de MDN contient des arrow function
 p.then(valeur => console.log(valeur))
 ````
 
-Cette syntaxe est INTERDITE !! Utiliser : 
+Préférez : 
 ````js
 p.then(function(valeur){ console.log(valeur) })
 ````

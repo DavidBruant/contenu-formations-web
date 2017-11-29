@@ -244,12 +244,7 @@
                     ol.remove();
 
                     // afficher un <ol> avec uniquement les textes des tweets en français
-                    if(all){
-                        ol = createTweetsOl(frenchTweets);
-                    }
-                    else{
-                        ol = createTweetsOl(tweets);
-                    }
+                    ol = createTweetsOl(all ? frenchTweets : tweets);
 
                     all = !all;
                     document.body.appendChild( ol );

@@ -42,6 +42,14 @@ A tool that takes a set of scripts and bundles them together. Only one script is
 
 ## Single-Page Application (SPA) with empty &lt;body/>
 
+````html
+<!doctype html>
+<meta charset="utf-8">
+<script defer src="app.js"></script>
+<body/>
+````
+
+
 ### Aside on modules 
 
 SPAs typically have a module system (typically AMD with requirejs or CommonJS with browserify). One of the benefits of a module system is that dependencies between scripts is explicit. The `main.js` script requires `x.js`, `y.js` and `z.js`; `x.js` requires `x1.js` and `x2.js`, etc.

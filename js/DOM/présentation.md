@@ -1,11 +1,11 @@
-# DOM
+# DOM (Document Object Model)
 
 API pour manipuler un document HTML ou XML (arbre)
 
 
 # Node
 
-* n.children/childNodes
+* n.children
 * n.parentNode
 * parent.append(enfant)
 * (anciennement) parent.appendChild(enfant)
@@ -48,7 +48,6 @@ function svgElement(name){
 * e.textContent
     * e.textContent = ...
 
-* e.id
 * e.querySelector(selector)
 * e.querySelectorAll(selector)
     * document.body.querySelectorAll()
@@ -56,9 +55,8 @@ function svgElement(name){
     foot.querySelector('.mentions-légales');
     
 * /!\ e.innerHTML (getter/setter)
-* e.insertAdjacentHTML(html, position)
 * (moderne) e.classList (pour changer les styles)
-    * e.classList.add/remove/has/toggle?
+    * e.classList.add/remove/contains/toggle?
 * (ancien, ne pas utiliser) e.className
 <div class="yo hyz"></div>
     * .yo.hyz{}
@@ -74,6 +72,7 @@ function svgElement(name){
 
 * vider un élément
     * el.innerHTML = '';
+
 
 # EventTarget
 
@@ -106,9 +105,9 @@ Autre :
 * load
     * Quand la page entière est chargée (CSS, fonts, images, etc.)
 * click (mousedown/mouseup/dblclick)
-* keypress (keyup/keydown)
 * mouseenter/mouseleave
 * submit (&lt;form>)
+* keypress (keyup/keydown)
 * input
 * change
 * scroll
@@ -123,7 +122,6 @@ el.addEventListener('click', function(e){
 ````
 
 * e.target
-* e.currentTarget
 * e.preventDefault()
 
 ```js
@@ -132,7 +130,6 @@ form.addEventListener('submit', function(e){
 })
 ```
 
-* e.stopPropagation()
 * e.timeStamp
 
 

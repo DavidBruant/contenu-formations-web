@@ -1,6 +1,6 @@
 # A l'ancienne
 
-````
+````html
 <!doctype html>
 <html>
     <head>
@@ -123,7 +123,7 @@ On utilise un outil qui s'appelle browserify afin de créer un "bundle" qui sera
 npm init -y
 npm install browserify -g
 # npm install watchify -g
-npm i babelify babel-preset-es2015 --save 
+npm i babel-core babelify babel-preset-es2015 --save 
 
 browserify main.js -o bundle.js -t [ babelify --presets [ es2015 ] ] -d
 # watchify main.js -o bundle.js -t [ babelify --presets [ es2015 ] ] -d -v
@@ -132,10 +132,6 @@ browserify main.js -o bundle.js -t [ babelify --presets [ es2015 ] ] -d
 ## changer le HTML
 
 Enlever tous les <script> et les remplacer par `<script defer src="bundle.js"></script>`
-
-## Etape 1
-
-créer un main.js (pas de dépendance)
 
 ## Etape 2
 
@@ -163,7 +159,6 @@ export default function(tweets){
 ## Etape 3
 
 https://www.npmjs.com/
-https://npms.io/
 
 ```bash
 npm install moment --save 
