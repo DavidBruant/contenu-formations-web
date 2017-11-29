@@ -31,7 +31,9 @@ export default function minMaxPatrimoineDate(pats){
 
 `test/minMaxPatrimoineDate.test.js`
 ```js
-import minMaxPatrimoineDate from '../minMaxPatrimoineDate'
+import minMaxPatrimoineDate from '../minMaxPatrimoineDate';
+import {DOMParser} from 'xmldom';
+
 
 test("minMaxPatrimoineDate retourne la bonne date s'il n'y en a qu'une", () => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?> <DocumentBudgetaire xsi:schemaLocation="http://www.minefi.gouv.fr/cp/demat/docbudgetaire Actes_budgetaires___Schema_Annexes_Bull_V15\DocumentBudgetaire.xsd" xmlns="http://www.minefi.gouv.fr/cp/demat/docbudgetaire" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -43,10 +45,13 @@ test("minMaxPatrimoineDate retourne la bonne date s'il n'y en a qu'une", () => {
             </Annexes>
         </Budget>
     </DocumentBudgetaire>`
-    const authorMap = commitsToAuthorMap(commits);
+    const doc = new DOMParser().parseFromString( xml ,'text/xml' );
+    const pats = Array.from(doc.getElementsByTagName('PATRIMOINE'));
 
-    expect(authorMap).toEqual(expect.any(Map));
-    expect(authorMap.size).toBe(0);
+    const {min, max} = minMaxPatrimoineDate(pats);
+
+    expect(min).toBe(max);
+    expect(min).toBe(moment("2016-11-16", 'YYYY-MM-DD', 'en').unix());
 });
 ```
 
