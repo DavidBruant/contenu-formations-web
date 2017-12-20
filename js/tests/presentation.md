@@ -33,7 +33,7 @@ export default function minMaxPatrimoineDate(pats){
 ```js
 import minMaxPatrimoineDate from '../minMaxPatrimoineDate';
 import {DOMParser} from 'xmldom';
-
+import moment from 'moment';
 
 test("minMaxPatrimoineDate retourne la bonne date s'il n'y en a qu'une", () => {
     const xml = `<?xml version="1.0" encoding="UTF-8"?> <DocumentBudgetaire xsi:schemaLocation="http://www.minefi.gouv.fr/cp/demat/docbudgetaire Actes_budgetaires___Schema_Annexes_Bull_V15\DocumentBudgetaire.xsd" xmlns="http://www.minefi.gouv.fr/cp/demat/docbudgetaire" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
@@ -53,6 +53,36 @@ test("minMaxPatrimoineDate retourne la bonne date s'il n'y en a qu'une", () => {
     expect(min).toBe(max);
     expect(min).toBe(moment("2016-11-16", 'YYYY-MM-DD', 'en').unix());
 });
+
+test("minMaxPatrimoineDate retourne les bonnes dates s'il y en a 2", () => {
+    const xml = `<?xml version="1.0" encoding="UTF-8"?> 
+    <DocumentBudgetaire xsi:schemaLocation="http://www.minefi.gouv.fr/cp/demat/docbudgetaire Actes_budgetaires___Schema_Annexes_Bull_V15\DocumentBudgetaire.xsd" xmlns="http://www.minefi.gouv.fr/cp/demat/docbudgetaireouncesPerCan()" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+        <Budget>
+            <Annexes>
+                <DATA_PATRIMOINE>ouncesPerCan()
+                    <PATRIMOINE> 
+                        <DtAcquiBien V="2016-12-31"/>
+                    </PATRIMOINE>
+                    <PATRIMOINE> 
+                        <DtAcquiBien V="2016-01-01"/>
+                    </PATRIMOINE>
+                </DATA_PATRIMOINE>
+            </Annexes>
+        </Budget>
+    </DocumentBudgetaire>`
+    const doc = new DOMParser().parseFromString( xml ,'text/xml' );
+    const pats = Array.from(doc.getElementsByTagName('PATRIMOINE'));
+
+    const {min, max} = minMaxPatrimoineDate(pats);
+
+    expect(min).toBe(moment("2016-01-01", 'YYYY-MM-DD', 'en').unix());
+    expect(max).toBe(moment("2016-12-31", 'YYYY-MM-DD', 'en').unix());
+});
+
+
+
+
+
 ```
 
 `npm test`

@@ -114,18 +114,18 @@ http://labs.ft.com/2014/09/polyfills-as-a-service/
 |---------------|-------------|-------------------|-------------------------------|
 | function      | ⚠ "function" |                   | `function somme(a, b){return a+b;}` |
 | array         | ⚠ "object"  | `Array.isArray(x)` | `[]`, `[1, 76, 87]`           |
-| set, map, weakmap, promise, date, regexp  | "object" | `Object.prototype.toString.call(x)` |  |      
+| set, map, weakmap, promise, date, regexp  | "object" | `Object.prototype.toString.call(x)` |  
 
-                         |
+
 https://rawgit.com/DavidBruant/contenu-formations-web/beb866b3e6c294b2da586fa79d09a1df6f735528/js/data/liste-musees-de-france-a-paris.json
 
 # Comparaison
 
 Toujours utiliser === et !==
 
-== "presque égal"
-
-=== "strictement égal"
+- `==` "presque égal"
+- `===` "strict égal"
+- `Object.is`
 
 http://dorey.github.io/JavaScript-Equality-Table/
 
@@ -171,6 +171,8 @@ console.log(o.b) // 24
     * 'yyyyyyy'.replace(/y/g, 'a')
 * str.trim()
 * str.match()
+    * https://regexper.com/
+    * https://regex101.com/
 * str.length
 
 [Enlever les accents](https://stackoverflow.com/questions/990904/remove-accents-diacritics-in-a-string-in-javascript/37511463#37511463)
@@ -181,6 +183,7 @@ console.log(o.b) // 24
     * NaN !== NaN
     * Number.isNaN(x) // ES6/2015
 * 0.1 + 0.2
+    * https://www.npmjs.com/package/bignumber.js
 * Math.PI.toFixed(3)
 * Math.PI.toString()
 
@@ -198,7 +201,7 @@ console.log(o.b) // 24
 false
 0
 NaN
-'' (chaine vide)
+'' (chaîne vide)
 null
 undefined
 ```
@@ -282,12 +285,13 @@ console.log(JSON.stringify(o))
 "use strict";
 
 console.clear()
+
 var arr = [12, 65, 546];
 
 console.log('mon tableau', arr[0], arr.length)
 
 arr.forEach(function(e){
-  console.log(e+27)
+  console.log(e, e+27)
 })
 
 
@@ -326,10 +330,6 @@ var arr2 = arr.filter(function(e){ return e%2 === 0; });
 ```
 
 // https://github.com/MyWebIntelligence/MyWebIntelligence/blob/master/common/cleanupURLs.js
-
-* a.reduce(function(acc, curr){
-    return acc+curr;
-}, 0)
 
 * a.slice(debut, fin)
 
