@@ -1,7 +1,5 @@
 # Tests
 
-## TODO
-
 `npm i mocha chai karma karma-chai karma-mocha karma-firefox-launcher karma-chrome-launcher karma-browserify --save-dev`
 
 
@@ -13,7 +11,7 @@ module.exports = karma =>
     frameworks: ['mocha', 'chai', 'browserify'],
     files: ['test/**/*.js'],
     colors: true,
-    browsers: ['FirefoxHeadless'],
+    browsers: ['Firefox'],
     preprocessors: {
       'test/**/*.js': [ 'browserify' ]
     },
@@ -41,6 +39,7 @@ Dans `package.json`
 
 Créer un module qui exporte une fonction qui ...
 
+`./isFrenchTweet.js`
 ```js
 export default function isFrenchTweet(tweet){
     return tweet.lang === 'fr';
@@ -56,7 +55,7 @@ import isFrenchTweet from '../isFrenchTweet.js'
 describe('isFrenchTweet', () => {
     it('should return true if tweet.lang is fr', () => {
         const tw = {
-            text: 'salut !'
+            text: 'salut !',
             lang: 'fr'
         }
 
@@ -71,7 +70,7 @@ describe('isFrenchTweet', () => {
     })
     it('should return false if tweet.lang is en', () => {
         const tw = {
-            text: 'salut !'
+            text: 'salut !',
             lang: 'en'
         }
 
@@ -79,7 +78,7 @@ describe('isFrenchTweet', () => {
     })
     it('should return true if tweet.lang is fr_ca', () => {
         const tw = {
-            text: 'salut !'
+            text: 'salut !',
             lang: 'en'
         }
 
