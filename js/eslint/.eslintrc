@@ -16,7 +16,7 @@
             "error",
             "never"
         ],
-        "no-console": "warn"
+        "no-console": "off"
     },
     "env": {
         "es6": true,

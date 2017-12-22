@@ -204,9 +204,8 @@ export NODE_ENV="production"
 ```json
 {
     "scripts": {
-        "build:dev": "browserify main.js > bundle.js", // 800k
-        "build:prod": "browserify -p [minifyify --no-map] main.js > bundle.js", //350k
-        // 288k avec NODE_ENV="production"
+        "build:dev": "browserify main.js > bundle.js",
+        "build:prod": "browserify -p [minifyify --no-map] main.js > bundle.js"
     }
 }
 ```

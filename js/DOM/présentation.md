@@ -71,7 +71,7 @@ function svgElement(name){
 }
 
 * vider un élément
-    * el.innerHTML = '';
+    * `el.innerHTML = '';`
 
 
 # EventTarget
@@ -85,7 +85,20 @@ monElement.addEventListener('click', function(){
 
 options: 
 
-* once
+* `once`
+
+```js
+monElement.addEventListener('click', function(){
+    console.log('yo');
+}, {once: true})
+```
+
+* `passive`
+```js
+monElement.addEventListener('touchstart', function(){
+    console.log('fib');
+}, {passive: true})
+```
 
 Autre : 
 
@@ -110,8 +123,9 @@ Autre :
 * keypress (keyup/keydown)
 * input
 * change
-* scroll
-    * le listener bloque le scroll
+* scroll (listener après le scroll)
+* touchstart
+    * le listener bloque touchstart
 
 ## Event properties
 

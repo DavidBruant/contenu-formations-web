@@ -2,86 +2,90 @@
 
 ## TODO
 
-`npm install jest babel-jest --save-dev`
+`npm i mocha chai karma karma-chai karma-mocha karma-firefox-launcher karma-chrome-launcher karma-browserify --save-dev`
+
+
+Créer un fichier `karma.conf.js`
+```js
+module.exports = karma =>
+  karma.set({
+    singleRun: true,
+    frameworks: ['mocha', 'chai', 'browserify'],
+    files: ['test/**/*.js'],
+    colors: true,
+    browsers: ['FirefoxHeadless'],
+    preprocessors: {
+      'test/**/*.js': [ 'browserify' ]
+    },
+    browserify: {
+      debug: true,
+      transform: [ ['babelify', {presets: ['es2015']}] ]
+    }
+})
+```
 
 Dans `package.json`
 ```json
 {
     "scripts": {
-        "test": "jest"
+        "test": "karma start"
     },
-    "babel": {
-        "presets": ["es2015"]
+    "devDependencies": {
+        // ...
+        "chai": "^4.1.2",
+        "karma": "^1.7.1"
+        // ...
     }
 }
 ```
 
-Créer une module qui exporte une fonction qui prend un tableau d'éléments &lt;PATRIMOINE> et retourne les dates min et max
+Créer un module qui exporte une fonction qui ...
 
 ```js
-export default function minMaxPatrimoineDate(pats){
-
-    return {
-        min: // ... 
-        max: // ...
-    }
+export default function isFrenchTweet(tweet){
+    return tweet.lang === 'fr';
 }
 ```
 
 
-`test/minMaxPatrimoineDate.test.js`
+`test/isFrenchTweet.test.js`
 ```js
-import minMaxPatrimoineDate from '../minMaxPatrimoineDate';
-import {DOMParser} from 'xmldom';
-import moment from 'moment';
+import {expect} from 'chai'
+import isFrenchTweet from '../isFrenchTweet.js'
 
-test("minMaxPatrimoineDate retourne la bonne date s'il n'y en a qu'une", () => {
-    const xml = `<?xml version="1.0" encoding="UTF-8"?> <DocumentBudgetaire xsi:schemaLocation="http://www.minefi.gouv.fr/cp/demat/docbudgetaire Actes_budgetaires___Schema_Annexes_Bull_V15\DocumentBudgetaire.xsd" xmlns="http://www.minefi.gouv.fr/cp/demat/docbudgetaire" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <Budget>
-            <Annexes>
-                <DATA_PATRIMOINE>
-                    <PATRIMOINE> <CodVariPatrim V="01"/> <CodEntreeSorti V="E"/> <CodModalAcqui V="01"/> <LibBien V=" 2016O00376 - MICROSOFT VISIO PROFESSIONAL"/> <MtValAcquiBien V="1339.20"/> <MtCumulAmortBien V="0.00"/> <MtAmortExer V="0.00"/> <DureeAmortBien V="5"/> <NumInventaire V="2016O00376"/> <DtAcquiBien V="2016-11-16"/> <MtVNCBien3112 V="0.00"/> <MtVNCBienSorti V="0.00"/> <MtPrixCessBienSorti V="0.00"/> </PATRIMOINE>
-                </DATA_PATRIMOINE>
-            </Annexes>
-        </Budget>
-    </DocumentBudgetaire>`
-    const doc = new DOMParser().parseFromString( xml ,'text/xml' );
-    const pats = Array.from(doc.getElementsByTagName('PATRIMOINE'));
+describe('isFrenchTweet', () => {
+    it('should return true if tweet.lang is fr', () => {
+        const tw = {
+            text: 'salut !'
+            lang: 'fr'
+        }
 
-    const {min, max} = minMaxPatrimoineDate(pats);
+        expect( isFrenchTweet(tw) ).to.be.true
+    })
+    it('should return false if tweet has no lang', () => {
+        const tw = {
+            text: 'salut !'
+        }
 
-    expect(min).toBe(max);
-    expect(min).toBe(moment("2016-11-16", 'YYYY-MM-DD', 'en').unix());
-});
+        expect( isFrenchTweet(tw) ).to.be.false
+    })
+    it('should return false if tweet.lang is en', () => {
+        const tw = {
+            text: 'salut !'
+            lang: 'en'
+        }
 
-test("minMaxPatrimoineDate retourne les bonnes dates s'il y en a 2", () => {
-    const xml = `<?xml version="1.0" encoding="UTF-8"?> 
-    <DocumentBudgetaire xsi:schemaLocation="http://www.minefi.gouv.fr/cp/demat/docbudgetaire Actes_budgetaires___Schema_Annexes_Bull_V15\DocumentBudgetaire.xsd" xmlns="http://www.minefi.gouv.fr/cp/demat/docbudgetaireouncesPerCan()" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-        <Budget>
-            <Annexes>
-                <DATA_PATRIMOINE>ouncesPerCan()
-                    <PATRIMOINE> 
-                        <DtAcquiBien V="2016-12-31"/>
-                    </PATRIMOINE>
-                    <PATRIMOINE> 
-                        <DtAcquiBien V="2016-01-01"/>
-                    </PATRIMOINE>
-                </DATA_PATRIMOINE>
-            </Annexes>
-        </Budget>
-    </DocumentBudgetaire>`
-    const doc = new DOMParser().parseFromString( xml ,'text/xml' );
-    const pats = Array.from(doc.getElementsByTagName('PATRIMOINE'));
+        expect( isFrenchTweet(tw) ).to.be.false
+    })
+    it('should return true if tweet.lang is fr_ca', () => {
+        const tw = {
+            text: 'salut !'
+            lang: 'en'
+        }
 
-    const {min, max} = minMaxPatrimoineDate(pats);
-
-    expect(min).toBe(moment("2016-01-01", 'YYYY-MM-DD', 'en').unix());
-    expect(max).toBe(moment("2016-12-31", 'YYYY-MM-DD', 'en').unix());
-});
-
-
-
-
+        expect( isFrenchTweet(tw) ).to.be.true // oops
+    })
+})
 
 ```
 

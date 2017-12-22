@@ -10,11 +10,11 @@ import getTweets from './getTweets';
 
 document.addEventListener('DOMContentLoaded', function(){
     // on supprime "fetch( niania )..."
-    getTweets().then(function(tweets){
+    var tweetsP = getTweets();
+    
+    tweetsP.then(function(tweets){
         console.log('tweets', tweets);
-        
         // ...
-
     })
 })
 ````
@@ -46,13 +46,3 @@ https://rawgit.com/DavidBruant/contenu-formations-web/master/js/data/tweets2.jso
 (20 tweets et 100 tweets)
 combiner les résultats avec `Promise.all()` (et la méthode `.concat()` pour fusionner 
 les tableaux)
-
-L'exemple de MDN contient des arrow function 
-````js
-p.then(valeur => console.log(valeur))
-````
-
-Préférez : 
-````js
-p.then(function(valeur){ console.log(valeur) })
-````

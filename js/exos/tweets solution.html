@@ -98,7 +98,7 @@
         function createTweetLi(tweet){
             var li = document.createElement('li');
             li.textContent = tweet.text;
-            li.classList.add('tweet');
+            /*li.classList.add('tweet');
 
             var userSpan = document.createElement('span');
             userSpan.classList.add('user');
@@ -112,15 +112,16 @@
             li.append(
                 userSpan, ' a écrit le ', dateSpan, ' : ',
                 textSpan
-            )
+            )*/
 
             return li;
         }
 
         function createTweetsOl(tweets /* tableau de tweets */){
             var ol = document.createElement('ol');
-            ol.append(...tweets.map(createTweetLi));
-         // ol.append(...tweets.map(function(t){ return createTweetLi(t) }));
+            tweets.forEach( t => {
+                ol.append( createTweetLi(t) )
+            });
             return ol;
         }
 
@@ -224,8 +225,8 @@
                 })*/
                 
                 // mettre le <ol> dans le <body>
-                var ol = createTweetsOl(tweets);
-                document.body.appendChild( ol );
+                var currentOl = createTweetsOl(tweets);
+                document.body.appendChild( currentOl );
 
 
                 // isoler une fonction, qui pour un objet tweet créé un <li> (séparer la phase de création des éléments et de composition)
@@ -240,14 +241,13 @@
 
                 // -- qui quand on clique ne garde que les tweets en français
                 b.addEventListener('click', function(e){
-                    // virer la liste existante
-                    ol.remove();
-
                     // afficher un <ol> avec uniquement les textes des tweets en français
-                    ol = createTweetsOl(all ? frenchTweets : tweets);
+                    const newOl = createTweetsOl(all ? frenchTweets : tweets);
+
+                    currentOl.replaceWith(newOl);
+                    currentOl = newOl;
 
                     all = !all;
-                    document.body.appendChild( ol );
                 })
 
                 

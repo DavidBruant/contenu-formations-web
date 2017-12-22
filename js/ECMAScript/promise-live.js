@@ -15,7 +15,7 @@ function jsonFetch(url){
   
   tweetsP.then(function(tweets){
     console.log('ts', tweets)
-  });
+  })
   .catch(function(err){
     console.error('Tiens, une erreur ici !', err);
   })
