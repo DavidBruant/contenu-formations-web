@@ -47,7 +47,7 @@ function jsonFetch(url){
       const bodyJSON = resp.json();
       //console.log('bodyJSON', bodyJSON);
 
-      bodyJSON
+      return bodyJSON
         .then(function(body){
           console.log('body', body);
         })

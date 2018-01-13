@@ -79,16 +79,40 @@ describe('isFrenchTweet', () => {
     it('should return true if tweet.lang is fr_ca', () => {
         const tw = {
             text: 'salut !',
-            lang: 'en'
+            lang: 'fr_ca'
         }
 
         expect( isFrenchTweet(tw) ).to.be.true // oops
     })
 })
-
 ```
 
 `npm test`
+
+
+Test de DOM
+
+```js
+import createTweetLi from '../createTweetLi'
+
+describe('createTweetLi', () => {
+    it('should throw when no argument is passed', () => {
+        expect( 
+            () => createTweetLi(); 
+        ).to.throw();
+    })
+
+    it('should create an empty <li> if an empty object is passed', () => {
+        const li = createTweetLi({});
+
+        expect( li ).to.be.an.instanceof(HTMLLIElement)
+        expect( li.textContent ).to.equal('');
+    })
+
+})
+```
+
+
 
 
 ## Code coverage

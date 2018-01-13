@@ -158,6 +158,8 @@ export default function(tweets){
 
 ## Etape 3
 
+(rajouter la date dans l'affichage)
+
 https://www.npmjs.com/
 
 ```bash
