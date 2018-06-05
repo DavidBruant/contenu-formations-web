@@ -1,0 +1,6 @@
+- gestion mémoire
+- mieux maitriser
+- mieux mutualiser le code
+- Promesses
+- Set/Map
+- benchmark perf

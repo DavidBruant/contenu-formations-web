@@ -163,7 +163,7 @@ export default function(tweets){
 https://www.npmjs.com/
 
 ```bash
-npm install moment --save 
+npm install moment
 # regarder package.json
 ```
 

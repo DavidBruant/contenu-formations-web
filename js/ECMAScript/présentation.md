@@ -66,12 +66,6 @@ else{
 
 # Variables
 
-- Toujours déclarer avec `const` ou `let` (IE11+. Anciennement `var`)
-- Toujours utiliser le mode strict `"use strict";`
-
-- [How One Missing `var` Ruined our Launch](http://www.pixelstech.net/article/1320253282-How-One-Missing-%60var%60-Ruined-our-Launch)
-- [Transitionner du code existant vers le strict mode](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode/Transitioning_to_strict_mode)
-
 ````js
 "use strict";
 const a = 1;
@@ -94,12 +88,34 @@ function g(){
 }
 ````
 
+- Toujours déclarer avec `const` ou `let` (IE11+. Anciennement `var`)
+- Toujours utiliser le mode strict `"use strict";`
+- [How One Missing `var` Ruined our Launch](http://www.pixelstech.net/article/1320253282-How-One-Missing-%60var%60-Ruined-our-Launch)
+- [Transitionner du code existant vers le strict mode](https://developer.mozilla.org/en-US/docs/JavaScript/Reference/Functions_and_function_scope/Strict_mode/Transitioning_to_strict_mode)
+
 # Fonctions
 
-- Défintion d'une fonction 
+- Définition d'une fonction 
 - Arguments
 - Valeur de retour
 - Appel d'une fonction
+
+
+````js
+// déclaration d'une fonction
+// f = nom de la fonction
+function f(a, b, c){ // a, b, c = nom des arguments de la fonction
+    // corps de la fonction
+    return a+b*c // valeur de retour
+}
+
+// utilisation/appel de fonction
+// "référence" par nom
+const x = f(1, 3, 5); // on passe des valeurs en argument
+// on récupère dans x la valeur de retour de la fonction
+
+console.log(x)
+````
 
 
 

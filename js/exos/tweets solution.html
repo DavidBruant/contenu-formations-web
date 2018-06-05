@@ -97,12 +97,12 @@
           
         function createTweetLi(tweet){
             var li = document.createElement('li');
-            li.textContent = tweet.text;
+            li.append(tweet.text);
             /*li.classList.add('tweet');
 
             var userSpan = document.createElement('span');
             userSpan.classList.add('user');
-            userSpan.textContent = tweet.user.name;
+            userSpan.append(tweet.user.name);
 
             var textSpan = document.createElement('span');
             userSpan;
@@ -169,18 +169,18 @@
                 var x = document.createElement('div');
 
                 // rajouter un enfant
-                parent.appendChild(enfant);
+                parent.append(enfant);
                 
                 // accéder au <body>
                 document.body
 
                 // changer le texte d'un élément
-                element.textContent = str;
+                element.append(str);
                 */
 
                 var div = document.createElement('div');
-                div.textContent = texteDuPremierTweet;
-                document.body.appendChild(div);
+                div.append(texteDuPremierTweet) ;
+                document.body.append(div);
 
                 // afficher dans la console les text de tous les tweets du tableau en utilisant .forEach
                 /*tweets.forEach(function(tweet){
@@ -218,22 +218,22 @@
                 tweets.forEach(function(t){
                     // création du li
                     var li = document.createElement('li');
-                    li.textContent = t.text;
+                    li.append(t.text);
 
                     // composition
-                    ol.appendChild(li);
+                    ol.append(li);
                 })*/
                 
                 // mettre le <ol> dans le <body>
                 var currentOl = createTweetsOl(tweets);
-                document.body.appendChild( currentOl );
+                document.body.append( currentOl );
 
 
                 // isoler une fonction, qui pour un objet tweet créé un <li> (séparer la phase de création des éléments et de composition)
                         
                 // Créer et ajouter un <button> qui quand on clique dessus affiche 'click' dans la console.
                 var b = document.createElement('button');
-                b.textContent = 'Fr!';
+                b.append('Fr!');
                 document.body.append(b);
 
 
@@ -264,7 +264,7 @@
                 // et affiche tempsClic1, tempsClic2, tempsDoubleClic
 
                 var b = document.createElement('button');
-                b.textContent = 'YO!';
+                b.append('YO!');
                 document.body.append(b);
 
                 var beforeLastMouseDownTimestamp;
