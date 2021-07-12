@@ -155,7 +155,7 @@ Le fait qu'une fonction ne soit pas implémentée par un navigateur n'est pas un
 |---------------|---------------------------------|-------------|-------------------|
 | boolean       | `true`, `false`                 | "boolean"   |                   |
 | string        | `''`, `"yo !"`, `` `whatever` `` | "string"   |                   |
-| number        | `1`, `-2.3`, `NaN`, `Infinity`  | "number"    |                   |
+| number        | `1`, `-2.3`, `NaN`, `Infinity`  | "number"    | `Number.isFinite` |
 | undefined     |                                 | "undefined" |                   |
 | null          |                                 | ⚠ "object"  | `x === null`      |
 | symbol (ES2015) |                               | "symbol"    |                   |
